@@ -1,0 +1,29 @@
+@use '/src/styles/index.scss' as *;
+
+.episode-card {
+    font-weight: 500;
+    background: linear-gradient(45deg, #ffe3e3, #fff);
+    outline: 2px solid $secondary-color;
+    border-radius: 5px;
+    width: 250px;
+    padding: 0.5rem 1rem;
+    box-shadow: 10px 10px 0 3px $secondary-color;
+    transition: all .3s;
+
+    &:hover {
+        font-weight: 700;
+        position: relative;
+        top: 3px;
+        left: 3px;
+        box-shadow: 1px 1px 0 1px $secondary-color;
+    }
+
+    i {
+        font-size: 2rem;
+        text-shadow: 1px 1px 1px $primary-color;
+    }
+
+    p {
+        text-align: left;
+    }
+}

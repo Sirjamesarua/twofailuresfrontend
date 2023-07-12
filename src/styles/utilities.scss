@@ -1,0 +1,68 @@
+// Containers
+.container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+
+// Fonts
+.text-center {
+    text-align: center;
+}
+
+.fs-1 {
+    font-size: 1rem;
+}
+
+.fs-2 {
+    font-size: 1.5rem;
+}
+
+.fs-3 {
+    font-size: 2rem;
+}
+
+.fs-4 {
+    font-size: 2.5rem;
+}
+
+// Margins
+.mt-1 {
+    margin-top: 1rem;
+}
+
+.mt-2 {
+    margin-top: 2rem;
+}
+
+.mt-3 {
+    margin-top: 3rem;
+}
+
+
+// Flex Box
+.d-flex {
+    display: flex;
+    align-items: center;
+}
+
+.space-btw {
+    justify-content: space-between;
+}
+
+.center {
+    justify-content: center;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width: 850px) {
+
+    // Containers
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}

@@ -1,0 +1,22 @@
+@use '/src/styles/index.scss' as *;
+
+#atf {
+    h2 {
+        font-size: 4rem;
+        text-align: center;
+        font-family: $h1-font;
+        color: $secondary-color;
+    }
+
+    .episodes {
+        gap: 2rem;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    #atf {
+        h2 {
+            font-size: 2rem;
+        }
+    }
+}
