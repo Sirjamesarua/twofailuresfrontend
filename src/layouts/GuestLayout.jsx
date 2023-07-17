@@ -7,7 +7,9 @@ export default function GuestLayout() {
                 <nav className="d-flex space-btw">
                     <div>
                         <h1>
-                            two failures
+                            <Link to={"/"}>
+                                two failures
+                            </Link>
                         </h1>
                     </div>
                     <div className="nav-item">

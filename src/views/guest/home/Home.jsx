@@ -4,7 +4,7 @@ import './home.scss';
 export default function Home() {
     return (
         <div>
-            <section className="container">
+            <section className="container animated fadeInDown">
                 <div id="atf">
                     <h2>
                         Two Failures

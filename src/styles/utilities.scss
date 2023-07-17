@@ -4,6 +4,10 @@
     padding-right: 2rem;
 }
 
+.read-box {
+    max-width: 700px;
+    margin: 0 auto;
+}
 
 // Fonts
 .text-center {
@@ -56,6 +60,32 @@
 
 .flex-wrap {
     flex-wrap: wrap;
+}
+
+
+// Animation classes
+.animated {
+    -webkit-animation-duration: 0.8s;
+    animation-duration: 0.8s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+.fadeInDown {
+    -webkit-animation-name: fadeInDown;
+    animation-name: fadeInDown;
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 @media screen and (max-width: 850px) {

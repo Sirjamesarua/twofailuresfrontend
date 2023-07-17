@@ -2,7 +2,7 @@ import { Link } from "react-router-dom"
 
 export default function EpisodeCard() {
     return (
-        <Link>
+        <Link to={`read/episode`}>
             <div className="episode-card">
                 <i className="bi bi-journals"></i>
                 <h3>Episode 1</h3>

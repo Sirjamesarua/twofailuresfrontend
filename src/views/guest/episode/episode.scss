@@ -1,0 +1,9 @@
+@use '/src/styles/index.scss' as *;
+
+.episode-title {
+    background: #fff;
+    width: max-content;
+    padding: 1rem 2rem;
+    border-radius: 5px;
+    border: 3px solid $secondary-color;
+}
