@@ -1,16 +1,31 @@
 import { Link } from "react-router-dom"
+import { useStateContext } from "../context/ContextProvider"
 
 export default function EpisodeCard() {
+    const { token } = useStateContext();
+
+    // Determines if the user current user is logged in.
+    let link;
+    if (token) {
+        link = `read/episode`;
+    } else {
+        link = `/#login`;
+    }
+
     return (
-        <Link to={`read/episode`}>
+        <Link to={link}>
             <div className="episode-card">
-                <i className="bi bi-journals"></i>
-                <h3>Episode 1</h3>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur,
-                    adipisicing elit. Possimus, molestiae.
-                </p>
+                <div className="episode-img">
+                    {/* image */}
+                </div>
+                <div className="content">
+                    <h3>Episode 1</h3>
+                    <p>
+                        Lorem ipsum dolor sit amet consectetur,
+                        adipisicing elit. Possimus, molestiae.
+                    </p>
+                </div>
             </div>
         </Link>
     )
-}
+};

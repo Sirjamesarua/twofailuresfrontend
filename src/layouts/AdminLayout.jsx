@@ -1,9 +1,4 @@
-import { Link, Outlet, useLocation } from "react-router-dom";
-import LoginPop from "../components/LoginPop"
-
-export default function GuestLayout() {
-    const location = useLocation();
-    console.log(location);
+export default function AdminLayout() {
     return (
         <>
             <header>
@@ -17,7 +12,7 @@ export default function GuestLayout() {
                     </div>
                     <div className="nav-item">
                         <Link to={"#"}>
-                            Shop <i className="bi bi-cart fs-1"></i>
+                            Admin Panel
                         </Link>
                     </div>
                 </nav>
@@ -29,11 +24,9 @@ export default function GuestLayout() {
 
             <footer>
                 <div className="text-center mt-3">
-                    <h4>Follow Us on</h4>
-                    <p>Facebook - Telegram - Twitter</p>
+                    <h4>Log Out</h4>
                 </div>
             </footer>
-            {location.hash === "#login" && <LoginPop />}
         </>
     )
 }

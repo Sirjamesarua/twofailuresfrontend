@@ -2,6 +2,8 @@
 .container {
     padding-left: 2rem;
     padding-right: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
 .read-box {
@@ -43,6 +45,17 @@
     margin-top: 3rem;
 }
 
+.mb-1 {
+    margin-bottom: 1rem;
+}
+
+.mb-2 {
+    margin-bottom: 2rem;
+}
+
+.mb-3 {
+    margin-bottom: 3rem;
+}
 
 // Flex Box
 .d-flex {
@@ -65,8 +78,8 @@
 
 // Animation classes
 .animated {
-    -webkit-animation-duration: 0.8s;
-    animation-duration: 0.8s;
+    -webkit-animation-duration: 0.5s;
+    animation-duration: 0.5s;
     -webkit-animation-fill-mode: both;
     animation-fill-mode: both;
 }
@@ -74,6 +87,16 @@
 .fadeInDown {
     -webkit-animation-name: fadeInDown;
     animation-name: fadeInDown;
+}
+
+.fadeInBg {
+    -webkit-animation-name: fadeInBg;
+    animation-name: fadeInBg;
+}
+
+.loading-text {
+    opacity: 0.5;
+    animation: loadingText 1s ease infinite;
 }
 
 @keyframes fadeInDown {
@@ -85,6 +108,30 @@
     100% {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+@keyframes fadeInBg {
+    0% {
+        backdrop-filter: blur(0);
+    }
+
+    100% {
+        backdrop-filter: blur(5px);
+    }
+}
+
+@keyframes loadingText {
+    0% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 0.1;
+    }
+
+    100% {
+        opacity: 0.5;
     }
 }
 

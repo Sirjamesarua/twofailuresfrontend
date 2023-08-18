@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import GuestLayout from "./layouts/GuestLayout";
-import Home from "./views/guest/home/Home";
-import Episode from "./views/guest/episode/Episode";
+import Home from "./views/user/home/Home";
+import Episode from "./views/user/episode/Episode";
 
 const router = createBrowserRouter([
     {

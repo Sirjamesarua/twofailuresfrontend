@@ -1,5 +1,9 @@
+@use '/src/styles/index.scss' as *;
+
 header {
     padding: 1rem 0;
+    background: #F4F5F6;
+    box-shadow: $box-shadow2;
 
     nav {
         .nav-item {
@@ -9,6 +13,39 @@ header {
 
                 i {
                     font-size: 1em;
+                }
+            }
+        }
+    }
+}
+
+footer {
+    h4 {
+        padding: 0.2rem 0.4rem;
+        border-radius: 0.5rem;
+        color: #fff;
+        background-color: $secondary-color;
+        display: inline-block;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    header {
+        padding: 1rem 0;
+
+        nav {
+            h1 {
+                font-size: 1rem;
+            }
+
+            .nav-item {
+                a {
+                    font-size: 1rem;
+                    font-weight: 700;
+
+                    i {
+                        font-size: 1em;
+                    }
                 }
             }
         }
