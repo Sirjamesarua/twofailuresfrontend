@@ -3,7 +3,7 @@ import { useStateContext } from "../context/ContextProvider"
 import cartoon from "../assets/cartoon.webp";
 
 export default function EpisodeCard({ ep }) {
-    const { user } = useStateContext();
+    const { user, setRedirect } = useStateContext();
     // Determines if the user current user is logged in.
     let link;
     if (user) {
@@ -12,8 +12,16 @@ export default function EpisodeCard({ ep }) {
         link = `/#login`;
     }
 
+    const saveRedirect = () => {
+        if (!user) {
+            setRedirect(`/episode/${ep.id}`);
+        } else {
+            return
+        }
+    }
+
     return (
-        <Link to={link} className="animated fadeInDown">
+        <Link to={link} className="animated fadeInDown" onClick={saveRedirect}>
             <div className="episode-card">
                 <div className="episode-img"
                     style={{

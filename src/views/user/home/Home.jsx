@@ -37,7 +37,8 @@ export default function Home() {
                         {eps.length > 0 ?
                             eps.map(ep => (
                                 <EpisodeCard key={ep.id} ep={ep} />
-                            )) : "loading stories"
+                            )) :
+                            (<span className='loading-text'>episodes loading</span>)
                         }
                     </div>
                 </div>

@@ -9,13 +9,18 @@ const StateContext = createContext({
     admin: null,
     adminToken: null,
     setAdmin: () => { },
-    putAdminToken: () => { }
+    putAdminToken: () => { },
+
+    // redirect after login
+    redirect: "",
+    setRedirect: () => { }
 });
 
 export const ContextProvider = ({ children }) => {
     const [user, setUser] = useState(localStorage.getItem('tfuser'));
     const [admin, setAdmin] = useState("");
     const [adminToken, setAdminToken] = useState(localStorage.getItem('tfa_token'));
+    const [redirect, setRedirect] = useState("");
 
     const putUser = (user) => {
         if (user) {
@@ -37,8 +42,9 @@ export const ContextProvider = ({ children }) => {
 
     return (
         <StateContext.Provider value={{
-            user, putUser,
-            admin, adminToken, setAdmin, putAdminToken
+            user, putUser, //user
+            admin, adminToken, setAdmin, putAdminToken, //admin
+            redirect, setRedirect //redirect after login
         }}>
             {children}
         </StateContext.Provider>

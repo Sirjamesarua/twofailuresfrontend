@@ -5,7 +5,7 @@ import axiosClient from "../axios-client.js"
 
 export default function LoginPop() {
     const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm();
-    const { putUser } = useStateContext();
+    const { putUser, redirect } = useStateContext();
     const navigate = useNavigate();
 
     const onSubmit = async (email) => {
@@ -14,7 +14,7 @@ export default function LoginPop() {
             if (data.message === "user exist") {
                 putUser(true);
             }
-            navigate("/");
+            navigate(redirect);
         } catch (error) {
             console.log(error)
         }
