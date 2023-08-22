@@ -1,30 +1,45 @@
 import { createContext, useContext, useState } from "react";
 
 const StateContext = createContext({
+    // for user
     user: null,
-    token: null,
     setUser: () => { },
-    putToken: () => { }
+
+    // for admin
+    admin: null,
+    adminToken: null,
+    setAdmin: () => { },
+    putAdminToken: () => { }
 });
 
 export const ContextProvider = ({ children }) => {
-    const [user, setUser] = useState({});
-    const [token, setToken] = useState("uncomment_this_code_to_open_episodes");
-    // const [token, setToken] = useState(localStorage.getItem('USER_TOKEN'));
+    const [user, setUser] = useState("x");
+    const [admin, setAdmin] = useState("");
 
-    const putToken = (token) => {
-        setToken(token);
-        if (token) {
-            localStorage.setItem('USER_TOKEN', token);
+    const [adminToken, setAdminToken] = useState(localStorage.getItem('tta_token'));
+
+    const putUser = (user) => {
+        setUser(user);
+        if (user) {
+            localStorage.setItem('twofailures_pass', user);
         } else {
-            localStorage.removeItem('USER_TOKEN');
+            localStorage.removeItem('twofailures_pass');
         }
     }
 
+    const putAdminToken = (token) => {
+        setAdminToken(token);
+        if (token) {
+            localStorage.setItem('tta_token', token);
+        } else {
+            localStorage.removeItem('tta_token');
+        }
+    }
 
     return (
         <StateContext.Provider value={{
-            user, token, setUser, putToken
+            user, putUser,
+            admin, adminToken, setAdmin, putAdminToken
         }}>
             {children}
         </StateContext.Provider>

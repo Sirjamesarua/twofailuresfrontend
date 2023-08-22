@@ -1,9 +1,10 @@
 import { Link, Outlet, useLocation } from "react-router-dom";
 import LoginPop from "../components/LoginPop"
+import { useStateContext } from "../context/ContextProvider";
 
 export default function GuestLayout() {
     const location = useLocation();
-    console.log(location);
+    const { } = useStateContext();
     return (
         <>
             <header>

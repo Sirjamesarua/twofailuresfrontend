@@ -1,11 +1,21 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { useStateContext } from "../context/ContextProvider";
+import axiosClient from "../axios-client.js"
 
 export default function LoginPop() {
     const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm();
+    const { setUser, putUserToken } = useStateContext();
 
     const onSubmit = async (data) => {
         console.log(data);
+        // return
+        await axiosClient.post('/login', data)
+            .then(({ data }) => {
+                setUser(data.user);
+                putUserToken(data.token);
+            })
+            .catch((err) => console.log(err))
     }
 
     return (
@@ -16,19 +26,12 @@ export default function LoginPop() {
                         <i className="bi bi-x-lg"></i>
                     </button>
                 </Link>
-                <h3 className="mb-1">Login to Twofailures</h3>
+                <h2 className="mb-1">Login to Two Failures</h2>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="input-control">
                         <label htmlFor="email">Email</label><br />
                         <input type="text" id="email" placeholder="youremail@xxx.com"
                             {...register("email", { required: true })}
-                        />
-                    </div>
-
-                    <div className="input-control">
-                        <label htmlFor="password">Password</label><br />
-                        <input type="password" id="password" placeholder="Password"
-                            {...register("password", { required: true })}
                         />
                     </div>
 

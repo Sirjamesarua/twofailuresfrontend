@@ -2,11 +2,11 @@ import { Link } from "react-router-dom"
 import { useStateContext } from "../context/ContextProvider"
 
 export default function EpisodeCard() {
-    const { token } = useStateContext();
+    const { user } = useStateContext();
 
     // Determines if the user current user is logged in.
     let link;
-    if (token) {
+    if (user) {
         link = `read/episode`;
     } else {
         link = `/#login`;

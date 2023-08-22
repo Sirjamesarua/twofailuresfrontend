@@ -18,7 +18,8 @@ axiosClient.interceptors.response.use((response) => {
     try {
         const { response } = error;
         if (response.status === 401) {
-            localStorage.removeItem('ADMIN_TOKEN');
+            localStorage.clear('ADMIN_TOKEN');
+            localStorage.clear('USER_TOKEN');
             window.location.reload();
         }
     } catch (error) {

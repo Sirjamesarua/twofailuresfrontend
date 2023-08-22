@@ -8,7 +8,7 @@ header {
     nav {
         .nav-item {
             a {
-                font-size: 1.5rem;
+                font-size: 1rem;
                 font-weight: 700;
 
                 i {
@@ -29,6 +29,58 @@ footer {
     }
 }
 
+.active {
+    background: #261035 !important;
+    color: #fff;
+}
+
+.admin-layout {
+    section {
+        display: flex;
+
+        main {
+            width: 100%;
+        }
+
+        aside {
+            background: #F4F5F6;
+            height: 100dvh;
+            padding: 0.5rem;
+            width: 200px;
+            // text-align: center;
+
+            a {
+                width: auto;
+                border-radius: 4px;
+                display: block;
+                padding: 0.5rem 1rem;
+                margin: 0 0 0.1rem;
+                border: 1px solid #0000002f;
+                background: #fff;
+                transition: all .3s ease;
+
+                i {
+                    color: #F97180;
+                }
+
+                span {
+                    display: inline-block;
+                    margin-left: 0.5rem;
+                }
+
+                &:hover {
+                    background: #BD34FE40;
+                    border: 1px solid #261035;
+
+                    i {
+                        color: #261035;
+                    }
+                }
+            }
+        }
+    }
+}
+
 @media screen and (max-width: 800px) {
     header {
         padding: 1rem 0;
@@ -40,7 +92,7 @@ footer {
 
             .nav-item {
                 a {
-                    font-size: 1rem;
+                    font-size: 0.7rem;
                     font-weight: 700;
 
                     i {
@@ -50,4 +102,48 @@ footer {
             }
         }
     }
+
+    .admin-layout {
+        section {
+            display: flex;
+
+            aside {
+                background: #F4F5F6;
+                height: 100dvh;
+                padding: 0.5rem;
+                width: max-content;
+                // text-align: center;
+
+                a {
+                    width: auto;
+                    border-radius: 4px;
+                    display: block;
+                    padding: 0.5rem 1rem;
+                    margin: 0 0 0.1rem;
+                    border: 1px solid #0000002f;
+                    background: #fff;
+                    transition: all .3s ease;
+
+                    i {
+                        color: #F97180;
+                    }
+
+                    span {
+                        display: none;
+                        margin-left: 0.5rem;
+                    }
+
+                    &:hover {
+                        background: #BD34FE40;
+                        border: 1px solid #261035;
+
+                        i {
+                            color: #261035;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
 }

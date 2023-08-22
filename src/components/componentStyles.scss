@@ -12,7 +12,7 @@
     .episode-img {
         height: 200px;
         width: auto;
-        background: linear-gradient(45deg, #fff, #fff);
+        background: #fff;
     }
 
     .content {
@@ -38,7 +38,7 @@
 
 #login-pop {
     background: #ffe3e343;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(10px);
     position: fixed;
     top: 0;
     left: 0;
@@ -52,17 +52,10 @@
     .form-container {
         background: #fff;
         width: 350px;
-        margin: 10rem auto 0;
+        margin: 11rem auto 0;
         border: 2px solid #ffe3e3;
         border-radius: 0.5rem;
         padding: 1rem 2rem;
-
-        .close-btn {
-            background: none;
-            // border: none;
-            border-radius: 10px;
-            font-size: 1.3rem;
-        }
 
         .input-control {
             margin: 0 0 1rem;
@@ -89,7 +82,6 @@
                 border: none;
                 color: #fff;
                 font-size: 1.2rem;
-                font-weight: 600;
                 border-radius: 0.5rem;
                 background: $secondary-color;
                 transition: all .2s;
@@ -102,6 +94,19 @@
                 }
             }
         }
+    }
+
+}
+
+.details-card {
+    background: #F4F5F6;
+    border-radius: 5px;
+    box-shadow: $box-shadow2;
+    margin-bottom: 0.5rem;
+    padding: 0.3rem 0.6rem;
+
+    &:hover {
+        box-shadow: $box-shadow3
     }
 }
 
@@ -126,8 +131,7 @@
                     padding: 0.5rem 1rem;
                     width: 100%;
                     border: none;
-                    color: $primary-color;
-                    font-size: 1.5rem;
+                    font-size: 1rem;
                     background: $secondary-color;
                 }
             }
