@@ -1,4 +1,12 @@
+@use "/src/styles/index.scss" as *;
+
 #adminLoginForm {
+    margin: 5rem auto 0;
+    padding: 1rem 2rem;
+    width: 300px;
+    background: #f4f5f6;
+    box-shadow: $box-shadow3;
+
     .input-control {
         // margin: 0 0 1rem;
         margin-bottom: 1rem;
@@ -36,5 +44,11 @@
                 letter-spacing: 1px;
             }
         }
+    }
+}
+
+@media screen and (max-width: 800px) {
+    #adminLoginForm {
+        width: 80%;
     }
 }

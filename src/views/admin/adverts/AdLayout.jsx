@@ -1,4 +1,11 @@
 import { Link, Outlet } from "react-router-dom";
+import axiosClient from "../../../axios-client";
+
+export async function loader() {
+    const { data } = await axiosClient.get("/admin/adverts");
+    const ads = data;
+    return { ads };
+}
 
 export default function AdLayout() {
     return (

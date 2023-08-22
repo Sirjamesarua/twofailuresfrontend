@@ -1,28 +1,36 @@
 import { Link } from "react-router-dom"
 import { useStateContext } from "../context/ContextProvider"
+import cartoon from "../assets/cartoon.webp";
 
-export default function EpisodeCard() {
+export default function EpisodeCard({ ep }) {
     const { user } = useStateContext();
-
     // Determines if the user current user is logged in.
     let link;
     if (user) {
-        link = `read/episode`;
+        link = `/episode/${ep.id}`;
     } else {
         link = `/#login`;
     }
 
     return (
-        <Link to={link}>
+        <Link to={link} className="animated fadeInDown">
             <div className="episode-card">
-                <div className="episode-img">
-                    {/* image */}
+                <div className="episode-img"
+                    style={{
+                        backgroundImage: `url(${cartoon})`,
+                        backgroundSize: "cover", backgroundRepeat: "no-repeat",
+                        backgroundPosition: "center"
+                    }}
+                >
+                    {/* <img src="" alt="" srcset="" /> */}
                 </div>
                 <div className="content">
-                    <h3>Episode 1</h3>
+                    <h3>{ep.title}</h3>
                     <p>
-                        Lorem ipsum dolor sit amet consectetur,
-                        adipisicing elit. Possimus, molestiae.
+                        {ep.description.length > 40 ?
+                            `${ep.description.substring(0, 40)}...` :
+                            ep.description
+                        }
                     </p>
                 </div>
             </div>

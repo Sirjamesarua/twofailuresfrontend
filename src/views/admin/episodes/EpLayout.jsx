@@ -2,10 +2,9 @@ import { Link, Outlet } from "react-router-dom";
 import axiosClient from "../../../axios-client";
 
 export async function loader() {
-    // const { data } = await axiosClient.get("/");
-    // const episodes = data;
-    // return { episodes };
-    return null;
+    const { data } = await axiosClient.get("/admin/episodes");
+    const episodes = data;
+    return { episodes };
 }
 
 export default function EpLayout() {

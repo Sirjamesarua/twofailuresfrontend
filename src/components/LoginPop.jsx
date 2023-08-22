@@ -1,18 +1,20 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useStateContext } from "../context/ContextProvider";
 import axiosClient from "../axios-client.js"
 
 export default function LoginPop() {
     const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm();
-    const { setUser, putUserToken } = useStateContext();
+    const { putUser } = useStateContext();
+    const navigate = useNavigate();
 
-    const onSubmit = async (data) => {
+    const onSubmit = async (email) => {
         try {
-            const res = await axiosClient.post('/login', data);
-            console.log(res);
-            setUser(data.user);
-            putUserToken(data.token);
+            const { data } = await axiosClient.post('/login', email);
+            if (data.message === "user exist") {
+                putUser(true);
+            }
+            navigate("/");
         } catch (error) {
             console.log(error)
         }

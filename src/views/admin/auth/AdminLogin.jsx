@@ -2,17 +2,17 @@ import { useForm } from "react-hook-form"
 import axiosClient from "../../../axios-client";
 import { useStateContext } from "../../../context/ContextProvider";
 import { Navigate } from "react-router-dom";
+import "./adminLoginStyles.scss";
 
 export default function AdminLogin() {
   const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm();
-  const { adminToken, setAdmin, putAdminToken } = useStateContext();
+  const { adminToken, putAdminToken } = useStateContext();
 
-  const onSubmit = async (data) => {
+  const onSubmit = async (credentials) => {
+    // console.log(data);
     try {
-      const res = await axiosClient.post("/admin/login", data);
-      console.log(res);
-      setAdmin();
-      putAdminToken();
+      const { data } = await axiosClient.post("/admin/login", credentials);
+      putAdminToken(data.token);
     } catch (error) {
       console.log(error);
     }
@@ -23,7 +23,7 @@ export default function AdminLogin() {
   }
 
   return (
-    <div>
+    <div className="container">
       <form onSubmit={handleSubmit(onSubmit)} id="adminLoginForm">
         <div className="input-control">
           <label htmlFor="email">Email</label><br />
@@ -44,6 +44,7 @@ export default function AdminLogin() {
             {isSubmitting ? (<span className="loading-text">logging in . . .</span>) : "login"}
           </button>
         </div>
+
       </form>
     </div>
   )

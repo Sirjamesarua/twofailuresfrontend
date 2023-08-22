@@ -3,20 +3,15 @@ import DetailsCard from "../../../components/DetailsCard";
 import "./adminEpStyles.scss";
 
 export default function AllEpisodes() {
-    const episodes = useLoaderData();
+    const { episodes } = useLoaderData();
 
     return (
         <div className="all-episodes">
             <h4> All Episodes of TWO FAILURES</h4>
             <div className="episodes-map">
-                <DetailsCard />
-                <DetailsCard />
-                <DetailsCard />
-                <DetailsCard />
-                <DetailsCard />
-                <DetailsCard />
-                <DetailsCard />
-                <DetailsCard />
+                {episodes.map((ep) => (
+                    <DetailsCard key={ep.id} detail={ep} />
+                ))}
             </div>
         </div>
     )

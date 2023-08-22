@@ -3,7 +3,7 @@ import { createContext, useContext, useState } from "react";
 const StateContext = createContext({
     // for user
     user: null,
-    setUser: () => { },
+    putUser: () => { },
 
     // for admin
     admin: null,
@@ -13,17 +13,16 @@ const StateContext = createContext({
 });
 
 export const ContextProvider = ({ children }) => {
-    const [user, setUser] = useState("");
+    const [user, setUser] = useState(localStorage.getItem('tfuser'));
     const [admin, setAdmin] = useState("");
-
     const [adminToken, setAdminToken] = useState(localStorage.getItem('tfa_token'));
 
     const putUser = (user) => {
-        setUser(user);
         if (user) {
-            localStorage.setItem('twofailures_pass', user);
+            setUser(user);
+            localStorage.setItem('tfuser', true);
         } else {
-            localStorage.removeItem('twofailures_pass');
+            localStorage.removeItem('tfuser');
         }
     }
 

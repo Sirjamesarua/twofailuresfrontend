@@ -4,17 +4,18 @@ import GuestLayout from "./layouts/GuestLayout";
 import AdminLayout from "./layouts/AdminLayout";
 // User Imports
 import Home from "./views/user/home/Home";
-import Episode from "./views/user/episode/Episode";
+import Episode, { loader as EpisodeLoader } from "./views/user/episode/Episode";
 // Admin Imports
 import AdminDashboard from "./views/admin/AdminDashboard";
-import EpLayout, { loader as EpisodesLoader } from "./views/admin/episodes/EpLayout";
+import EpLayout, { loader as EpLayoutLoader } from "./views/admin/episodes/EpLayout";
 import AllEpisodes from "./views/admin/episodes/AllEpisodes";
 import CreateEpisode from "./views/admin/episodes/CreateEpisode";
-import EditEpisode from "./views/admin/episodes/EditEpisode";
-import AdLayout from "./views/admin/adverts/AdLayout";
+import EditEpisode, { loader as EditEpisodeLoader } from "./views/admin/episodes/EditEpisode";
+import AdLayout, { loader as AdLayoutLoader } from "./views/admin/adverts/AdLayout";
 import AllAds from "./views/admin/adverts/AllAds";
 import CreateAd from "./views/admin/adverts/CreateAd";
 import EditAd from "./views/admin/adverts/EditAd"
+import AdminLogin from "./views/admin/auth/AdminLogin";
 
 const router = createBrowserRouter([
     // User Routes
@@ -27,9 +28,14 @@ const router = createBrowserRouter([
                 element: <Home />,
             },
             {
-                path: 'read/episode/',
-                element: <Episode />
-            }
+                path: 'episode/:episodeId',
+                element: <Episode />,
+                loader: EpisodeLoader
+            },
+            {
+                path: "login",
+                element: <AdminLogin />
+            },
         ]
     },
 
@@ -46,24 +52,21 @@ const router = createBrowserRouter([
             {
                 path: "episodes",
                 element: <EpLayout />,
-                loader: EpisodesLoader,
+                loader: EpLayoutLoader,
                 children: [
                     {
                         index: true,
                         element: <AllEpisodes />,
-                        loader: EpisodesLoader,
+                        loader: EpLayoutLoader,
                     },
                     {
                         path: "create",
                         element: <CreateEpisode />
                     },
-                    // {
-                    //     path: "edit/:episodeId",
-                    //     element: <EditEpisode />
-                    // },
                     {
                         path: ":episodeId/show",
-                        element: <EditEpisode />
+                        element: <EditEpisode />,
+                        loader: EditEpisodeLoader
                     }
                 ]
             },
@@ -73,19 +76,16 @@ const router = createBrowserRouter([
                 children: [
                     {
                         index: true,
-                        element: <AllAds />
+                        element: <AllAds />,
+                        loader: AdLayoutLoader
                     },
                     {
                         path: "create",
                         element: <CreateAd />
                     },
-                    // {
-                    //     path: "edit/:adId",
-                    //     element: <EditAd />
-                    // },
                     {
                         path: ":adId/show",
-                        element: <EditAd />
+                        element: <EditAd />,
                     }
                 ]
             }

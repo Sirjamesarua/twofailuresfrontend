@@ -3,16 +3,19 @@ import { useForm } from "react-hook-form";
 import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css';
 import axiosClient from "../../../axios-client";
+import { useLoaderData } from "react-router-dom";
 
 export async function loader({ params }) {
-    // const { data } = await axiosClient.get(`#`);
-    // const episode = data;
-    return null;
+    const { data } = await axiosClient.get(`/admin/episodes/${params.episodeId}`);
+    const episode = data;
+    console.log(episode);
+    return episode;
 }
 
 export default function EditEpisode() {
     const { register, handleSubmit } = useForm();
     const [content, setContent] = useState();
+    const episode = useLoaderData();
 
     const onSubmit = async (data) => {
         console.log(data);
@@ -32,22 +35,23 @@ export default function EditEpisode() {
             <form onSubmit={handleSubmit(onSubmit)} id="createEpForm">
                 <div className="input-control">
                     <label htmlFor="title">Title</label><br />
-                    <input type="text" id="title"
+                    <input type="text" id="title" value={episode.title}
                         {...register("title", { required: true })}
                     />
                 </div>
 
                 <div className="input-control">
                     <label htmlFor="description">Description</label><br />
-                    <input type="text" id="description"
+                    <textarea id="description" value={episode.description} cols="30" rows="10"
                         {...register("description", { required: true })}
-                    />
+                        style={{ height: "100px" }}
+                    ></textarea>
                 </div>
 
                 <div className="input-control">
                     <label htmlFor="content">Content</label><br />
                 </div>
-                <ReactQuill theme="snow" value={content} onChange={setContent} modules={{ toolbar: toolbarOptions }}
+                <ReactQuill theme="snow" value={episode.content} onChange={setContent} modules={{ toolbar: toolbarOptions }}
                     style={{ width: "100%", background: "white", borderRadius: "0.5rem" }}
                 />
 

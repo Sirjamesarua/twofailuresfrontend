@@ -1,14 +1,18 @@
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Navigate, Outlet } from "react-router-dom";
 import { useStateContext } from "../context/ContextProvider";
 
 export default function AdminLayout() {
-    const { setAdmin, putAdminToken } = useStateContext();
+    const { adminToken, setAdmin, putAdminToken } = useStateContext();
 
     const logout = () => {
         localStorage.removeItem('tfa_token');
         putAdminToken("");
         setAdmin("");
         window.location.href = "/";
+    }
+
+    if (!adminToken) {
+        return <Navigate to="/login" />
     }
 
     return (
@@ -59,12 +63,6 @@ export default function AdminLayout() {
                     <Outlet />
                 </main>
             </section>
-
-            {/* <footer>
-                <div className="text-center mt-3">
-                    <h4>Log Out</h4>
-                </div>
-            </footer> */}
         </div>
     )
 }

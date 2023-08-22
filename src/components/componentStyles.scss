@@ -110,6 +110,16 @@
     }
 }
 
+.banner {
+    width: 500px;
+    height: 90px;
+    border-radius: 5px;
+    box-shadow: $box-shadow3;
+    text-align: center;
+    margin: 0 auto;
+    background-image: url('../assets/banner-img.jpeg');
+}
+
 @media screen and (max-width: 800px) {
     #login-pop {
 
@@ -138,4 +148,7 @@
         }
     }
 
+    .banner {
+        width: auto;
+    }
 }
