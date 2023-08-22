@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form"
 import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css';
 
-
 export default function CreateEpisode() {
     const { register, handleSubmit } = useForm();
     const [content, setContent] = useState("");
@@ -23,6 +22,7 @@ export default function CreateEpisode() {
 
     return (
         <div>
+            <h4 className="mb-1">Create Episode</h4>
             <form onSubmit={handleSubmit(onSubmit)} id="createEpForm">
                 <div className="input-control">
                     <label htmlFor="title">Title</label><br />

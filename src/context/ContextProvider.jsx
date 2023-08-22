@@ -13,10 +13,10 @@ const StateContext = createContext({
 });
 
 export const ContextProvider = ({ children }) => {
-    const [user, setUser] = useState("x");
+    const [user, setUser] = useState("");
     const [admin, setAdmin] = useState("");
 
-    const [adminToken, setAdminToken] = useState(localStorage.getItem('tta_token'));
+    const [adminToken, setAdminToken] = useState(localStorage.getItem('tfa_token'));
 
     const putUser = (user) => {
         setUser(user);
@@ -30,9 +30,9 @@ export const ContextProvider = ({ children }) => {
     const putAdminToken = (token) => {
         setAdminToken(token);
         if (token) {
-            localStorage.setItem('tta_token', token);
+            localStorage.setItem('tfa_token', token);
         } else {
-            localStorage.removeItem('tta_token');
+            localStorage.removeItem('tfa_token');
         }
     }
 

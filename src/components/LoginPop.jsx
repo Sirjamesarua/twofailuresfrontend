@@ -8,14 +8,14 @@ export default function LoginPop() {
     const { setUser, putUserToken } = useStateContext();
 
     const onSubmit = async (data) => {
-        console.log(data);
-        // return
-        await axiosClient.post('/login', data)
-            .then(({ data }) => {
-                setUser(data.user);
-                putUserToken(data.token);
-            })
-            .catch((err) => console.log(err))
+        try {
+            const res = await axiosClient.post('/login', data);
+            console.log(res);
+            setUser(data.user);
+            putUserToken(data.token);
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     return (

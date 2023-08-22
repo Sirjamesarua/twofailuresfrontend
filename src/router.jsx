@@ -7,7 +7,7 @@ import Home from "./views/user/home/Home";
 import Episode from "./views/user/episode/Episode";
 // Admin Imports
 import AdminDashboard from "./views/admin/AdminDashboard";
-import EpLayout from "./views/admin/episodes/EpLayout";
+import EpLayout, { loader as EpisodesLoader } from "./views/admin/episodes/EpLayout";
 import AllEpisodes from "./views/admin/episodes/AllEpisodes";
 import CreateEpisode from "./views/admin/episodes/CreateEpisode";
 import EditEpisode from "./views/admin/episodes/EditEpisode";
@@ -46,17 +46,23 @@ const router = createBrowserRouter([
             {
                 path: "episodes",
                 element: <EpLayout />,
+                loader: EpisodesLoader,
                 children: [
                     {
                         index: true,
-                        element: <AllEpisodes />
+                        element: <AllEpisodes />,
+                        loader: EpisodesLoader,
                     },
                     {
                         path: "create",
                         element: <CreateEpisode />
                     },
+                    // {
+                    //     path: "edit/:episodeId",
+                    //     element: <EditEpisode />
+                    // },
                     {
-                        path: "edit/:episodeId",
+                        path: ":episodeId/show",
                         element: <EditEpisode />
                     }
                 ]
@@ -73,8 +79,12 @@ const router = createBrowserRouter([
                         path: "create",
                         element: <CreateAd />
                     },
+                    // {
+                    //     path: "edit/:adId",
+                    //     element: <EditAd />
+                    // },
                     {
-                        path: "edit/:adId",
+                        path: ":adId/show",
                         element: <EditAd />
                     }
                 ]

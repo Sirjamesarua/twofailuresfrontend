@@ -5,7 +5,7 @@ export default function AdminLayout() {
     const { setAdmin, putAdminToken } = useStateContext();
 
     const logout = () => {
-        localStorage.removeItem('tta_token');
+        localStorage.removeItem('tfa_token');
         putAdminToken("");
         setAdmin("");
         window.location.href = "/";

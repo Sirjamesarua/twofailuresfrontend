@@ -7,6 +7,18 @@ export default function Episode() {
                 <div className="episode-title">
                     SuperMan's greatest enemy
                 </div>
+
+                <div className='share-episode'>
+                    <h3>Share this episode</h3>
+                    <div>
+                        <i className="bi bi-whatsapp"></i>
+                        {/* &nbsp; */}
+                        <i className="bi bi-facebook"></i>
+                        {/* &nbsp; */}
+                        <i className="bi bi-telegram"></i>
+                    </div>
+                </div>
+
                 <div className="episode-content mt-2">
                     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptatem adipisci, rerum impedit alias architecto nemo quo sit? Repudiandae temporibus nobis repellendus?
                     Dolorem, eos laudantium! Nam expedita aspernatur earum dolores eaque et ea quibusdam ad voluptates labore, nemo quaerat tempore doloremque ipsa, dolor accusantium placeat voluptatem.
