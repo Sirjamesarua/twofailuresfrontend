@@ -26,8 +26,9 @@ export default function EditEpisode() {
         epi.content = content;
 
         console.log(epi);
-        const res = await axiosClient.put(`/admin/episodes/${episode.id}`, epi);
-        console.log(res);
+        const res = await axiosClient.put(`/admin/episodes/${episode.id}`, epi)
+            .then((data) => console.log(data))
+            .catch((error) => console.log(error));
     }
 
     const toolbarOptions = [
