@@ -33,7 +33,7 @@ const router = createBrowserRouter([
                 loader: EpisodeLoader
             },
             {
-                path: "login",
+                path: "admin/login",
                 element: <AdminLogin />
             },
         ]

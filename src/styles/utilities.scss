@@ -96,6 +96,13 @@
     animation-fill-mode: both;
 }
 
+.animated-2 {
+    -webkit-animation-duration: 0.8s;
+    animation-duration: 0.8s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
 .fadeInDown {
     -webkit-animation-name: fadeInDown;
     animation-name: fadeInDown;
@@ -109,6 +116,11 @@
 .loading-text {
     opacity: 0.5;
     animation: loadingText 1s ease infinite;
+}
+
+.loading {
+    transition: all .5s;
+    opacity: 0.2;
 }
 
 @keyframes fadeInDown {

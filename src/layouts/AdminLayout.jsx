@@ -1,18 +1,29 @@
-import { Link, NavLink, Navigate, Outlet } from "react-router-dom";
+import { Link, NavLink, Navigate, Outlet, useNavigation } from "react-router-dom";
 import { useStateContext } from "../context/ContextProvider";
+import axiosClient from "../axios-client";
 
 export default function AdminLayout() {
+    const navigation = useNavigation();
     const { adminToken, setAdmin, putAdminToken } = useStateContext();
 
-    const logout = () => {
-        localStorage.removeItem('tfa_token');
-        putAdminToken("");
-        setAdmin("");
-        window.location.href = "/";
+    const logout = (e) => {
+        e.preventDefault();
+        try {
+            axiosClient.post('admin/logout')
+                .then(() => {
+                    localStorage.removeItem('tfa_token');
+                    putAdminToken("");
+                    setAdmin("");
+                    window.location.href = "/";
+                });
+        } catch (error) {
+            console.log(error);
+            alert("Logout unsuccesful!");
+        }
     }
 
     if (!adminToken) {
-        return <Navigate to="/login" />
+        return <Navigate to="/admin/login" />
     }
 
     return (
@@ -54,12 +65,12 @@ export default function AdminLayout() {
                     <NavLink to={"adverts"}>
                         <i className="bi bi-cash"></i> <span>Adverts</span>
                     </NavLink>
-                    <NavLink to={"logout"} onClick={logout}>
+                    <Link to={"#logout"} onClick={logout}>
                         <i className="bi bi-x-octagon"></i> <span>Log Out</span>
-                    </NavLink>
+                    </Link>
                 </aside>
 
-                <main className="mt-2">
+                <main className={navigation.state === "loading" ? "loading mt-2" : "mt-2"}>
                     <Outlet />
                 </main>
             </section>

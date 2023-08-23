@@ -17,6 +17,7 @@ axiosClient.interceptors.response.use((response) => {
         const { response } = error;
         if (response.status === 401) {
             localStorage.clear('tfa_token');
+            window.location.href = "/admin/login";
         }
     } catch (error) {
         console.log(error);

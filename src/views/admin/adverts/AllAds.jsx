@@ -3,7 +3,6 @@ import DetailsCard from "../../../components/DetailsCard";
 
 export default function AllAds() {
     const { ads } = useLoaderData();
-    console.log(ads);
 
     return (
         <div className="all-ads">
@@ -11,7 +10,7 @@ export default function AllAds() {
             <div className="ads-map">
                 <ol>
                     {ads.map(ad => (
-                        <li>
+                        <li key={ad.id}>
                             Visit {ad.link} <br />
                             {ad.name}
                             <br /><br />

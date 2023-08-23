@@ -1,10 +1,11 @@
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation, useNavigation } from "react-router-dom";
 import LoginPop from "../components/LoginPop"
 import { useStateContext } from "../context/ContextProvider";
 
 export default function GuestLayout() {
     const location = useLocation();
-    const { } = useStateContext();
+    const navigation = useNavigation();
+
     return (
         <>
             <header>
@@ -30,7 +31,7 @@ export default function GuestLayout() {
                 </nav>
             </header>
 
-            <main className="mt-2">
+            <main className={navigation.state === "loading" ? "loading mt-2" : "mt-2"}>
                 <Outlet />
             </main>
 

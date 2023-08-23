@@ -2,6 +2,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form"
 import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css';
+import React, { useRef, useEffect } from 'react';
+import axios from "axios";
 
 export default function CreateEpisode() {
     const { register, handleSubmit } = useForm();
@@ -10,6 +12,7 @@ export default function CreateEpisode() {
     const onSubmit = async (data) => {
         data["content"] = content;
         console.log(data);
+        // axiosClient
     }
 
     const toolbarOptions = [
@@ -41,7 +44,9 @@ export default function CreateEpisode() {
                 <div className="input-control">
                     <label htmlFor="content">Content</label><br />
                 </div>
-                <ReactQuill theme="snow" value={content} onChange={setContent} modules={{ toolbar: toolbarOptions }}
+                {/* MY CODE */}
+                <ReactQuill theme="snow" value={content}
+                    onChange={setContent} modules={{ toolbar: toolbarOptions }}
                     style={{ width: "100%", background: "white", borderRadius: "0.5rem" }}
                 />
 

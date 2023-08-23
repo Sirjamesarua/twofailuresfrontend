@@ -8,17 +8,26 @@ import { useLoaderData } from "react-router-dom";
 export async function loader({ params }) {
     const { data } = await axiosClient.get(`/admin/episodes/${params.episodeId}`);
     const episode = data;
-    console.log(episode);
     return episode;
 }
 
 export default function EditEpisode() {
-    const { register, handleSubmit } = useForm();
-    const [content, setContent] = useState();
     const episode = useLoaderData();
+    const { handleSubmit } = useForm();
 
-    const onSubmit = async (data) => {
-        console.log(data);
+    const [epi, setEpi] = useState({
+        title: episode.title,
+        description: episode.description,
+    });
+
+    const [content, setContent] = useState(episode.content);
+
+    const onSubmit = async () => {
+        epi.content = content;
+
+        console.log(epi);
+        const res = await axiosClient.put(`/admin/episodes/${episode.id}`, epi);
+        console.log(res);
     }
 
     const toolbarOptions = [
@@ -32,26 +41,29 @@ export default function EditEpisode() {
     return (
         <div>
             <h4 className="mb-1">Edit Episode</h4>
+
             <form onSubmit={handleSubmit(onSubmit)} id="createEpForm">
                 <div className="input-control">
                     <label htmlFor="title">Title</label><br />
-                    <input type="text" id="title" value={episode.title}
-                        {...register("title", { required: true })}
+                    <input type="text" id="title" value={epi.title}
+                        onChange={e => setEpi({ ...epi, title: e.target.value })}
                     />
                 </div>
 
                 <div className="input-control">
                     <label htmlFor="description">Description</label><br />
-                    <textarea id="description" value={episode.description} cols="30" rows="10"
-                        {...register("description", { required: true })}
-                        style={{ height: "100px" }}
+                    <textarea id="description" value={epi.description}
+                        onChange={e => setEpi({ ...epi, description: e.target.value })}
+                        cols="30" rows="10" style={{ height: "100px" }}
                     ></textarea>
                 </div>
 
                 <div className="input-control">
                     <label htmlFor="content">Content</label><br />
                 </div>
-                <ReactQuill theme="snow" value={episode.content} onChange={setContent} modules={{ toolbar: toolbarOptions }}
+
+                <ReactQuill theme="snow" value={content} onChange={setContent}
+                    modules={{ toolbar: toolbarOptions }}
                     style={{ width: "100%", background: "white", borderRadius: "0.5rem" }}
                 />
 
