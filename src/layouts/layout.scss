@@ -50,6 +50,8 @@ footer {
             height: fit-content;
             padding: 0.5rem;
             width: 200px;
+            position: sticky;
+            top: 0px;
             border-radius: 0 5px 5px 0;
 
             &:hover {

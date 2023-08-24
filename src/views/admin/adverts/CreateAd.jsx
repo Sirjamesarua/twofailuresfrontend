@@ -1,19 +1,20 @@
 import { useForm } from "react-hook-form";
-import axiosClient from "../../../axios-client";
+import axiosClient2 from "../../../axios-client-2";
+import { useNavigate } from "react-router-dom";
 
 export default function CreateEpisode() {
     const { register, handleSubmit, formState: { isSubmitting } } = useForm();
+    const navigate = useNavigate();
 
     const onSubmit = async (data) => {
         data.image = data.image[0];
-        console.log(data);
-        // return
-        await axiosClient.post('/admin/adverts/create', data)
-            .then((data) => {
-                console.log(data);
+        await axiosClient2.post('/admin/adverts/create', data)
+            .then(() => {
+                navigate("/admin/adverts");
             })
             .catch((err) => {
                 console.log(err);
+                alert("An Error occured")
             })
     }
 

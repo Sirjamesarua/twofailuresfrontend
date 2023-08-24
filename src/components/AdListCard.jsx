@@ -1,20 +1,38 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import axiosClient from '../axios-client';
 
 export default function AdListCard({ ad }) {
+    const navigate = useNavigate();
+    const onDelete = async () => {
+        if (window.confirm(`Are you sure you want to delete ${ad.name}?`)) {
+            await axiosClient.delete(`/admin/adverts/${ad.id}`)
+                .then(() => {
+                    navigate("/admin/adverts");
+                    alert("Deleted!")
+                })
+                .catch(() => alert("Something went wrong!"));
+        }
+        return;
+    };
     return (
-        <Link to={`${ad.id}/show`}>
-            <div className="ad-list-card">
-                <h4>{ad.name}</h4>
-                <div>
-                    <i>
-                        {ad.link.length > 45 ?
-                            `${ad.link.substring(0, 40)}...` :
-                            ad.link
-                        }
-                    </i>
+        <div className="ad-list-card">
+            <Link to={`${ad.id}/show`}>
+                <div className="content">
+                    <h4>{ad.name}</h4>
+                    <div>
+                        <i>
+                            {ad.link.length > 45 ?
+                                `${ad.link.substring(0, 40)}...` :
+                                ad.link
+                            }
+                        </i>
+                    </div>
                 </div>
-            </div>
-        </Link>
+            </Link>
+            <button className="delete" onClick={onDelete}>
+                delete
+            </button>
+        </div>
     )
 }

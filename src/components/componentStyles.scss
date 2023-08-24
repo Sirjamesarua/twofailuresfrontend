@@ -103,7 +103,24 @@
     border-radius: 5px;
     box-shadow: $box-shadow2;
     margin-bottom: 0.5rem;
-    padding: 0.3rem 0.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .content {
+        padding: 0.3rem 0.6rem;
+    }
+
+    .delete {
+        width: max-content;
+        padding: 0.3rem 0.6rem;
+        border: none;
+        cursor: grab;
+        background: #bc3131;
+        color: #fff;
+        font-size: 12px;
+        font-weight: 600;
+    }
 
     &:hover {
         box-shadow: $box-shadow3
@@ -115,7 +132,24 @@
     border-radius: 5px;
     box-shadow: $box-shadow2;
     margin-bottom: 0.5rem;
-    padding: 0.3rem 0.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .content {
+        padding: 0.3rem 0.6rem;
+    }
+
+    .delete {
+        width: max-content;
+        padding: 0.3rem 0.6rem;
+        border: none;
+        cursor: grab;
+        background: #bc3131;
+        color: #fff;
+        font-size: 12px;
+        font-weight: 600;
+    }
 
     &:hover {
         box-shadow: $box-shadow3

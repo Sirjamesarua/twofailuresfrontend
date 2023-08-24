@@ -1,58 +1,78 @@
-import { useState } from "react";
 import { useForm } from "react-hook-form";
-import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css';
 import axiosClient from "../../../axios-client";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import { useState } from "react";
+import axiosClient2 from "../../../axios-client-2";
 
 export async function loader({ params }) {
-    // const { data } = await axiosClient.get(`#`);
-    // const episode = data;
-    return null;
+    const { data } = await axiosClient.get(`/admin/adverts/${params.adId}`);
+    const ad = data;
+    return ad;
 }
 
 export default function EditAd() {
-    const { register, handleSubmit } = useForm();
-    const [content, setContent] = useState();
+    const ad = useLoaderData();
+    const { handleSubmit, formState: { isSubmitting } } = useForm();
+    const [advert, setAdvert] = useState({
+        name: ad.name,
+        link: ad.link,
+        image: null
+    });
 
-    const onSubmit = async (data) => {
-        console.log(data);
+    const onSubmit = async () => {
+        console.log(advert);
+        await axiosClient2.post(`/admin/adverts/${ad.id}`, advert)
+            .then(() => {
+                alert("advert updated!");
+            }).catch((err) => {
+                console.log(err);
+                // alert("An error occured!");
+            })
     }
 
-    const toolbarOptions = [
-        [{ 'header': [3, false] }],
-        ['bold', 'italic', 'underline', 'strike', 'blockquote'], // text formatting options
-        [{ 'list': 'ordered' }, { 'list': 'bullet' }, { 'indent': '-1' }, { 'indent': '+1' }],
-        ['link', 'image'],
-        ['clean']
-    ];
+    const handleImageChange = (ev) => {
+        const file = ev.target.files;
+        setAdvert({ ...advert, image: file })
+    }
 
     return (
         <div>
             <h4 className="mb-1">Edit Advert</h4>
             <form onSubmit={handleSubmit(onSubmit)} id="createEpForm">
                 <div className="input-control">
-                    <label htmlFor="title">Title</label><br />
-                    <input type="text" id="title"
-                        {...register("title", { required: true })}
+                    <label htmlFor="name">Advert Name</label><br />
+                    <input type="text" id="name" value={advert.name}
+                        onChange={e => setAdvert({
+                            ...advert, name: e.target.value
+                        })}
                     />
                 </div>
 
                 <div className="input-control">
-                    <label htmlFor="description">Description</label><br />
-                    <input type="text" id="description"
-                        {...register("description", { required: true })}
+                    <label htmlFor="link">Goto Link</label><br />
+                    <input type="text" id="link" value={advert.link}
+                        onChange={e => setAdvert({
+                            ...advert, link: e.target.value
+                        })}
                     />
                 </div>
 
                 <div className="input-control">
-                    <label htmlFor="content">Content</label><br />
+                    <label htmlFor="image">Change Image</label><br />
+                    <input type="file" id="image"
+                        onChange={handleImageChange}
+                    />
                 </div>
-                <ReactQuill theme="snow" value={content} onChange={setContent} modules={{ toolbar: toolbarOptions }}
-                    style={{ width: "100%", background: "white", borderRadius: "0.5rem" }}
-                />
+
+                <div style={{ width: "auto", border: "2px solid grey" }}>
+                    <img src={`${import.meta.env.VITE_IMAGE_URL}/adverts/${ad.image}`} alt="advert image" />
+                </div>
 
                 <div className="input-control mt-1">
-                    <button type="submit">UPDATE</button>
+                    <button>
+                        {isSubmitting ? (<span className="loading-text">updating</span>) : "update"}
+                    </button>
                 </div>
             </form>
         </div>
