@@ -18,7 +18,6 @@ export async function loader({ params }) {
 export default function Episode() {
     const { user } = useStateContext();
     const { episode } = useLoaderData();
-    console.log(episode);
 
     if (!user) {
         return <Navigate to={"/#login"} />
@@ -44,7 +43,8 @@ export default function Episode() {
                 </div>
 
                 <div className="episode-content mt-2">
-                    {episode.content}
+                    <div dangerouslySetInnerHTML={{ __html: episode.content }} />
+                    {/* {episode.content} */}
                 </div>
             </section>
         </div>

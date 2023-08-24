@@ -14,7 +14,7 @@ import EditEpisode, { loader as EditEpisodeLoader } from "./views/admin/episodes
 import AdLayout, { loader as AdLayoutLoader } from "./views/admin/adverts/AdLayout";
 import AllAds from "./views/admin/adverts/AllAds";
 import CreateAd from "./views/admin/adverts/CreateAd";
-import EditAd from "./views/admin/adverts/EditAd"
+import EditAd, { loader as EditAdLoader } from "./views/admin/adverts/EditAd"
 import AdminLogin from "./views/admin/auth/AdminLogin";
 
 const router = createBrowserRouter([
@@ -22,6 +22,7 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: <GuestLayout />,
+        errorElement: <div className="container">Error Occured <br /> <button className="err-btn" onClick={() => window.location.reload()}>Reload</button></div>,
         children: [
             {
                 path: '/',
@@ -43,6 +44,7 @@ const router = createBrowserRouter([
     {
         path: '/admin',
         element: <AdminLayout />,
+        errorElement: <div className="container">Error Occured <br /> <button className="err-btn" onClick={() => window.location.reload()}>Reload</button></div>,
         children: [
             {
                 index: true,
@@ -53,6 +55,7 @@ const router = createBrowserRouter([
                 path: "episodes",
                 element: <EpLayout />,
                 loader: EpLayoutLoader,
+                errorElement: <div className="container">Error Occured <br /> <button className="err-btn" onClick={() => window.location.reload()}>Reload</button></div>,
                 children: [
                     {
                         index: true,
@@ -73,6 +76,7 @@ const router = createBrowserRouter([
             {
                 path: "adverts",
                 element: <AdLayout />,
+                errorElement: <div className="container">Error Occured <br /> <button className="err-btn" onClick={() => window.location.reload()}>Reload</button></div>,
                 children: [
                     {
                         index: true,
@@ -86,6 +90,7 @@ const router = createBrowserRouter([
                     {
                         path: ":adId/show",
                         element: <EditAd />,
+                        loader: EditAdLoader
                     }
                 ]
             }
