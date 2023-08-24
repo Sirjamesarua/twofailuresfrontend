@@ -4,15 +4,89 @@ import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css';
 import React, { useRef, useEffect } from 'react';
 import axios from "axios";
+import axiosClient from "../../../axios-client";
 
 export default function CreateEpisode() {
     const { register, handleSubmit } = useForm();
     const [content, setContent] = useState("");
 
+    const quillRef = useRef(); // Create a ref object
+
+    useEffect(() => {
+        if (quillRef.current != null) {
+            const quillInstance = quillRef.current.getEditor(); // Obtain Quill instance
+            const toolbar = quillInstance.getModule('toolbar');
+            toolbar.addHandler('image', customImageHandler);
+          }
+        
+        console.log(content);
+        const token = localStorage.getItem('tfa_token');
+    }, [content]);
+
+    const customImageHandler = () => {
+        const url = `${import.meta.env.VITE_API_BASE_URL}/api/admin/episodes/images/upload`;
+        const token = localStorage.getItem('tfa_token');
+
+        const input = document.createElement('input');
+        input.setAttribute('type', 'file');
+        input.setAttribute('accept', 'image/*');
+        input.setAttribute('multiple', '');
+        input.click();
+
+        input.onchange = async () => {
+            const file = input.files[0];
+            const reader = new FileReader();
+            const formData = new FormData();
+            formData.append('image', file);
+            formData.append('episode_id', 101010);
+            console.log(file);
+
+            
+            // reader.onload = () => { //displaying local
+            //     const range = quillRef.current.getEditor().getSelection(true);
+            //     quillRef.current.getEditor().insertEmbed(range.index, 'image', reader.result);
+            // };
+
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'multipart/form-data',
+                },
+            };
+
+            axios.post(url, formData, config)
+            .then((response) => {
+                if (response.status === 200) {
+                const url  = response.data.url;
+                const url2 = `${import.meta.env.VITE_API_BASE_URL}/storage`+url
+                console.log(url2);
+                const range = quillRef.current.getEditor().getSelection(true);
+                quillRef.current.getEditor().insertEmbed(range.index, 'image', url2);
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+
+
+            reader.readAsDataURL(file);
+        };
+
+    };
+
+
     const onSubmit = async (data) => {
         data["content"] = content;
         console.log(data);
-        // axiosClient
+        
+        const response = await axiosClient.post(`${import.meta.env.VITE_API_BASE_URL}/api/admin/episodes/create`, data);
+        if (response.status === 200) {
+            console.log(response);
+            navigate('/admin/episodes');
+        } else {
+            console.log('error creating episode');
+            alert("Something went wrong!");
+        }
     }
 
     const toolbarOptions = [
@@ -45,8 +119,7 @@ export default function CreateEpisode() {
                     <label htmlFor="content">Content</label><br />
                 </div>
                 {/* MY CODE */}
-                <ReactQuill theme="snow" value={content}
-                    onChange={setContent} modules={{ toolbar: toolbarOptions }}
+                <ReactQuill theme="snow" value={content} ref={quillRef} onChange={setContent} modules={{ toolbar: toolbarOptions }}
                     style={{ width: "100%", background: "white", borderRadius: "0.5rem" }}
                 />
 
