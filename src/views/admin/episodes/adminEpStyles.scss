@@ -1,0 +1,56 @@
+@use "/src/styles/index.scss" as *;
+
+#createEpForm {
+    .input-control {
+        margin-bottom: 1rem;
+
+        input {
+            box-sizing: border-box;
+            display: inline-block;
+            height: 50px;
+            width: 100%;
+            border: 2px solid #f3e1ff;
+            border-radius: 0.5rem;
+            font-size: 0.8rem;
+            transition: all .2s;
+
+            &:hover {
+                outline: 2px solid $secondary-color;
+            }
+        }
+
+        textarea {
+            box-sizing: border-box;
+            display: inline-block;
+            width: 100%;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+            border: 2px solid #f3e1ff;
+            transition: all .2s;
+
+            &:hover {
+                outline: 2px solid $secondary-color;
+            }
+        }
+
+        button {
+            box-sizing: border-box;
+            padding: 0.6rem 1.6rem;
+            width: 100%;
+            border: none;
+            color: #fff;
+            font-size: 1.1rem;
+            border-radius: 0.5rem;
+            background: $secondary-color;
+            transition: all .2s;
+            // text-transform: lowercase;
+            font-variant: small-caps;
+
+            &:hover {
+                color: $secondary-color;
+                background: #BD34FE40;
+                letter-spacing: 1px;
+            }
+        }
+    }
+}

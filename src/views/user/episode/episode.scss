@@ -1,0 +1,42 @@
+@use '/src/styles/index.scss' as *;
+
+.episode-title {
+    background: #fff;
+    color: $primary-color;
+    font-size: 2.3rem;
+    font-weight: 600;
+    line-height: 40px;
+}
+
+.share-episode {
+    h3 {
+        color: #7b7b7b;
+    }
+
+    i {
+        display: inline-block;
+        margin-right: .5rem;
+        font-size: 1.8rem;
+    }
+
+    .bi-whatsapp {
+        color: #25D366;
+    }
+
+    .bi-facebook {
+        color: #1877F2;
+    }
+
+    .bi-telegram {
+        color: #0088CC;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .episode-title {
+        background: #fff;
+        color: $primary-color;
+        font-size: 2rem;
+        font-weight: 600;
+    }
+}

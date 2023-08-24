@@ -1,0 +1,167 @@
+@use '/src/styles/index.scss' as *;
+
+.episode-card {
+    font-weight: 500;
+    background: #f3e1ff;
+    outline: 2px solid $secondary-color;
+    border-radius: 5px;
+    width: 350px;
+    box-shadow: 10px 10px 0 3px $secondary-color;
+    transition: all .3s;
+
+    .episode-img {
+        height: 200px;
+        width: auto;
+        background: #fff;
+    }
+
+    .content {
+        padding: 0.5rem 1rem;
+    }
+
+    &:hover {
+        position: relative;
+        top: 3px;
+        left: 3px;
+        box-shadow: 1px 1px 0 1px $secondary-color;
+    }
+
+    i {
+        font-size: 2rem;
+        text-shadow: 1px 1px 1px $primary-color;
+    }
+
+    p {
+        text-align: left;
+    }
+}
+
+#login-pop {
+    background: #ffe3e343;
+    backdrop-filter: blur(10px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100dvh;
+    width: 100vw;
+
+    form {
+        // border: 1px solid black;
+    }
+
+    .form-container {
+        background: #fff;
+        width: 350px;
+        margin: 11rem auto 0;
+        border: 2px solid #ffe3e3;
+        border-radius: 0.5rem;
+        padding: 1rem 2rem;
+
+        .input-control {
+            margin: 0 0 1rem;
+
+            input {
+                box-sizing: border-box;
+                display: inline-block;
+                height: 50px;
+                width: 100%;
+                border: 2px solid #f3e1ff;
+                border-radius: 0.5rem;
+                font-size: 1.3rem;
+                transition: all .2s;
+
+                &:hover {
+                    outline: 2px solid $secondary-color;
+                }
+            }
+
+            button {
+                box-sizing: border-box;
+                padding: 0.6rem 1.6rem;
+                width: 100%;
+                border: none;
+                color: #fff;
+                font-size: 1.2rem;
+                border-radius: 0.5rem;
+                background: $secondary-color;
+                transition: all .2s;
+                text-transform: uppercase;
+
+                &:hover {
+                    color: $secondary-color;
+                    background: #BD34FE40;
+                    letter-spacing: 1px;
+                }
+            }
+        }
+    }
+
+}
+
+.details-card {
+    background: #F4F5F6;
+    border-radius: 5px;
+    box-shadow: $box-shadow2;
+    margin-bottom: 0.5rem;
+    padding: 0.3rem 0.6rem;
+
+    &:hover {
+        box-shadow: $box-shadow3
+    }
+}
+
+.ad-list-card {
+    background: #F4F5F6;
+    border-radius: 5px;
+    box-shadow: $box-shadow2;
+    margin-bottom: 0.5rem;
+    padding: 0.3rem 0.6rem;
+
+    &:hover {
+        box-shadow: $box-shadow3
+    }
+}
+
+.banner {
+    width: 500px;
+    height: 90px;
+    border-radius: 5px;
+    box-shadow: $box-shadow3;
+    text-align: center;
+    margin: 0 auto;
+    background-image: url('../assets/banner-img.jpeg');
+    background-position: 0 30%;
+}
+
+@media screen and (max-width: 800px) {
+    #login-pop {
+
+        .form-container {
+            background: #fff;
+            width: 280px;
+
+            .input-control {
+                input {
+                    box-sizing: border-box;
+                    display: inline-block;
+                    height: 40px;
+                    width: 100%;
+                    font-size: 1.3rem;
+                }
+
+                button {
+                    box-sizing: border-box;
+                    padding: 0.5rem 1rem;
+                    width: 100%;
+                    border: none;
+                    font-size: 1rem;
+                    background: $secondary-color;
+                }
+            }
+        }
+    }
+
+    .banner {
+        width: auto;
+    }
+}

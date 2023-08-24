@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Dirt&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito&family=Roboto+Mono&display=swap');
+
+// Text Variables
+$h1-font: 'Rubik Dirt', cursive;
+$default-font: 'Nunito', sans-serif;
+
+// font variables
+$primary-color: #F97180;
+$secondary-color: #261035;
+
+// Shadow variables
+$box-shadow: 0 25px 50px -5px #BD34FE40;
+$text-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+$box-shadow2: 0 0px 1px hsla(0, 0%, 0%, 0.2), 0 1px 2px hsla(0, 0%, 0%, 0.2);
+$box-shadow3: 0 0px 1px hsla(0, 0%, 0%, 0.6), 0 1px 2px hsla(0, 0%, 0%, 0.2);
+
+body {
+    margin: 0;
+    background: #fff;
+    font-family: $default-font;
+}
+
+h1 {
+    font-family: $h1-font;
+    color: $secondary-color;
+}
+
+a {
+    text-decoration: none;
+    color: $secondary-color;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin: 0;
+}
+
+.section-header {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.bi-whatsapp {
+    color: #25D366;
+}
+
+.bi-facebook {
+    color: #1877F2;
+}
+
+.bi-telegram {
+    color: #0088CC;
+}
+
+.bi-twitter {
+    color: #1DA1F2;
+}
+
+hr {
+    background: #e3e3e3;
+    border-color: #e4e4e4;
+    // border: none;
+}
