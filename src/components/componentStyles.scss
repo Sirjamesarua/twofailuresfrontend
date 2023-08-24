@@ -110,6 +110,18 @@
     }
 }
 
+.ad-list-card {
+    background: #F4F5F6;
+    border-radius: 5px;
+    box-shadow: $box-shadow2;
+    margin-bottom: 0.5rem;
+    padding: 0.3rem 0.6rem;
+
+    &:hover {
+        box-shadow: $box-shadow3
+    }
+}
+
 .banner {
     width: 500px;
     height: 90px;

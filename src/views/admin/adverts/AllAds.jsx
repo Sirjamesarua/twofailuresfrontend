@@ -1,5 +1,5 @@
 import { useLoaderData } from "react-router-dom";
-import DetailsCard from "../../../components/DetailsCard";
+import AdListCard from "../../../components/AdListCard";
 
 export default function AllAds() {
     const { ads } = useLoaderData();
@@ -8,15 +8,9 @@ export default function AllAds() {
         <div className="all-ads">
             <h4 className="mb-1">All Adverts</h4>
             <div className="ads-map">
-                <ol>
-                    {ads.map(ad => (
-                        <li key={ad.id}>
-                            Visit {ad.link} <br />
-                            {ad.name}
-                            <br /><br />
-                        </li>
-                    ))}
-                </ol>
+                {ads.map(ad => (
+                    <AdListCard key={ad.id} ad={ad} />
+                ))}
             </div>
         </div>
     )

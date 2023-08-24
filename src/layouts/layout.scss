@@ -44,11 +44,17 @@ footer {
         }
 
         aside {
+            margin: 1rem 0 0;
+            box-shadow: $box-shadow2;
             background: #F4F5F6;
-            height: 100dvh;
+            height: fit-content;
             padding: 0.5rem;
             width: 200px;
-            // text-align: center;
+            border-radius: 0 5px 5px 0;
+
+            &:hover {
+                box-shadow: $box-shadow3;
+            }
 
             a {
                 width: auto;
@@ -111,16 +117,14 @@ footer {
 
             aside {
                 background: #F4F5F6;
-                height: 100dvh;
                 padding: 0.5rem;
                 width: max-content;
-                // text-align: center;
 
                 a {
                     width: auto;
                     border-radius: 4px;
                     display: block;
-                    padding: 0.5rem 1rem;
+                    padding: 0.3rem 0.6rem;
                     margin: 0 0 0.1rem;
                     border: 1px solid #0000002f;
                     background: #fff;

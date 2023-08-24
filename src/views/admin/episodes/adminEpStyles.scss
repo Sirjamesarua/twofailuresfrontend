@@ -1,18 +1,7 @@
 @use "/src/styles/index.scss" as *;
 
-.all-episodes {
-    .episodes-map {
-        display: flex;
-        align-items: stretch;
-        flex-wrap: wrap;
-        gap: 1rem;
-        margin: 1rem 0 0;
-    }
-}
-
 #createEpForm {
     .input-control {
-        // margin: 0 0 1rem;
         margin-bottom: 1rem;
 
         input {
@@ -22,7 +11,7 @@
             width: 100%;
             border: 2px solid #f3e1ff;
             border-radius: 0.5rem;
-            font-size: 1.1rem;
+            font-size: 0.8rem;
             transition: all .2s;
 
             &:hover {
@@ -35,7 +24,7 @@
             display: inline-block;
             width: 100%;
             border-radius: 0.5rem;
-            font-size: 1.1rem;
+            font-size: 0.9rem;
             border: 2px solid #f3e1ff;
             transition: all .2s;
 
@@ -54,7 +43,8 @@
             border-radius: 0.5rem;
             background: $secondary-color;
             transition: all .2s;
-            text-transform: uppercase;
+            // text-transform: lowercase;
+            font-variant: small-caps;
 
             &:hover {
                 color: $secondary-color;

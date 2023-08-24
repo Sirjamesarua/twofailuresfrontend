@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css';
 import axiosClient from "../../../axios-client";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 export async function loader({ params }) {
     const { data } = await axiosClient.get(`/admin/episodes/${params.episodeId}`);
@@ -13,22 +13,27 @@ export async function loader({ params }) {
 
 export default function EditEpisode() {
     const episode = useLoaderData();
-    const { handleSubmit } = useForm();
+    const navigate = useNavigate();
+
+    const { handleSubmit, formState: { isSubmitting } } = useForm();
 
     const [epi, setEpi] = useState({
         title: episode.title,
         description: episode.description,
     });
-
     const [content, setContent] = useState(episode.content);
 
     const onSubmit = async () => {
         epi.content = content;
-
-        console.log(epi);
-        const res = await axiosClient.put(`/admin/episodes/${episode.id}`, epi)
-            .then((data) => console.log(data))
-            .catch((error) => console.log(error));
+        await axiosClient.post(`/admin/episodes/${episode.id}`, epi)
+            .then((data) => {
+                console.log(data);
+                navigate('/admin/episodes');
+            })
+            .catch((error) => {
+                console.log(error);
+                alert("Something went wrong!");
+            });
     }
 
     const toolbarOptions = [
@@ -69,7 +74,9 @@ export default function EditEpisode() {
                 />
 
                 <div className="input-control mt-1">
-                    <button type="submit">UPDATE</button>
+                    <button type="submit">
+                        {isSubmitting ? (<span className="loading-text">updating</span>) : "update"}
+                    </button>
                 </div>
             </form>
         </div>

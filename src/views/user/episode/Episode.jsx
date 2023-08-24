@@ -2,6 +2,7 @@ import { Navigate, useLoaderData } from 'react-router-dom';
 import { useStateContext } from '../../../context/ContextProvider';
 import './episode.scss';
 import axiosClient from '../../../axios-client';
+import Banner from "../../../components/Banner";
 
 export async function loader({ params }) {
     try {
@@ -26,7 +27,8 @@ export default function Episode() {
     return (
         <div className="container">
             <section className="read-box mt-2 animated fadeInDown">
-                <div className="episode-title">
+                <Banner />
+                <div className="episode-title mt-2">
                     {episode.title}
                 </div>
 
