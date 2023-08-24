@@ -4,6 +4,8 @@ import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css';
 import axiosClient from "../../../axios-client";
 import { useLoaderData, useNavigate } from "react-router-dom";
+import React, { useRef, useEffect } from 'react';
+import axios from "axios";
 
 export async function loader({ params }) {
     const { data } = await axiosClient.get(`/admin/episodes/${params.episodeId}`);
@@ -12,8 +14,10 @@ export async function loader({ params }) {
 }
 
 export default function EditEpisode() {
-    const episode = useLoaderData();
+    const episode = useLoaderData(); 
     const navigate = useNavigate();
+    
+    const quillRef = useRef();
 
     const { handleSubmit, formState: { isSubmitting } } = useForm();
 
@@ -23,17 +27,78 @@ export default function EditEpisode() {
     });
     const [content, setContent] = useState(episode.content);
 
-    const onSubmit = async () => {
-        epi.content = content;
-        await axiosClient.post(`/admin/episodes/${episode.id}`, epi)
-            .then((data) => {
-                console.log(data);
-                navigate('/admin/episodes');
+
+
+    useEffect(() => {
+        if (quillRef.current != null) {
+            const quillInstance = quillRef.current.getEditor(); // Obtain Quill instance
+            const toolbar = quillInstance.getModule('toolbar');
+            toolbar.addHandler('image', customImageHandler);
+          }
+        
+        console.log(content);
+        const token = localStorage.getItem('tfa_token');
+    }, [content]);
+
+    const customImageHandler = () => {
+        const url = `${import.meta.env.VITE_API_BASE_URL}/api/admin/episodes/images/upload`;
+        const token = localStorage.getItem('tfa_token');
+
+        const input = document.createElement('input');
+        input.setAttribute('type', 'file');
+        input.setAttribute('accept', 'image/*');
+        input.setAttribute('multiple', '');
+        input.click();
+
+        input.onchange = async () => {
+            const file = input.files[0];
+            const reader = new FileReader();
+            const formData = new FormData();
+            formData.append('image', file);
+            formData.append('episode_id', episode.id);
+            console.log(formData);
+
+            const config = {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    'Content-Type': 'multipart/form-data',
+                },
+            };
+
+            axios.post(url, formData, config)
+            .then((response) => {
+                if (response.status === 200) {
+                const url  = response.data.url;
+                const url2 = `${import.meta.env.VITE_API_BASE_URL}/storage`+url
+                console.log(url2);
+                const range = quillRef.current.getEditor().getSelection(true);
+                quillRef.current.getEditor().insertEmbed(range.index, 'image', url2);
+                }
             })
             .catch((error) => {
                 console.log(error);
-                alert("Something went wrong!");
             });
+
+
+            reader.readAsDataURL(file);
+        };
+
+    };
+
+
+    const onSubmit = async () => {
+        epi.content = content;
+        console.log(epi);
+
+        const response = await axiosClient.post(`${import.meta.env.VITE_API_BASE_URL}/api/admin/episodes/${episode.id}`, epi);
+        if (response.status === 200) {
+            console.log(response);
+            navigate('/admin/episodes');
+        } else {
+            console.log('error creating episode');
+            alert("Something went wrong!");
+        }
+
     }
 
     const toolbarOptions = [
@@ -68,7 +133,7 @@ export default function EditEpisode() {
                     <label htmlFor="content">Content</label><br />
                 </div>
 
-                <ReactQuill theme="snow" value={content} onChange={setContent}
+                <ReactQuill theme="snow" value={content} ref={quillRef} onChange={setContent}
                     modules={{ toolbar: toolbarOptions }}
                     style={{ width: "100%", background: "white", borderRadius: "0.5rem" }}
                 />
