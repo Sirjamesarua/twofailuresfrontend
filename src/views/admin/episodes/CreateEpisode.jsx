@@ -20,10 +20,11 @@ export default function CreateEpisode() {
           }
         
         console.log(content);
+        const token = localStorage.getItem('tfa_token');
     }, [content]);
 
     const customImageHandler = () => {
-        const url = "http://127.0.0.1:8000/api/admin/episodes/images/upload";
+        const url = `${import.meta.env.VITE_API_BASE_URL}/api/admin/episodes/images/upload`;
         const token = localStorage.getItem('tfa_token');
 
         const input = document.createElement('input');
@@ -57,7 +58,7 @@ export default function CreateEpisode() {
             .then((response) => {
                 if (response.status === 200) {
                 const url  = response.data.url;
-                const url2 = 'http://127.0.0.1:8000/storage'+url
+                const url2 = `${import.meta.env.VITE_API_BASE_URL}/storage`+url
                 console.log(url2);
                 const range = quillRef.current.getEditor().getSelection(true);
                 quillRef.current.getEditor().insertEmbed(range.index, 'image', url2);
@@ -79,7 +80,7 @@ export default function CreateEpisode() {
         console.log(data);
         
         
-        const response = await axiosClient.post('http://127.0.0.1:8000/api/admin/episodes/create', data);
+        const response = await axiosClient.post(`${import.meta.env.VITE_API_BASE_URL}/api/admin/episodes/create`, data);
         if (response.status === 200) {
             console.log(response);
         } else {
