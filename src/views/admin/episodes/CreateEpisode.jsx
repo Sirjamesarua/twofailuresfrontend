@@ -79,12 +79,13 @@ export default function CreateEpisode() {
         data["content"] = content;
         console.log(data);
         
-        
         const response = await axiosClient.post(`${import.meta.env.VITE_API_BASE_URL}/api/admin/episodes/create`, data);
         if (response.status === 200) {
             console.log(response);
+            navigate('/admin/episodes');
         } else {
             console.log('error creating episode');
+            alert("Something went wrong!");
         }
     }
 
