@@ -13,7 +13,6 @@ export async function loader({ params }) {
 
 export default function EditAd() {
     const ad = useLoaderData();
-    // const navigate = useNavigate();
     const { handleSubmit, formState: { isSubmitting } } = useForm();
     const [advert, setAdvert] = useState({
         name: ad.name,
