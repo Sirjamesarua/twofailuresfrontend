@@ -40,6 +40,11 @@ h6 {
     margin: 0;
 }
 
+button[disabled] {
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+}
+
 .section-header {
     display: flex;
     align-items: center;
@@ -67,4 +72,25 @@ hr {
     background: #e3e3e3;
     border-color: #e4e4e4;
     // border: none;
+}
+
+#banner-img {
+    margin: 0 auto;
+    width: max-content;
+
+    img {
+        width: 370px;
+    }
+}
+
+
+@media screen and (max-width: 800px) {
+    #banner-img {
+        margin: 0 auto;
+        width: max-content;
+
+        img {
+            width: 300px;
+        }
+    }
 }

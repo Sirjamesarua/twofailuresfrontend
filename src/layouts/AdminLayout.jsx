@@ -6,15 +6,15 @@ export default function AdminLayout() {
     const navigation = useNavigation();
     const { adminToken, setAdmin, putAdminToken } = useStateContext();
 
-    const logout = (e) => {
+    const logout = async (e) => {
         e.preventDefault();
         try {
-            axiosClient.post('admin/logout')
+            await axiosClient.post('admin/logout')
                 .then(() => {
                     localStorage.removeItem('tfa_token');
                     putAdminToken("");
                     setAdmin("");
-                    window.location.href = "/";
+                    window.location.href = "/admin/login";
                 });
         } catch (error) {
             console.log(error);

@@ -1,11 +1,13 @@
 import { createBrowserRouter } from "react-router-dom";
-// Layout Imports
+// Layout Imports -------------------------------------------------------------------
 import GuestLayout from "./layouts/GuestLayout";
 import AdminLayout from "./layouts/AdminLayout";
-// User Imports
+
+// User Imports -------------------------------------------------------------------
 import Home from "./views/user/home/Home";
 import Episode, { loader as EpisodeLoader } from "./views/user/episode/Episode";
-// Admin Imports
+
+// Admin Imports -------------------------------------------------------------------
 import AdminDashboard from "./views/admin/AdminDashboard";
 import EpLayout, { loader as EpLayoutLoader } from "./views/admin/episodes/EpLayout";
 import AllEpisodes from "./views/admin/episodes/AllEpisodes";
@@ -16,20 +18,21 @@ import AllAds from "./views/admin/adverts/AllAds";
 import CreateAd from "./views/admin/adverts/CreateAd";
 import EditAd, { loader as EditAdLoader } from "./views/admin/adverts/EditAd"
 import AdminLogin from "./views/admin/auth/AdminLogin";
+import ErrorPage from "./views/ErrorPage";
 
 const router = createBrowserRouter([
     // User Routes
     {
         path: '/',
         element: <GuestLayout />,
-        errorElement: <div className="container">Error Occured <br /> <button className="err-btn" onClick={() => window.location.reload()}>Reload</button></div>,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: '/',
                 element: <Home />,
             },
             {
-                path: 'episode/:episodeId',
+                path: 'episodes/:episodeId',
                 element: <Episode />,
                 loader: EpisodeLoader
             },
@@ -44,7 +47,7 @@ const router = createBrowserRouter([
     {
         path: '/admin',
         element: <AdminLayout />,
-        errorElement: <div className="container">Error Occured <br /> <button className="err-btn" onClick={() => window.location.reload()}>Reload</button></div>,
+        errorElement: <ErrorPage />,
         children: [
             {
                 index: true,
@@ -55,7 +58,7 @@ const router = createBrowserRouter([
                 path: "episodes",
                 element: <EpLayout />,
                 loader: EpLayoutLoader,
-                errorElement: <div className="container">Error Occured <br /> <button className="err-btn" onClick={() => window.location.reload()}>Reload</button></div>,
+                errorElement: <ErrorPage />,
                 children: [
                     {
                         index: true,
@@ -76,7 +79,7 @@ const router = createBrowserRouter([
             {
                 path: "adverts",
                 element: <AdLayout />,
-                errorElement: <div className="container">Error Occured <br /> <button className="err-btn" onClick={() => window.location.reload()}>Reload</button></div>,
+                errorElement: <ErrorPage />,
                 children: [
                     {
                         index: true,

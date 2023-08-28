@@ -3,9 +3,11 @@ import Banner from '../../../components/Banner';
 import EpisodeCard from '../../../components/EpisodeCard';
 import './home.scss';
 import axiosClient from '../../../axios-client';
+import bannerImage from "../../../assets/banner-img.png"
 
 export default function Home() {
     const [eps, setEps] = useState([]);
+    const [message, setMessage] = useState("..episodes loading..")
 
     const fetchEpisodes = async () => {
         await axiosClient.get('/episodes')
@@ -14,6 +16,7 @@ export default function Home() {
             })
             .catch((err) => {
                 console.log(err);
+                setMessage("Something Went Wrong")
             });
     }
 
@@ -25,9 +28,12 @@ export default function Home() {
         <div>
             <section className="container animated fadeInDown">
                 <div id="atf">
-                    <h2>
+                    {/* <h2>
                         Two Failures
-                    </h2>
+                    </h2> */}
+                    <div id="banner-img">
+                        <img src={bannerImage} alt="two_failures" />
+                    </div>
                     <p className='text-center'>
                         Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, amet.
                     </p>
@@ -38,7 +44,7 @@ export default function Home() {
                             eps.map(ep => (
                                 <EpisodeCard key={ep.id} ep={ep} />
                             )) :
-                            (<span className='loading-text'>episodes loading</span>)
+                            (<span className='loading-text'>{message}</span>)
                         }
                     </div>
                 </div>

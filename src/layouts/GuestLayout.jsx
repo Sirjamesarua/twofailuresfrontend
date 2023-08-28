@@ -1,10 +1,20 @@
 import { Link, Outlet, useLocation, useNavigation } from "react-router-dom";
 import LoginPop from "../components/LoginPop"
-import { useStateContext } from "../context/ContextProvider";
+import PopupCard from "../components/PopupCard";
 
 export default function GuestLayout() {
     const location = useLocation();
     const navigation = useNavigation();
+
+    const about = {
+        title: "About",
+        content: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor corrupti pariatur ab et quos minima maxime ipsum? In, quidem eaque."
+    }
+
+    const contact = {
+        title: "Contact Us",
+        content: "08182843535"
+    }
 
     return (
         <>
@@ -18,14 +28,17 @@ export default function GuestLayout() {
                         </h1>
                     </div>
                     <div className="nav-item">
-                        <Link to={"#"}>
-                            About <i className="bi bi-person-lines-fill"></i>
+                        <Link to={"/#about"}>
+                            About
+                            {/* <i className="bi bi-person-lines-fill"></i> */}
+                        </Link>
+                        <Link to={"/#contact"}>
+                            Contact
+                            {/* <i className="bi bi-megaphone"></i> */}
                         </Link>
                         <Link to={"#"}>
-                            Contact <i className="bi bi-megaphone"></i>
-                        </Link>
-                        <Link to={"#"}>
-                            Shop <i className="bi bi-cart fs-1"></i>
+                            Shop
+                            {/* <i className="bi bi-cart fs-1"></i> */}
                         </Link>
                     </div>
                 </nav>
@@ -45,7 +58,15 @@ export default function GuestLayout() {
                     </p>
                 </div>
             </footer>
-            {location.hash === "#login" && <LoginPop />}
+            {/* Active if user is not logged in */}
+            {location.hash === "#login" && (<LoginPop />)}
+
+            {/* Navigation for user */}
+            {location.hash === "#about" ?
+                (<PopupCard content={about} />) :
+                location.hash === "#contact" ?
+                    (<PopupCard content={contact} />) :
+                    ""}
         </>
     )
 }

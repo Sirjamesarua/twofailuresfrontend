@@ -11,6 +11,15 @@
     margin: 0 auto;
 }
 
+.err-btn {
+    background: #F97180;
+    color: #fff;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+}
+
 // Fonts
 .text-center {
     text-align: center;
@@ -34,6 +43,10 @@
 
 .fs-4 {
     font-size: 2.5rem;
+}
+
+.text-secondary {
+    color: #c3c3c3;
 }
 
 // Margins
@@ -86,7 +99,6 @@
 .flex-wrap {
     flex-wrap: wrap;
 }
-
 
 // Animation classes
 .animated {
