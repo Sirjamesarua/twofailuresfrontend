@@ -24,7 +24,7 @@ const router = createBrowserRouter([
     {
         path: '/',
         element: <GuestLayout />,
-        errorElement: <div className="container">Error Occured <br /> <button className="err-btn" onClick={() => window.location.reload()}>Reload</button></div>,
+        errorElement: <div className="container mt-2">Error Occured <br /> <button className="err-btn" onClick={() => window.location.reload()}>Reload</button></div>,
         children: [
             {
                 path: '/',
