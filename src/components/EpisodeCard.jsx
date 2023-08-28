@@ -3,7 +3,7 @@ import { useStateContext } from "../context/ContextProvider"
 import cartoon from "../assets/cartoon.webp";
 
 export default function EpisodeCard({ ep }) {
-    const { user, redirect, setRedirect } = useStateContext();
+    const { user, setRedirect } = useStateContext();
     // Determines if the user current user is logged in.
     let link;
     if (user) {
