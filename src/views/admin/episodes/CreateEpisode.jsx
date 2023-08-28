@@ -5,10 +5,12 @@ import 'react-quill/dist/quill.snow.css';
 import React, { useRef, useEffect } from 'react';
 import axios from "axios";
 import axiosClient from "../../../axios-client";
+import { Link, useNavigate } from 'react-router-dom';
 
 export default function CreateEpisode() {
     const { register, handleSubmit } = useForm();
     const [content, setContent] = useState("");
+    const navigate = useNavigate();
 
     const quillRef = useRef(); // Create a ref object
 
