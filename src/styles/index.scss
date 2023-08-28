@@ -68,3 +68,23 @@ hr {
     border-color: #e4e4e4;
     // border: none;
 }
+
+#banner-img {
+    margin: 0 auto;
+    width: max-content;
+
+    img {
+        width: 370px;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    #banner-img {
+        margin: 0 auto;
+        width: max-content;
+
+        img {
+            width: 300px;
+        }
+    }
+}

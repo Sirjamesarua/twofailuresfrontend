@@ -29,7 +29,7 @@ const router = createBrowserRouter([
                 element: <Home />,
             },
             {
-                path: 'episode/:episodeId',
+                path: 'episodes/:episodeId',
                 element: <Episode />,
                 loader: EpisodeLoader
             },

@@ -4,7 +4,7 @@ import { useStateContext } from "../context/ContextProvider";
 import axiosClient from "../axios-client.js"
 
 export default function LoginPop() {
-    const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm();
+    const { register, handleSubmit, formState: { isSubmitting } } = useForm();
     const { putUser, redirect } = useStateContext();
     const navigate = useNavigate();
 
@@ -16,6 +16,7 @@ export default function LoginPop() {
             }
             navigate(redirect);
         } catch (error) {
+            putUser(false);
             console.log(error)
         }
     }
@@ -32,7 +33,7 @@ export default function LoginPop() {
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="input-control">
                         <label htmlFor="email">Email</label><br />
-                        <input type="text" id="email" placeholder="youremail@xxx.com"
+                        <input type="email" id="email" placeholder="youremail@xxx.com"
                             {...register("email", { required: true })}
                         />
                     </div>

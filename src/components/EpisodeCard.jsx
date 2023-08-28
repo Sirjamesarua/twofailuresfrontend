@@ -3,30 +3,21 @@ import { useStateContext } from "../context/ContextProvider"
 import cartoon from "../assets/cartoon.webp";
 
 export default function EpisodeCard({ ep }) {
-    const { user, setRedirect } = useStateContext();
+    const { user, redirect, setRedirect } = useStateContext();
     // Determines if the user current user is logged in.
     let link;
     if (user) {
-        link = `/episode/${ep.id}`;
+        link = `/episodes/${ep.id}`;
     } else {
         link = `/#login`;
     }
 
-    const saveRedirect = () => {
-        if (!user) {
-            setRedirect(`/episode/${ep.id}`);
-        } else {
-            return
-        }
-    }
-
     return (
-        <Link to={link} className="animated fadeInDown" onClick={saveRedirect}>
+        <Link to={link} className="animated fadeInDown" onClick={() => setRedirect(`/episodes/${ep.id}`)}>
             <div className="episode-card">
                 <div className="episode-img"
                     style={{
-                        // backgroundImage: `url(${ep.cover_image})`,
-                        backgroundImage: `url(${ep.cover_image ? `${import.meta.env.VITE_API_BASE_URL}/storage/episodes/${ep.cover_image}` : cartoon })`,
+                        backgroundImage: `url(${ep.cover_image ? `${import.meta.env.VITE_API_BASE_URL}/storage/episodes/${ep.cover_image}` : cartoon})`,
                         backgroundSize: "cover", backgroundRepeat: "no-repeat",
                         backgroundPosition: "center"
                     }}
@@ -43,6 +34,6 @@ export default function EpisodeCard({ ep }) {
                     </p>
                 </div>
             </div>
-        </Link>
+        </Link >
     )
 };
