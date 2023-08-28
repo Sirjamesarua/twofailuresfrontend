@@ -40,7 +40,7 @@ export default function AdminLogin() {
         </div>
 
         <div className="input-control">
-          <button type="submit">
+          <button type="submit" disabled={isSubmitting}>
             {isSubmitting ? (<span className="loading-text">logging in</span>) : "login"}
           </button>
         </div>

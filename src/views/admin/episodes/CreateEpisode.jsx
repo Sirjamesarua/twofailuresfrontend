@@ -125,7 +125,9 @@ export default function CreateEpisode() {
                 />
 
                 <div className="input-control mt-1">
-                    <button type="submit">{isSubmitting ? (<span className="loading-text">creating</span>) : (<span>create</span>)}</button>
+                    <button type="submit" disabled={isSubmitting}>
+                        {isSubmitting ? (<span className="loading-text">creating</span>) : (<span>create</span>)}
+                    </button>
                 </div>
             </form>
         </div>
