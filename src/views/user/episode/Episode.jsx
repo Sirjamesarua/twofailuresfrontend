@@ -31,20 +31,17 @@ export default function Episode() {
                     {episode.title}
                 </div>
 
-                <div className='share-episode'>
+                <div className='share-episode mt-1'>
                     <h3>Share this episode</h3>
                     <div>
                         <i className="bi bi-whatsapp"></i>
-                        {/* &nbsp; */}
                         <i className="bi bi-facebook"></i>
-                        {/* &nbsp; */}
                         <i className="bi bi-telegram"></i>
                     </div>
                 </div>
 
                 <div className="episode-content mt-2">
                     <div dangerouslySetInnerHTML={{ __html: episode.content }} />
-                    {/* {episode.content} */}
                 </div>
             </section>
         </div>

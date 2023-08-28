@@ -41,7 +41,7 @@ export default function AdminLogin() {
 
         <div className="input-control">
           <button type="submit">
-            {isSubmitting ? (<span className="loading-text">logging in . . .</span>) : "login"}
+            {isSubmitting ? (<span className="loading-text">logging in</span>) : "login"}
           </button>
         </div>
 

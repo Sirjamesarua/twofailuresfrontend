@@ -8,7 +8,7 @@ import axiosClient from "../../../axios-client";
 import { Link, useNavigate } from 'react-router-dom';
 
 export default function CreateEpisode() {
-    const { register, handleSubmit } = useForm();
+    const { register, handleSubmit, formState: { isSubmitting } } = useForm();
     const [content, setContent] = useState("");
     const navigate = useNavigate();
 
@@ -19,8 +19,8 @@ export default function CreateEpisode() {
             const quillInstance = quillRef.current.getEditor(); // Obtain Quill instance
             const toolbar = quillInstance.getModule('toolbar');
             toolbar.addHandler('image', customImageHandler);
-          }
-        
+        }
+
         console.log(content);
         const token = localStorage.getItem('tfa_token');
     }, [content]);
@@ -43,7 +43,7 @@ export default function CreateEpisode() {
             formData.append('episode_id', 101010);
             console.log(file);
 
-            
+
             // reader.onload = () => { //displaying local
             //     const range = quillRef.current.getEditor().getSelection(true);
             //     quillRef.current.getEditor().insertEmbed(range.index, 'image', reader.result);
@@ -57,18 +57,18 @@ export default function CreateEpisode() {
             };
 
             axios.post(url, formData, config)
-            .then((response) => {
-                if (response.status === 200) {
-                const url  = response.data.url;
-                const url2 = `${import.meta.env.VITE_API_BASE_URL}/storage`+url
-                console.log(url2);
-                const range = quillRef.current.getEditor().getSelection(true);
-                quillRef.current.getEditor().insertEmbed(range.index, 'image', url2);
-                }
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+                .then((response) => {
+                    if (response.status === 200) {
+                        const url = response.data.url;
+                        const url2 = `${import.meta.env.VITE_API_BASE_URL}/storage` + url
+                        console.log(url2);
+                        const range = quillRef.current.getEditor().getSelection(true);
+                        quillRef.current.getEditor().insertEmbed(range.index, 'image', url2);
+                    }
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
 
 
             reader.readAsDataURL(file);
@@ -79,8 +79,7 @@ export default function CreateEpisode() {
 
     const onSubmit = async (data) => {
         data["content"] = content;
-        console.log(data);
-        
+
         const response = await axiosClient.post(`${import.meta.env.VITE_API_BASE_URL}/api/admin/episodes/create`, data);
         if (response.status === 200) {
             console.log(response);
@@ -126,7 +125,7 @@ export default function CreateEpisode() {
                 />
 
                 <div className="input-control mt-1">
-                    <button type="submit">submit</button>
+                    <button type="submit">{isSubmitting ? (<span className="loading-text">creating</span>) : (<span>create</span>)}</button>
                 </div>
             </form>
         </div>

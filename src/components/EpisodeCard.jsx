@@ -17,7 +17,7 @@ export default function EpisodeCard({ ep }) {
             <div className="episode-card">
                 <div className="episode-img"
                     style={{
-                        backgroundImage: `url(${ep.cover_image ? `${import.meta.env.VITE_API_BASE_URL}/storage/episodes/${ep.cover_image}` : cartoon})`,
+                        backgroundImage: `url(${ep.cover_image ? `${import.meta.env.VITE_API_BASE_URL}/storage/${ep.cover_image}` : cartoon})`,
                         backgroundSize: "cover", backgroundRepeat: "no-repeat",
                         backgroundPosition: "center"
                     }}

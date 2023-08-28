@@ -10,11 +10,13 @@ export default function LoginPop() {
 
     const onSubmit = async (email) => {
         try {
-            const { data } = await axiosClient.post('/login', email);
-            if (data.message === "user exist") {
+            const data = await axiosClient.post('/login', email);
+            if (data.status === 200) {
                 putUser(true);
+                navigate(redirect);
+            } else {
+                alert("Something went wrong, \n Try Again!")
             }
-            navigate(redirect);
         } catch (error) {
             putUser(false);
             console.log(error)
