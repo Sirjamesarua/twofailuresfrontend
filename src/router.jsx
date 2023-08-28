@@ -18,13 +18,14 @@ import AllAds from "./views/admin/adverts/AllAds";
 import CreateAd from "./views/admin/adverts/CreateAd";
 import EditAd, { loader as EditAdLoader } from "./views/admin/adverts/EditAd"
 import AdminLogin from "./views/admin/auth/AdminLogin";
+import ErrorPage from "./views/ErrorPage";
 
 const router = createBrowserRouter([
     // User Routes
     {
         path: '/',
         element: <GuestLayout />,
-        errorElement: <div className="container mt-2">Error Occured <br /> <button className="err-btn" onClick={() => window.location.reload()}>Reload</button></div>,
+        errorElement: <ErrorPage />,
         children: [
             {
                 path: '/',
@@ -46,7 +47,7 @@ const router = createBrowserRouter([
     {
         path: '/admin',
         element: <AdminLayout />,
-        errorElement: <div className="container">Error Occured <br /> <button className="err-btn" onClick={() => window.location.reload()}>Reload</button></div>,
+        errorElement: <ErrorPage />,
         children: [
             {
                 index: true,
@@ -57,7 +58,7 @@ const router = createBrowserRouter([
                 path: "episodes",
                 element: <EpLayout />,
                 loader: EpLayoutLoader,
-                errorElement: <div className="container">Error Occured <br /> <button className="err-btn" onClick={() => window.location.reload()}>Reload</button></div>,
+                errorElement: <ErrorPage />,
                 children: [
                     {
                         index: true,
@@ -78,7 +79,7 @@ const router = createBrowserRouter([
             {
                 path: "adverts",
                 element: <AdLayout />,
-                errorElement: <div className="container">Error Occured <br /> <button className="err-btn" onClick={() => window.location.reload()}>Reload</button></div>,
+                errorElement: <ErrorPage />,
                 children: [
                     {
                         index: true,
