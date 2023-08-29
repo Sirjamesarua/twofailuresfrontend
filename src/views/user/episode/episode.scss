@@ -43,6 +43,44 @@
     }
 }
 
+.advert-popup {
+    cursor: pointer;
+    background: #ffe3e343;
+    backdrop-filter: blur(10px);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100dvh;
+    width: 100vw;
+    z-index: 2;
+
+    .advert-instruction {
+        background: #fff;
+        width: 350px;
+        margin: 11rem auto 0;
+        border: 2px solid #ffe3e3;
+        border-radius: 0.5rem;
+        padding: 1rem 2rem;
+
+        ol {
+            li {
+                margin: 0 0 1rem;
+            }
+        }
+
+        .close-btn {
+            background: #F97180;
+            color: #fff;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            display: block;
+        }
+    }
+}
+
 @media screen and (max-width: 800px) {
     .episode-title {
         background: #fff;
@@ -60,4 +98,17 @@
             }
         }
     }
+
+    .advert-popup {
+        .advert-instruction {
+            background: #fff;
+            width: auto;
+            margin: 11rem 1rem 0;
+            border: 2px solid #ffe3e3;
+            border-radius: 0.5rem;
+            padding: 1rem 2rem;
+
+        }
+    }
+
 }

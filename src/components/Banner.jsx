@@ -1,7 +1,7 @@
 export default function Banner() {
     return (
         <div className="banner">
-            {/* ad img */}
+            {/* Image put here by background image style */}
         </div>
     )
 }
