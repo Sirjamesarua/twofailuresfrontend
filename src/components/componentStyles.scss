@@ -167,6 +167,17 @@
     background-position: 0 30%;
 }
 
+.popup-ad {
+    width: 500px;
+    height: 90px;
+    border-radius: 5px;
+    box-shadow: $box-shadow3;
+    text-align: center;
+    margin: 0 auto;
+    background-image: url('../assets/banner-img.jpeg');
+    background-position: 0 30%;
+}
+
 #popup-card {
     background: #ffe3e343;
     backdrop-filter: blur(10px);
@@ -188,8 +199,23 @@
 }
 
 @media screen and (max-width: 800px) {
-    #login-pop {
+    .episode-card {
+        outline: 3px solid $secondary-color;
+        box-shadow: none;
+        width: auto;
 
+        .episode-img {
+            height: 200px;
+            width: auto;
+            background: #fff;
+        }
+
+        &:hover {
+            transform: scale(1.01, 1.01);
+        }
+    }
+
+    #login-pop {
         .form-container {
             background: #fff;
             width: 280px;
@@ -217,5 +243,16 @@
 
     .banner {
         width: auto;
+    }
+
+    .popup-ad {
+        width: auto;
+    }
+
+    #popup-card {
+        .card-container {
+            width: auto;
+            margin: 30vh 1rem 0;
+        }
     }
 }

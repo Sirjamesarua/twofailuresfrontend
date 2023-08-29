@@ -1,10 +1,13 @@
 import { Link, Outlet, useLocation, useNavigation } from "react-router-dom";
 import LoginPop from "../components/LoginPop"
 import PopupCard from "../components/PopupCard";
+import logo from "../assets/twofailures_logo.png";
+import React, { useState } from "react";
 
 export default function GuestLayout() {
     const location = useLocation();
     const navigation = useNavigation();
+    const [pop, setPop] = useState("");
 
     const about = {
         title: "About",
@@ -14,6 +17,18 @@ export default function GuestLayout() {
     const contact = {
         title: "Contact Us",
         content: "08182843535"
+    };
+
+    // Updater function in PopupCard component
+    const updatePop = (newPop) => {
+        setPop(newPop);
+    }
+
+    // Changes the POP state which is used in line 82
+    const handlePop = (ev) => {
+        let value = ev.target.innerText;
+        console.log(value);
+        setPop(value);
     }
 
     return (
@@ -23,23 +38,20 @@ export default function GuestLayout() {
                     <div>
                         <h1>
                             <Link to={"/"}>
-                                two failures
+                                <img src={logo} alt="tf_logo" />
                             </Link>
                         </h1>
                     </div>
                     <div className="nav-item">
-                        <Link to={"/#about"}>
+                        <span onClick={(ev) => handlePop(ev)}>
                             About
-                            {/* <i className="bi bi-person-lines-fill"></i> */}
-                        </Link>
-                        <Link to={"/#contact"}>
+                        </span>
+                        <span onClick={(ev) => handlePop(ev)}>
                             Contact
-                            {/* <i className="bi bi-megaphone"></i> */}
-                        </Link>
-                        <Link to={"#"}>
+                        </span>
+                        <span to={"#"}>
                             Shop
-                            {/* <i className="bi bi-cart fs-1"></i> */}
-                        </Link>
+                        </span>
                     </div>
                 </nav>
             </header>
@@ -62,11 +74,18 @@ export default function GuestLayout() {
             {location.hash === "#login" && (<LoginPop />)}
 
             {/* Navigation for user */}
-            {location.hash === "#about" ?
+            {/* {location.hash === "#about" ?
                 (<PopupCard content={about} />) :
                 location.hash === "#contact" ?
                     (<PopupCard content={contact} />) :
-                    ""}
+                    ""} */}
+
+            {pop === "About" ?
+                (<PopupCard content={about} newUpdatePop={updatePop} />) :
+                pop === "Contact" ?
+                    (<PopupCard content={contact} newUpdatePop={updatePop} />) :
+                    ""
+            }
         </>
     )
 }

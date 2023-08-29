@@ -18,6 +18,13 @@
     padding: 0.5rem 1rem;
     border: none;
     border-radius: 5px;
+    width: 100%;
+    display: block;
+    opacity: 0.6;
+
+    &:hover {
+        background: #ffa0ab;
+    }
 }
 
 // Fonts
@@ -46,7 +53,7 @@
 }
 
 .text-secondary {
-    color: #c3c3c3;
+    color: #8c8c8c;
 }
 
 // Margins
