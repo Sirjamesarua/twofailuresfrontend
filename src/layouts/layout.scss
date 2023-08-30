@@ -1,14 +1,20 @@
 @use '/src/styles/index.scss' as *;
 
 header {
-    padding: .5rem 0;
+    padding: 1rem 0;
     background: #F4F5F6;
     box-shadow: $box-shadow2;
 
     nav {
         h1 {
-            img {
+            #logo {
                 width: 150px;
+            }
+
+            #side-img {
+                width: 30px;
+                position: absolute;
+                transform: translateY(-25px),
             }
         }
 
@@ -100,12 +106,13 @@ footer {
 @media screen and (max-width: 800px) {
     header {
         padding: 0.5rem 0;
+        // transform:
 
         nav {
             h1 {
                 font-size: 1rem;
 
-                img {
+                #logo {
                     width: 100px;
                 }
 
