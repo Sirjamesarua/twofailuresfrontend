@@ -75,13 +75,6 @@ export default function GuestLayout() {
             {/* Active if user is not logged in */}
             {location.hash === "#login" && (<LoginPop />)}
 
-            {/* Navigation for user */}
-            {/* {location.hash === "#about" ?
-                (<PopupCard content={about} />) :
-                location.hash === "#contact" ?
-                    (<PopupCard content={contact} />) :
-                    ""} */}
-
             {pop === "About" ?
                 (<PopupCard content={about} newUpdatePop={updatePop} />) :
                 pop === "Contact" ?
