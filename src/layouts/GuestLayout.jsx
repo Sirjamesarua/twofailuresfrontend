@@ -2,6 +2,7 @@ import { Link, Outlet, useLocation, useNavigation } from "react-router-dom";
 import LoginPop from "../components/LoginPop"
 import PopupCard from "../components/PopupCard";
 import logo from "../assets/twofailures_logo.png";
+import sideImg from "../assets/side-img.png"
 import React, { useState } from "react";
 
 export default function GuestLayout() {
@@ -38,7 +39,8 @@ export default function GuestLayout() {
                     <div>
                         <h1>
                             <Link to={"/"}>
-                                <img src={logo} alt="tf_logo" />
+                                <img src={logo} alt="tf_logo" id="logo" />
+                                <img src={sideImg} alt="them" id="side-img" />
                             </Link>
                         </h1>
                     </div>
@@ -72,13 +74,6 @@ export default function GuestLayout() {
             </footer>
             {/* Active if user is not logged in */}
             {location.hash === "#login" && (<LoginPop />)}
-
-            {/* Navigation for user */}
-            {/* {location.hash === "#about" ?
-                (<PopupCard content={about} />) :
-                location.hash === "#contact" ?
-                    (<PopupCard content={contact} />) :
-                    ""} */}
 
             {pop === "About" ?
                 (<PopupCard content={about} newUpdatePop={updatePop} />) :

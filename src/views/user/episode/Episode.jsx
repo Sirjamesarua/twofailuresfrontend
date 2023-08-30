@@ -5,9 +5,9 @@ import axiosClient from '../../../axios-client';
 import Banner from "../../../components/Banner";
 import PopupAd from '../../../components/PopupAd';
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 
 export async function loader({ params }) {
-
     try {
         const { data } = await axiosClient.get(`/episodes/${params.episodeId}`);
         const episode = data;
@@ -16,6 +16,47 @@ export async function loader({ params }) {
         console.log(error);
         return []
     }
+}
+
+const onSubmit = async (ev) => {
+    ev.preventDefault();
+    for (let i = 0; i < ev.target.length - 1; i++) {
+        console.log(ev.target[i].value);
+    }
+}
+
+// const handleFormInput = (ev) => {
+//     const newInputName = ev.target.value;
+//     const form = document.getElementById("myForm");
+
+//     // Create a new input element
+//     const newInput = document.createElement("input");
+//     newInput.type = "text";
+//     newInput.name = newInputName;
+//     newInput.placeholder = "Enter your " + newInputName.toLowerCase() + " handle"
+
+//     // Append the new input element to the form
+//     form.appendChild(newInput);
+// }
+
+const handleNewEntry = () => {
+    // Get the existing container by its ID
+    const oldDiv = document.getElementById("social-group");
+
+    // Clone the existing container
+    const cloneDiv = oldDiv.cloneNode(true);
+
+    // Clear the selected value of the cloned <select>
+    const clonedSelect = cloneDiv.querySelector("select");
+    clonedSelect.selectedIndex = 0;
+
+    // Clear the value of the cloned <input>
+    const clonedInput = cloneDiv.querySelector("input");
+    clonedInput.value = "";
+
+    // Append the cloned container to the parent element
+    const parentElement = document.getElementById("input-group");
+    parentElement.appendChild(cloneDiv);
 }
 
 export default function Episode() {
@@ -55,8 +96,9 @@ export default function Episode() {
             </section>
 
             {popup &&
-                (<div className="advert-popup">
+                (<div className="advert-popup animated fadeInDown">
                     <div className="advert-instruction">
+                        <button onClick={() => setPopup(!popup)}>×</button>
                         <h3>Get a FREE Merch</h3>
 
                         <ol>
@@ -65,9 +107,28 @@ export default function Episode() {
                             <li>Send us your social handles</li>
                         </ol>
 
-                        <button onClick={() => setPopup(!popup)} className='close-btn'>
-                            Close
-                        </button>
+                        <p className='m-0'>
+                            <b>Submit your social handles</b>
+                        </p>
+
+                        <form onSubmit={onSubmit} id='myForm'>
+                            <div id="input-group">
+                                <div className="group mb-1 animated fadeInDown" id='social-group'>
+                                    <select name='social-choice'>
+                                        <option value="">Choose social link</option>
+                                        <option value="Twitter">Twitter</option>
+                                        <option value="Telegram">Telegram</option>
+                                        <option value="Facebook">Facebook</option>
+                                    </select>
+                                    <input type="text" className="handle" placeholder='your @handle' />
+                                </div>
+                            </div>
+
+                            <span onClick={handleNewEntry}>+ add new entry</span>
+                            <button className='close-btn'>
+                                Submit
+                            </button>
+                        </form>
                     </div>
                 </div>)
             }
