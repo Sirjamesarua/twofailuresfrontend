@@ -5,7 +5,7 @@ import { Navigate } from "react-router-dom";
 import "./adminLoginStyles.scss";
 
 export default function AdminLogin() {
-  const { register, handleSubmit, formState: { errors, isSubmitting } } = useForm();
+  const { register, handleSubmit, formState: { isSubmitting } } = useForm();
   const { adminToken, putAdminToken } = useStateContext();
 
   const onSubmit = async (credentials) => {

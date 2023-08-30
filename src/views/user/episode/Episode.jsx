@@ -5,9 +5,9 @@ import axiosClient from '../../../axios-client';
 import Banner from "../../../components/Banner";
 import PopupAd from '../../../components/PopupAd';
 import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 
 export async function loader({ params }) {
-
     try {
         const { data } = await axiosClient.get(`/episodes/${params.episodeId}`);
         const episode = data;
@@ -16,6 +16,26 @@ export async function loader({ params }) {
         console.log(error);
         return []
     }
+}
+
+const onSubmit = async (ev) => {
+    ev.preventDefault();
+    // const formData = await request.formData();
+    console.log(ev);
+}
+
+const handleFormInput = (ev) => {
+    const newInputName = ev.target.value;
+    const form = document.getElementById("myForm");
+
+    // Create a new input element
+    const newInput = document.createElement("input");
+    newInput.type = "text";
+    newInput.name = newInputName;
+    newInput.placeholder = "Enter your " + newInputName.toLowerCase() + " handle"
+
+    // Append the new input element to the form
+    form.appendChild(newInput);
 }
 
 export default function Episode() {
@@ -65,6 +85,21 @@ export default function Episode() {
                             <li>Send us your social handles</li>
                         </ol>
 
+                        <p className='m-0'>
+                            <b>Submit your social handles</b>
+                        </p>
+                        <select onChange={handleFormInput}>
+                            <option value="">Choose social link</option>
+                            <option value="Twitter">Twitter</option>
+                            <option value="Telegram">Telegram</option>
+                            <option value="Facebook">Facebook</option>
+                        </select>
+
+                        <form onSubmit={onSubmit} id='myForm'>
+                            <button type='submit'>Submit</button>
+                        </form>
+
+                        <br /><br />
                         <button onClick={() => setPopup(!popup)} className='close-btn'>
                             Close
                         </button>
