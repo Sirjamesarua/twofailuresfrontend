@@ -122,13 +122,13 @@ export default function Episode() {
                         <form onSubmit={onSubmit} id='myForm'>
                             <div id="input-group">
                                 <div className="group mb-1 animated fadeInDown" id='social-group'>
-                                    <select name='social-c-hoice'>
-                                        <option value="">Choose social link</option>
+                                    <select name='social-c-hoice' defaultValue={""} required>
+                                        <option value="" disabled>Choose social link</option>
                                         <option value="Twitter">Twitter</option>
                                         <option value="Telegram">Telegram</option>
                                         <option value="Facebook">Facebook</option>
                                     </select>
-                                    <input type="text" className="handle" placeholder='your @handle' />
+                                    <input type="text" className="handle" placeholder='your handle' required />
                                 </div>
                             </div>
 
