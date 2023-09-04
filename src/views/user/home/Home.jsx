@@ -34,9 +34,6 @@ export default function Home() {
         <>
             <section className="container animated fadeInDown">
                 <div id="atf">
-                    {/* <h2>
-                        Two Failures
-                    </h2> */}
                     <div id="banner-img">
                         <img src={bannerImage} alt="two_failures" />
                     </div>

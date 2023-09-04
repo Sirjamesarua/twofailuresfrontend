@@ -26,7 +26,7 @@ export default function EpisodeCard({ ep }) {
                 </div>
                 <div className="content">
                     <h3>{ep.title}</h3>
-                    <p>
+                    <p className="m-0">
                         {ep.description.length > 40 ?
                             `${ep.description.substring(0, 40)}...` :
                             ep.description

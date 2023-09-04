@@ -22,11 +22,14 @@ header {
             span {
                 font-size: 1rem;
                 font-weight: 700;
-                margin-left: 1rem;
+                margin-left: .5rem;
                 cursor: pointer;
+                transition: all .2s ease;
 
                 i {
                     font-size: 1em;
+                    margin: 0 .4rem;
+                    color: #F97180;
                 }
             }
         }
@@ -116,16 +119,24 @@ footer {
                     width: 100px;
                 }
 
+                #side-img {
+                    width: 18px;
+                    position: absolute;
+                    transform: translateY(-12px),
+                }
+
             }
 
+
             .nav-item {
-                a {
-                    font-size: 0.7rem;
-                    font-weight: 700;
-                    margin-left: 0.5rem;
+
+                span {
+                    .nav-text {
+                        display: none;
+                    }
 
                     i {
-                        font-size: 1em;
+                        font-size: 1.3rem;
                     }
                 }
             }

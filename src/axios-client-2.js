@@ -1,3 +1,8 @@
+/* This axios client interceptor was created to 
+ handle form request that contain multipart form data
+ like images and files
+*/
+
 import axios from "axios";
 
 const axiosClient2 = axios.create({
