@@ -52,7 +52,7 @@ export default function GuestLayout() {
 
                         <span onClick={(ev) => handlePop(ev)} id="contact">
                             <span className="nav-text">Contact</span>
-                            <i className="bi bi-envelope"></i>
+                            <i className="bi bi-telephone-outbound"></i>
                         </span>
 
                         <span to={"#"}>
