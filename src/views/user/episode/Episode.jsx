@@ -52,10 +52,6 @@ export default function Episode() {
     }
 
     const handleNewEntry = () => {
-        if (entryCount >= 2) {
-            alert("Max entries reached!");
-            return;
-        }
         setEntryCount(entryCount + 1);
 
         // Get the existing container by its ID
@@ -104,10 +100,11 @@ export default function Episode() {
 
             </section>
 
+            {/* Popup card that handles the form */}
             {popup &&
                 (<div className="advert-popup animated fadeInDown">
                     <div className="advert-instruction">
-                        <button onClick={() => setPopup(!popup)}>×</button>
+                        <button onClick={() => { setPopup(!popup); setEntryCount(0) }}>×</button>
                         <h3>Get a FREE Merch</h3>
                         <ol>
                             <li>Follow us on all platforms</li>
@@ -132,7 +129,15 @@ export default function Episode() {
                                 </div>
                             </div>
 
-                            <span onClick={handleNewEntry}>+ add new entry</span>
+                            <div className="ad-email-field">
+                                <label htmlFor="ad-email-field">Enter Email</label><br />
+                                <input type="text" id='ad-email-field' placeholder='johndoe@xyz.com' />
+                            </div>
+
+                            {/* hides after entries are up 3 */}
+                            {entryCount >= 2 ? "" :
+                                (<span onClick={handleNewEntry}>+ add new entry</span>)
+                            }
 
                             <button className='close-btn'>
                                 Submit
