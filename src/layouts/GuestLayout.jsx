@@ -27,8 +27,7 @@ export default function GuestLayout() {
 
     // Changes the POP state which is used in line 82
     const handlePop = (ev) => {
-        let value = ev.target.innerText;
-        console.log(value);
+        let value = ev.target.parentNode.id; //checks the id of the element clicked
         setPop(value);
     }
 
@@ -44,15 +43,21 @@ export default function GuestLayout() {
                             </Link>
                         </h1>
                     </div>
+
                     <div className="nav-item">
-                        <span onClick={(ev) => handlePop(ev)}>
-                            About
+                        <span onClick={(ev) => handlePop(ev)} id="about">
+                            <span className="nav-text">About</span>
+                            <i className="bi bi-card-text"></i>
                         </span>
-                        <span onClick={(ev) => handlePop(ev)}>
-                            Contact
+
+                        <span onClick={(ev) => handlePop(ev)} id="contact">
+                            <span className="nav-text">Contact</span>
+                            <i className="bi bi-envelope"></i>
                         </span>
+
                         <span to={"#"}>
-                            Shop
+                            <span className="nav-text">Shop</span>
+                            <i className="bi bi-cart2"></i>
                         </span>
                     </div>
                 </nav>
@@ -75,9 +80,9 @@ export default function GuestLayout() {
             {/* Active if user is not logged in */}
             {location.hash === "#login" && (<LoginPop />)}
 
-            {pop === "About" ?
+            {pop === "about" ?
                 (<PopupCard content={about} newUpdatePop={updatePop} />) :
-                pop === "Contact" ?
+                pop === "contact" ?
                     (<PopupCard content={contact} newUpdatePop={updatePop} />) :
                     ""
             }
