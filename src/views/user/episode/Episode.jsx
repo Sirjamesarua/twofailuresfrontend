@@ -139,7 +139,7 @@ export default function Episode() {
 
                             <div className="ad-email-field">
                                 <label htmlFor="ad-email-field">Enter Email</label><br />
-                                <input type="email" id='ad-email-field' placeholder='johndoe@xyz.com' />
+                                <input type="email" id='ad-email-field' placeholder='johndoe@xyz.com' required />
                             </div>
 
                             {/* hides after entries are up 3 */}
