@@ -3,7 +3,7 @@ import Banner from '../../../components/Banner';
 import EpisodeCard from '../../../components/EpisodeCard';
 import './home.scss';
 import axiosClient from '../../../axios-client';
-import bannerImage from "../../../assets/banner-img.png"
+import bannerImage from "../../../assets/banner-img.png";
 
 export default function Home() {
     const [eps, setEps] = useState([]);

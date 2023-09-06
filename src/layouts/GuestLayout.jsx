@@ -80,10 +80,8 @@ export default function GuestLayout() {
             {/* Active if user is not logged in */}
             {location.hash === "#login" && (<LoginPop />)}
 
-            {pop === "about" ?
-                (<PopupCard content={about} newUpdatePop={updatePop} />) :
-                pop === "contact" ?
-                    (<PopupCard content={contact} newUpdatePop={updatePop} />) :
+            {pop === "about" ? (<PopupCard content={about} newUpdatePop={updatePop} />) :
+                pop === "contact" ? (<PopupCard content={contact} newUpdatePop={updatePop} />) :
                     ""
             }
         </>

@@ -30,20 +30,28 @@ export default function Episode() {
 
     const onSubmit = async (ev) => {
         ev.preventDefault();
-        let name = []; // values for the handle choise
-        let handle = []; // values for handles
+        const formData = ev.target;
 
-        for (let i = 0; i < ev.target.length - 1; i++) {
-            if (i % 2 === 0) {
+        let name = [], handle = [];
+        let email;
+
+        for (let i = 0; i < formData.length - 1; i++) {
+            if (formData[i].type === "select-one") {
                 name.push(ev.target[i].value);
-            } else {
+
+            } else if (formData[i].type === "text") {
                 handle.push(ev.target[i].value);
+
+            } else if (formData[i].type === "email") {
+                email = formData[i].value;
             }
         }
-        const data = { name, handle }
+        const data = { name, handle, email };
+        // console.log(data);
+        // return;
         await axiosClient.post(`/social_handle`, data)
-            .then((data) => {
-                console.log(data);
+            .then(() => {
+                alert("Successfully sent!");
                 window.location.reload();
             })
             .catch((error) => {
@@ -131,7 +139,7 @@ export default function Episode() {
 
                             <div className="ad-email-field">
                                 <label htmlFor="ad-email-field">Enter Email</label><br />
-                                <input type="text" id='ad-email-field' placeholder='johndoe@xyz.com' />
+                                <input type="email" id='ad-email-field' placeholder='johndoe@xyz.com' required />
                             </div>
 
                             {/* hides after entries are up 3 */}
