@@ -44,17 +44,17 @@ export default function GuestLayout() {
                         </h1>
                     </div>
 
-                    <div className="nav-item">
+                    <div className="nav-items">
                         <span onClick={(ev) => handlePop(ev)} id="about">
                             <span className="nav-text">About</span>
                             <i className="bi bi-card-text"></i>
                         </span>
-
+                        &nbsp;
                         <span onClick={(ev) => handlePop(ev)} id="contact">
                             <span className="nav-text">Contact</span>
                             <i className="bi bi-telephone-outbound"></i>
                         </span>
-
+                        &nbsp;
                         <span to={"#"}>
                             <span className="nav-text">Shop</span>
                             <i className="bi bi-cart2"></i>
@@ -69,7 +69,7 @@ export default function GuestLayout() {
 
             <footer>
                 <div className="text-center mt-3">
-                    <h4>Follow Us on</h4>
+                    <h4>Follow Us On</h4>
                     <p>
                         <i className="bi bi-whatsapp"></i> WhatsApp - {" "}
                         <i className="bi bi-telegram"></i> Telegram - {" "}

@@ -19,6 +19,7 @@ export async function loader({ params }) {
 
 export default function Episode() {
     const [popup, setPopup] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [entryCount, setEntryCount] = useState(0);
 
     const { user } = useStateContext();
@@ -29,6 +30,7 @@ export default function Episode() {
     }
 
     const onSubmit = async (ev) => {
+        setLoading(true);
         ev.preventDefault();
         const formData = ev.target;
 
@@ -46,9 +48,8 @@ export default function Episode() {
                 email = formData[i].value;
             }
         }
+
         const data = { name, handle, email };
-        // console.log(data);
-        // return;
         await axiosClient.post(`/social_handle`, data)
             .then(() => {
                 alert("Successfully sent!");
@@ -126,7 +127,7 @@ export default function Episode() {
 
                         <form onSubmit={onSubmit} id='myForm'>
                             <div id="input-group">
-                                <div className="group mb-1 animated fadeInDown" id='social-group'>
+                                <div className="group animated fadeInDown" id='social-group'>
                                     <select name='social-c-hoice' defaultValue={""} required>
                                         <option value="" disabled>Choose social link</option>
                                         <option value="Twitter">Twitter</option>
@@ -137,18 +138,18 @@ export default function Episode() {
                                 </div>
                             </div>
 
-                            <div className="ad-email-field">
-                                <label htmlFor="ad-email-field">Enter Email</label><br />
-                                <input type="email" id='ad-email-field' placeholder='johndoe@xyz.com' required />
-                            </div>
-
                             {/* hides after entries are up 3 */}
                             {entryCount >= 2 ? "" :
                                 (<span onClick={handleNewEntry}>+ add new entry</span>)
                             }
 
-                            <button className='close-btn'>
-                                Submit
+                            <div className="ad-email-field">
+                                <label htmlFor="ad-email-field">Enter Email</label><br />
+                                <input type="email" id='ad-email-field' placeholder='johndoe@xyz.com' required />
+                            </div>
+
+                            <button className='close-btn' disabled={loading}>
+                                {loading ? "Submitting" : "Submit"}
                             </button>
                         </form>
                     </div>
