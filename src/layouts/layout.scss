@@ -20,6 +20,7 @@ header {
 
         .nav-items>span {
             font-size: .8rem;
+            font-family: $button-font;
             text-transform: uppercase;
             background: $secondary-color;
             border-radius: 5px;
@@ -35,9 +36,11 @@ header {
             }
 
             i {
-                font-size: 1em;
-                margin-left: .3rem;
+                font-size: 1.3em;
+                margin-right: .3rem;
                 color: #F97180;
+                position: relative;
+                top: 1px;
             }
         }
     }
