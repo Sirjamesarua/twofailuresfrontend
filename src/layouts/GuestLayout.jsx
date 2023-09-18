@@ -4,6 +4,7 @@ import PopupCard from "../components/PopupCard";
 import logo from "../assets/twofailures_logo.png";
 import sideImg from "../assets/side-img.png"
 import React, { useState } from "react";
+import Loader from "../components/Loader";
 
 export default function GuestLayout() {
     const location = useLocation();
@@ -80,9 +81,15 @@ export default function GuestLayout() {
             {/* Active if user is not logged in */}
             {location.hash === "#login" && (<LoginPop />)}
 
+            {/* For page pop ups */}
             {pop === "about" ? (<PopupCard content={about} newUpdatePop={updatePop} />) :
                 pop === "contact" ? (<PopupCard content={contact} newUpdatePop={updatePop} />) :
                     ""
+            }
+
+            {/* for loader */}
+            {navigation.state === "loading" ?
+                (<Loader text="episode" />) : ""
             }
         </>
     )
