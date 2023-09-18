@@ -10,6 +10,7 @@ export default function Home() {
     const [message, setMessage] = useState(<span className='loading-text'>loading episodes</span>);
 
     const fetchEpisodes = async () => {
+        setMessage(<span className='loading-text'>loading episodes</span>);
         await axiosClient.get('/episodes')
             .then(({ data }) => {
                 setEps(data);
@@ -18,7 +19,7 @@ export default function Home() {
                 console.log(err);
                 setMessage(
                     <span className='text-secondary'>Something went wrong <br />
-                        <button className='err-btn' onClick={() => window.location.reload()}>
+                        <button className='err-btn' onClick={() => fetchEpisodes()}>
                             Reload
                         </button>
                     </span >
