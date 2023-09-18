@@ -54,6 +54,7 @@
     z-index: 2;
 
     .advert-instruction {
+        z-index: 3;
         background: #fff;
         width: 350px;
         margin: 5rem auto 0;
@@ -65,6 +66,11 @@
             li {
                 margin: 0 0 1rem;
             }
+        }
+
+        a {
+            color: #1877F2;
+            font-weight: 600;
         }
     }
 }

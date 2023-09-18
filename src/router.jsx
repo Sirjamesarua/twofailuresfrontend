@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { Navigate, createBrowserRouter } from "react-router-dom";
 // Layout Imports -------------------------------------------------------------------
 import GuestLayout from "./layouts/GuestLayout";
 import AdminLayout from "./layouts/AdminLayout";
@@ -49,6 +49,10 @@ const router = createBrowserRouter([
         element: <AdminLayout />,
         errorElement: <ErrorPage />,
         children: [
+            {
+                path: '/admin',
+                element: <Navigate to={'/admin/dashboard'} />
+            },
             {
                 index: true,
                 path: "dashboard",

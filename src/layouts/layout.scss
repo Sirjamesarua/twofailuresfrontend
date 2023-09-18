@@ -22,8 +22,9 @@ header {
             font-size: .8rem;
             font-family: $button-font;
             text-transform: uppercase;
-            background: #734194;
+            background: #6842FF;
             border-radius: 5px;
+            border: 2px solid #ffffff4d;
             padding: .2rem .4rem;
             cursor: pointer;
             color: #fff;
@@ -38,7 +39,8 @@ header {
             i {
                 font-size: 1.3em;
                 margin-right: .3rem;
-                color: #F97180;
+                color: #fff;
+                // color: #F97180;
                 position: relative;
                 top: 1px;
             }
@@ -49,8 +51,10 @@ header {
 footer {
     h4 {
         padding: 0.2rem 0.4rem;
-        border-radius: 0.5rem;
+        border-radius: 5px;
         color: #fff;
+        background: #6842FF;
+        border: 2px solid #ffffff4d;
         background-color: $secondary-color;
         display: inline-block;
     }
