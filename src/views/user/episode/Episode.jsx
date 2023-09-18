@@ -113,16 +113,29 @@ export default function Episode() {
             {popup &&
                 (<div className="advert-popup animated fadeInDown">
                     <div className="advert-instruction">
-                        <button onClick={() => { setPopup(!popup); setEntryCount(0) }}>×</button>
-                        <h3>Get a FREE Merch</h3>
-                        <ol>
-                            <li>Follow us on all platforms</li>
-                            <li>Do that and this and that</li>
-                            <li>Send us your social handles</li>
-                        </ol>
+                        <button onClick={() => { setPopup(!popup); setEntryCount(0) }}>cancel</button>
+                        <h3>
+                            Win FREE Two Failures Merch
+                        </h3>
+                        <p className='m-0'>
+                            <small>
+                                Become one of our followers and have a chance to win Two failures merch every month.
+                                Winners would be contacted via email:
+                            </small>
+                        </p>
 
                         <p className='m-0'>
-                            <b>Submit your social handles</b>
+                            <small>
+                                <b> Step 1:</b> <br />
+                                Follow us on our Social Media platforms: <br />
+                                <a href="https://www.facebook.com/TwoFailures">Facebook</a>, <a href="https://www.instagram.com/2failures/">Instagram</a>, <a href="https://twitter.com/2Failures">X (twitter)</a>
+                            </small>
+                        </p>
+                        <p className='m-0'>
+                            <small>
+                                <b>Step 2:</b> <br />
+                                Send your social handles by filling the form below
+                            </small>
                         </p>
 
                         <form onSubmit={onSubmit} id='myForm'>
@@ -143,8 +156,14 @@ export default function Episode() {
                                 (<span onClick={handleNewEntry}>+ add new entry</span>)
                             }
 
+                            <p className='m-0'>
+                                <small>
+                                    <b>Step 3: </b><br />
+                                    Enter your email
+                                </small>
+                            </p>
+
                             <div className="ad-email-field">
-                                <label htmlFor="ad-email-field">Enter Email</label><br />
                                 <input type="email" id='ad-email-field' placeholder='johndoe@xyz.com' required />
                             </div>
 

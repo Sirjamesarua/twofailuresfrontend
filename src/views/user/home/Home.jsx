@@ -39,7 +39,7 @@ export default function Home() {
                         <img src={bannerImage} alt="two_failures" />
                     </div>
                     <p className='text-center'>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptate, amet.
+                        Shop Two Failures merchandise 👇
                     </p>
                     <Banner />
 

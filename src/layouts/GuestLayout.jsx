@@ -13,7 +13,12 @@ export default function GuestLayout() {
 
     const about = {
         title: "About",
-        content: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolor corrupti pariatur ab et quos minima maxime ipsum? In, quidem eaque."
+        content: `Tag and Simi are two best friends who have one thing in common: they are
+        failures.They work as maintenance workers in the female dorm of a prestigious
+        university, where they hope to find some romance and adventure, but their plans
+        always backfire, and they end up in awkward and embarrassing situations.
+        Follow their hilarious misadventures as they try to deal with their daily struggles
+        with humor and optimism.`
     }
 
     const contact = {
@@ -72,9 +77,9 @@ export default function GuestLayout() {
                 <div className="text-center mt-3">
                     <h4>Follow Us On</h4>
                     <p>
-                        <i className="bi bi-whatsapp"></i> WhatsApp - {" "}
-                        <i className="bi bi-telegram"></i> Telegram - {" "}
-                        <i className="bi bi-twitter"></i> Twitter
+                        <i className="bi bi-instagram"></i> Instagram | {" "}
+                        <i className="bi bi-facebook"></i> Facebook | {" "}
+                        <i className="bi bi-twitter"></i> X
                     </p>
                 </div>
             </footer>
