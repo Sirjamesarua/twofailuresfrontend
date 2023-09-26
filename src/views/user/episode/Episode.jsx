@@ -5,6 +5,7 @@ import axiosClient from '../../../axios-client';
 import Banner from "../../../components/Banner";
 import PopupAd from '../../../components/PopupAd';
 import { useState } from 'react';
+import ShareContent from '../../../components/ShareContent';
 
 export async function loader({ params }) {
     try {
@@ -90,14 +91,7 @@ export default function Episode() {
                     {episode.title}
                 </div>
 
-                <div className='share-episode mt-1'>
-                    <h3>Share this episode</h3>
-                    <div>
-                        <i className="bi bi-whatsapp"></i>
-                        <i className="bi bi-facebook"></i>
-                        <i className="bi bi-telegram"></i>
-                    </div>
-                </div>
+                <ShareContent />
 
                 <div className="episode-content mt-2">
                     <div dangerouslySetInnerHTML={{ __html: episode.content }} />
