@@ -77,9 +77,15 @@ export default function GuestLayout() {
                 <div className="text-center mt-3">
                     <h4>Follow Us On</h4>
                     <p>
-                        <a href="https://www.instagram.com/2failures/"><i className="bi bi-instagram"></i> Instagram</a> | {" "}
-                        <a href="https://www.facebook.com/TwoFailures"><i className="bi bi-facebook"></i> Facebook </a>| {" "}
-                        <a href="https://twitter.com/2Failures"><i className="bi bi-twitter"></i> X</a>
+                        <a href="https://www.instagram.com/2failures/" target="_blank">
+                            <i className="bi bi-instagram"></i> Instagram
+                        </a> | {" "}
+                        <a href="https://www.facebook.com/TwoFailures" target="_blank">
+                            <i className="bi bi-facebook"></i> Facebook
+                        </a> | {" "}
+                        <a href="https://twitter.com/2Failures" target="_blank">
+                            <i className="bi bi-twitter"></i> X
+                        </a>
                     </p>
                 </div>
             </footer>
