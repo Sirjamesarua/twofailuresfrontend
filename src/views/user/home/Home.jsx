@@ -39,7 +39,7 @@ export default function Home() {
                         <img src={bannerImage} alt="two_failures" />
                     </div>
                     <p className='text-center color-blue'>
-                        Shop Two Failures merchandise 👇
+                        Shop Two Failures Merchandise 👇
                     </p>
                     <Banner />
 
