@@ -10,11 +10,13 @@ export default function PopupCard({ content, newUpdatePop }) {
     return (
         <div id='popup-card' className='animated fadeInDown fadeInBg'>
             <div className="card-container animated fadeInDown">
-                <h2>{content.title}</h2>
+                <h2 className='color-blue fw-bold font-cursive'>{content.title}</h2>
+                <br />
                 <div className="card-content">
                     {content.content}
                 </div>
-                <button onClick={handleButtonClick} className='mt-1'>Close</button>
+                <br />
+                <button onClick={handleButtonClick} className='mt-1 btn-blue' type='button'>Close</button>
             </div>
         </div>
     )

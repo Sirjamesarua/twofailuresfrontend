@@ -5,6 +5,7 @@ import axiosClient from '../../../axios-client';
 import Banner from "../../../components/Banner";
 import PopupAd from '../../../components/PopupAd';
 import { useState } from 'react';
+import ShareContent from '../../../components/ShareContent';
 
 export async function loader({ params }) {
     try {
@@ -90,14 +91,7 @@ export default function Episode() {
                     {episode.title}
                 </div>
 
-                <div className='share-episode mt-1'>
-                    <h3>Share this episode</h3>
-                    <div>
-                        <i className="bi bi-whatsapp"></i>
-                        <i className="bi bi-facebook"></i>
-                        <i className="bi bi-telegram"></i>
-                    </div>
-                </div>
+                <ShareContent />
 
                 <div className="episode-content mt-2">
                     <div dangerouslySetInnerHTML={{ __html: episode.content }} />
@@ -113,7 +107,9 @@ export default function Episode() {
             {popup &&
                 (<div className="advert-popup animated fadeInDown">
                     <div className="advert-instruction">
-                        <button onClick={() => { setPopup(!popup); setEntryCount(0) }}>cancel</button>
+                        <button onClick={() => { setPopup(!popup); setEntryCount(0) }} className='btn-blue'>cancel</button>
+                        <br />
+                        <br />
                         <h3>
                             Win FREE Two Failures Merch
                         </h3>
@@ -128,7 +124,9 @@ export default function Episode() {
                             <small>
                                 <b> Step 1:</b> <br />
                                 Follow us on our Social Media platforms: <br />
-                                <a href="https://www.facebook.com/TwoFailures">Facebook</a>, <a href="https://www.instagram.com/2failures/">Instagram</a>, <a href="https://twitter.com/2Failures">X (twitter)</a>
+                                <a href="https://www.facebook.com/TwoFailures" target='_blank'>Facebook</a>, {" "}
+                                <a href="https://www.instagram.com/2failures/" target='_blank'>Instagram</a>, {" "}
+                                <a href="https://twitter.com/2Failures" target='_blank'>X (twitter)</a>
                             </small>
                         </p>
                         <p className='m-0'>
