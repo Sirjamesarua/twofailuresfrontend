@@ -107,7 +107,9 @@ export default function Episode() {
             {popup &&
                 (<div className="advert-popup animated fadeInDown">
                     <div className="advert-instruction">
-                        <button onClick={() => { setPopup(!popup); setEntryCount(0) }}>cancel</button>
+                        <button onClick={() => { setPopup(!popup); setEntryCount(0) }} className='btn-blue'>cancel</button>
+                        <br />
+                        <br />
                         <h3>
                             Win FREE Two Failures Merch
                         </h3>

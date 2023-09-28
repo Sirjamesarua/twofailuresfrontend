@@ -38,7 +38,7 @@ export default function Home() {
                     <div id="banner-img">
                         <img src={bannerImage} alt="two_failures" />
                     </div>
-                    <p className='text-center'>
+                    <p className='text-center color-blue'>
                         Shop Two Failures merchandise 👇
                     </p>
                     <Banner />
