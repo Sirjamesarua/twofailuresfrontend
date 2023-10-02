@@ -1,34 +1,31 @@
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import { useStateContext } from "../context/ContextProvider";
-import axiosClient from "../axios-client.js"
+import axiosClient from "../axios-client.js";
+import Backdrop from "./Backdrop";
 
 export default function LoginPop() {
     const { register, handleSubmit, formState: { isSubmitting } } = useForm();
-    const { putUser, redirect } = useStateContext();
     const navigate = useNavigate();
 
     const onSubmit = async (email) => {
         try {
             const data = await axiosClient.post('/login', email);
             if (data.status === 200) {
-                putUser(true);
-                navigate(redirect);
+                navigate("#verify-email"); // Navigates to link saved in Context state
             } else {
-                alert("Something went wrong, \n Try Again!")
+                alert("Something went wrong, \nTry Again!")
             }
         } catch (error) {
-            putUser(false);
-            console.log(error)
+            console.log(error);
         }
     }
 
     return (
-        <div id="login-pop" className="animated fadeInDown fadeInBg">
+        <Backdrop>
             <div className="form-container">
                 <Link to={"/"}>
-                    <button className="close-btn">
-                        <i className="bi bi-x-lg"></i>
+                    <button className='mb-1 btn-blue close-btn' type='button'>
+                        close
                     </button>
                 </Link>
                 <h2 className="mb-1">Login to Two Failures</h2>
@@ -47,6 +44,6 @@ export default function LoginPop() {
                     </div>
                 </form>
             </div>
-        </div>
+        </Backdrop>
     )
 }

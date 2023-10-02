@@ -5,6 +5,7 @@ import logo from "../assets/twofailures_logo.png";
 import sideImg from "../assets/side-img.png"
 import React, { useState } from "react";
 import Loader from "../components/Loader";
+import Otp from "../components/Otp";
 
 export default function GuestLayout() {
     const location = useLocation();
@@ -91,6 +92,7 @@ export default function GuestLayout() {
             </footer>
             {/* Active if user is not logged in */}
             {location.hash === "#login" && (<LoginPop />)}
+            {location.hash === "#verify-email" && (<Otp />)}
 
             {/* For page pop ups */}
             {pop === "about" ? (<PopupCard content={about} newUpdatePop={updatePop} />) :

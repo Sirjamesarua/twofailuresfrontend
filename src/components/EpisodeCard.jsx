@@ -14,6 +14,7 @@ export default function EpisodeCard({ ep }) {
 
     return (
         <Link to={link} className="animated fadeInDown" onClick={() => setRedirect(`/episodes/${ep.id}`)}>
+            { /* ^^ Saves link to episode in Context */}
             <div className="episode-card">
                 <div className="episode-img"
                     style={{
