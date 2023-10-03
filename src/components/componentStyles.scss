@@ -61,7 +61,7 @@
 
 }
 
-#login-pop {
+#backdrop {
     background: #ffe3e343;
     backdrop-filter: blur(10px);
     position: fixed;
@@ -70,11 +70,7 @@
     height: 100dvh;
     width: 100vw;
 
-    form {
-        // border: 1px solid black;
-    }
-
-    .form-container {
+    .backdrop-content {
         background: #fff;
         width: 350px;
         margin: 11rem auto 0;
@@ -82,45 +78,46 @@
         border-radius: 0.5rem;
         padding: 1rem 2rem;
 
-        .input-control {
-            margin: 0 0 1rem;
+        .form-container {
+            .input-control {
+                margin: 0 0 1rem;
 
-            input {
-                box-sizing: border-box;
-                display: inline-block;
-                height: 50px;
-                width: 100%;
-                border: 2px solid #f3e1ff;
-                border-radius: 0.5rem;
-                font-size: 1.3rem;
-                transition: all .2s;
+                input {
+                    box-sizing: border-box;
+                    display: inline-block;
+                    height: 50px;
+                    width: 100%;
+                    border: 2px solid #f3e1ff;
+                    border-radius: 0.5rem;
+                    font-size: 1.3rem;
+                    transition: all .2s;
 
-                &:hover {
-                    outline: 2px solid $secondary-color;
+                    &:hover {
+                        outline: 2px solid $secondary-color;
+                    }
                 }
-            }
 
-            button {
-                box-sizing: border-box;
-                padding: 0.6rem 1.6rem;
-                width: 100%;
-                border: none;
-                color: #fff;
-                font-size: 1.2rem;
-                border-radius: 0.5rem;
-                background: $secondary-color;
-                transition: all .2s;
-                text-transform: uppercase;
+                button {
+                    box-sizing: border-box;
+                    padding: 0.6rem 1.6rem;
+                    width: 100%;
+                    border: none;
+                    color: #fff;
+                    border-radius: 0.5rem;
+                    background: $secondary-color;
+                    transition: all .2s;
+                    text-transform: uppercase;
+                    font-weight: 700;
 
-                &:hover {
-                    color: $secondary-color;
-                    background: #BD34FE40;
-                    letter-spacing: 1px;
+                    &:hover {
+                        color: $secondary-color;
+                        background: #BD34FE40;
+                        letter-spacing: 1px;
+                    }
                 }
             }
         }
     }
-
 }
 
 .details-card {
@@ -240,29 +237,9 @@
         }
     }
 
-    #login-pop {
-        .form-container {
-            background: #fff;
+    #backdrop {
+        .backdrop-content {
             width: 280px;
-
-            .input-control {
-                input {
-                    box-sizing: border-box;
-                    display: inline-block;
-                    height: 40px;
-                    width: 100%;
-                    font-size: 1.3rem;
-                }
-
-                button {
-                    box-sizing: border-box;
-                    padding: 0.5rem 1rem;
-                    width: 100%;
-                    border: none;
-                    font-size: 1rem;
-                    background: $secondary-color;
-                }
-            }
         }
     }
 
