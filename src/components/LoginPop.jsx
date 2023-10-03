@@ -23,8 +23,11 @@ export default function LoginPop() {
 
                 if (res.email_verified_at === null) {
                     putUser(res.email)
-                    navigate("#verify-email")
+                    navigate("/#verify-email")
+                    return;
                 }
+
+                alert("Something went wrong" + response)
             });
     }
 
