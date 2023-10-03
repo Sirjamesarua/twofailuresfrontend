@@ -13,14 +13,14 @@ const StateContext = createContext({
 
     // redirect after login
     redirect: null,
-    setRedirect: () => { }
+    putURL: () => { }
 });
 
 export const ContextProvider = ({ children }) => {
     const [user, setUser] = useState(localStorage.getItem('tfuser'));
     const [admin, setAdmin] = useState("");
     const [adminToken, setAdminToken] = useState(localStorage.getItem('tfa_token'));
-    const [redirect, setRedirect] = useState("");
+    const [redirect, setRedirect] = useState(localStorage.getItem('tf_episode'));
 
     const putUser = (email) => {
         if (email) {
@@ -29,6 +29,11 @@ export const ContextProvider = ({ children }) => {
         } else {
             localStorage.removeItem('tfuser');
         }
+    }
+
+    const putURL = (url) => {
+        setRedirect(url);
+        localStorage.setItem('tf_episode', url);
     }
 
     const putAdminToken = (token) => {
@@ -44,7 +49,7 @@ export const ContextProvider = ({ children }) => {
         <StateContext.Provider value={{
             user, putUser, //user
             admin, adminToken, setAdmin, putAdminToken, //admin
-            redirect, setRedirect //redirect after login
+            redirect, putURL //redirect after login
         }}>
             {children}
         </StateContext.Provider>
