@@ -3,6 +3,7 @@ import axiosClient from "../../../axios-client";
 import { useStateContext } from "../../../context/ContextProvider";
 import { Navigate } from "react-router-dom";
 import "./adminLoginStyles.scss";
+import { useState } from "react";
 
 export default function AdminLogin() {
   const { register, handleSubmit, formState: { isSubmitting } } = useForm();
@@ -10,13 +11,21 @@ export default function AdminLogin() {
 
   const onSubmit = async (credentials) => {
     // console.log(data);
-    try {
-      const { data } = await axiosClient.post("/admin/login", credentials);
-      putAdminToken(data.token);
-    } catch (error) {
-      console.log(error);
-    }
+    await axiosClient.post("/admin/login", credentials)
+      .then(({ data }) => {
+        const res = data.message;
+        putAdminToken(data.token);
+        if (res === "Wrong credentials") {
+          alert(res);
+        }
+        console.log(data.message);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
+
+
 
   if (adminToken) {
     return <Navigate to={"/admin/dashboard"} />
@@ -25,9 +34,10 @@ export default function AdminLogin() {
   return (
     <div className="container">
       <form onSubmit={handleSubmit(onSubmit)} id="adminLoginForm">
+        <h2 className="text-center mb-1">Admin Login</h2>
         <div className="input-control">
           <label htmlFor="email">Email</label><br />
-          <input type="text" id="email"
+          <input type="email" id="email"
             {...register("email", { required: true })}
           />
         </div>
@@ -41,7 +51,7 @@ export default function AdminLogin() {
 
         <div className="input-control">
           <button type="submit" disabled={isSubmitting}>
-            {isSubmitting ? (<span className="loading-text">logging in</span>) : "login"}
+            {isSubmitting ? (<span className="loading-text">processing</span>) : "login"}
           </button>
         </div>
 

@@ -18,7 +18,7 @@ export default function AdminLayout() {
                 });
         } catch (error) {
             console.log(error);
-            alert("Logout unsuccesful!");
+            alert("Something went wrong!");
         }
     }
 

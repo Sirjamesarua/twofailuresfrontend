@@ -2,22 +2,27 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import axiosClient from "../axios-client.js";
 import Backdrop from "./Backdrop";
+import { useStateContext } from "../context/ContextProvider.jsx";
 
 export default function LoginPop() {
     const { register, handleSubmit, formState: { isSubmitting } } = useForm();
+    const { putUser, redirect } = useStateContext()
     const navigate = useNavigate();
 
     const onSubmit = async (email) => {
-        try {
-            const data = await axiosClient.post('/login', email);
-            if (data.status === 200) {
-                navigate("#verify-email"); // Navigates to link saved in Context state
-            } else {
-                alert("Something went wrong, \nTry Again!")
-            }
-        } catch (error) {
-            console.log(error);
-        }
+        await axiosClient.post('/login', email)
+            .then(({ data }) => {
+                console.log(data);
+                if (data.user.email_verified_at) {
+                    putUser(data.user.email)
+                    navigate(redirect)
+                }
+            })
+            .catch(({ response }) => {
+                if (response.data.user.email_verified_at === null) {
+                    navigate("#verify-email");
+                }
+            });
     }
 
     return (
@@ -28,10 +33,20 @@ export default function LoginPop() {
                         close
                     </button>
                 </Link>
-                <h2 className="mb-1">Login to Two Failures</h2>
+                <h2 className="m-0 fw-bold">Log In</h2>
+
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="input-control">
-                        <label htmlFor="email">Email</label><br />
+                        <label htmlFor="email">
+                            <small>
+                                Please enter a valid email address to continue <br />
+                                An OTP will be sent to your email address
+                            </small>
+                        </label>
+
+                        <br />
+                        <br />
+
                         <input type="email" id="email" placeholder="youremail@xxx.com"
                             {...register("email", { required: true })}
                         />
@@ -39,9 +54,10 @@ export default function LoginPop() {
 
                     <div className="input-control">
                         <button type="submit" disabled={isSubmitting}>
-                            {isSubmitting ? (<span className="loading-text">logging in</span>) : "login"}
+                            {isSubmitting ? (<span className="loading-text">processing</span>) : "login"}
                         </button>
                     </div>
+
                 </form>
             </div>
         </Backdrop>

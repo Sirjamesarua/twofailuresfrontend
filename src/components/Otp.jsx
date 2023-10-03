@@ -7,15 +7,16 @@ import axiosClient from '../axios-client';
 
 export default function Otp() {
     const { register, handleSubmit, formState: { isSubmitting } } = useForm();
-    const { putUser, redirect } = useStateContext();
+    const { redirect, user } = useStateContext();
     const navigate = useNavigate();
 
     const onSubmit = async (data) => {
+        data.email = user;
         console.log(data);
-        return;
-        await axiosClient.post('/otp', data)
-            .then(() => {
-                putUser(true);
+
+        await axiosClient.post('/verify-email', data)
+            .then((data) => {
+                console.log(data);
                 navigate(redirect);
             })
             .catch((error) => {

@@ -22,10 +22,10 @@ export const ContextProvider = ({ children }) => {
     const [adminToken, setAdminToken] = useState(localStorage.getItem('tfa_token'));
     const [redirect, setRedirect] = useState("");
 
-    const putUser = (user) => {
-        if (user) {
-            setUser(user);
-            localStorage.setItem('tfuser', true);
+    const putUser = (email) => {
+        if (email) {
+            setUser(email);
+            localStorage.setItem('tfuser', email);
         } else {
             localStorage.removeItem('tfuser');
         }

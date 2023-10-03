@@ -237,29 +237,9 @@
         }
     }
 
-    #login-pop {
-        .form-container {
-            background: #fff;
+    #backdrop {
+        .backdrop-content {
             width: 280px;
-
-            .input-control {
-                input {
-                    box-sizing: border-box;
-                    display: inline-block;
-                    height: 40px;
-                    width: 100%;
-                    font-size: 1.3rem;
-                }
-
-                button {
-                    box-sizing: border-box;
-                    padding: 0.5rem 1rem;
-                    width: 100%;
-                    border: none;
-                    font-size: 1rem;
-                    background: $secondary-color;
-                }
-            }
         }
     }
 
