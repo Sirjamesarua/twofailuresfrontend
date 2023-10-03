@@ -16,9 +16,7 @@ axiosClient.interceptors.response.use((response) => {
     try {
         const { response } = error;
         if (response.status === 401) {
-            // localStorage.removeItem('tfa_token');
-            // localStorage.removeItem('tfuser');
-            // window.location.href = "/admin/login";
+            window.location.href = "/#login";
         }
     } catch (error) {
         console.log(error);

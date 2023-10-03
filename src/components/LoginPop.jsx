@@ -19,8 +19,11 @@ export default function LoginPop() {
                 }
             })
             .catch(({ response }) => {
-                if (response.data.user.email_verified_at === null) {
-                    navigate("#verify-email");
+                const res = response.data.user;
+
+                if (res.email_verified_at === null) {
+                    putUser(res.email)
+                    navigate("#verify-email")
                 }
             });
     }

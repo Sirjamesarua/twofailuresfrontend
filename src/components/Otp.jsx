@@ -12,8 +12,9 @@ export default function Otp() {
 
     const onSubmit = async (data) => {
         data.email = user;
-        console.log(data);
 
+        console.log(data);
+        // return
         await axiosClient.post('/verify-email', data)
             .then((data) => {
                 console.log(data);
