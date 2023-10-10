@@ -36,7 +36,7 @@ export default function Home() {
             <section className="container animated fadeInDown">
                 <div id="atf">
                     <div id="banner-img">
-                        <img src={bannerImage} alt="two_failures" />
+                        <img src={bannerImage} alt="two_failures" onClick={() => window.location = "https://store.twofailures.com"} title='Goto Two Failures Store' />
                     </div>
                     <p className='text-center color-blue'>
                         Shop Two Failures Merchandise 👇

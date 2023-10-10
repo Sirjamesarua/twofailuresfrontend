@@ -53,17 +53,17 @@ export default function GuestLayout() {
 
                     <div className="nav-items">
                         <span onClick={(ev) => handlePop(ev)} id="about">
-                            <i className="bi bi-chat-square-fill"></i>
+                            <i className="bi bi-chat-quote"></i> {" "}
                             <span className="nav-text">About</span>
                         </span>
                         &nbsp;
                         <span onClick={(ev) => handlePop(ev)} id="contact">
-                            <i className="bi bi-megaphone-fill"></i>
+                            <i className="bi bi-telephone-forward"></i> {" "}
                             <span className="nav-text">Contact</span>
                         </span>
                         &nbsp;
-                        <span to={"#"}>
-                            <i className="bi bi-cart-fill"></i>
+                        <span onClick={() => window.location = "https://store.twofailures.com"}>
+                            <i className="bi bi-cart3"></i> {" "}
                             <span className="nav-text">Shop</span>
                         </span>
                     </div>
