@@ -63,7 +63,6 @@ export default function Episode() {
 
     const handleNewEntry = () => {
         setEntryCount(entryCount + 1);
-
         // Get the existing container by its ID
         const oldDiv = document.getElementById("social-group");
 
@@ -107,7 +106,7 @@ export default function Episode() {
             {popup &&
                 (<div className="advert-popup animated fadeInDown">
                     <div className="advert-instruction">
-                        <button onClick={() => { setPopup(!popup); setEntryCount(0) }} className='btn-blue'>cancel</button>
+                        <button onClick={() => { setPopup(!popup); setEntryCount(0) }} className='btn-blue'>close</button>
                         <br />
                         <br />
                         <h3>
