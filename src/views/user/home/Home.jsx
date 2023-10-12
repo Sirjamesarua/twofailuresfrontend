@@ -38,7 +38,7 @@ export default function Home() {
                     <div id="banner-img">
                         <img src={bannerImage} alt="two_failures" onClick={() => window.location = "https://store.twofailures.com"} title='Goto Two Failures Store' />
                     </div>
-                    <p className='text-center color-blue'>
+                    <p className='text-center text-cursive color-blue'>
                         Shop Two Failures Merchandise 👇
                     </p>
                     <Banner />

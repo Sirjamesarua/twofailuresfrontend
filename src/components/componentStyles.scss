@@ -179,14 +179,15 @@
 }
 
 .banner {
-    width: 500px;
-    height: 90px;
+    max-width: 375px;
+    height: 200px;
     border-radius: 5px;
     box-shadow: $box-shadow3;
     text-align: center;
     margin: 0 auto;
-    background-image: url('../assets/banner-img.jpeg');
-    background-position: 0 30%;
+    background-image: url('../assets/ad-img.png');
+    background-size: cover;
+    // background-position: center center;
 }
 
 .popup-ad {
@@ -196,8 +197,9 @@
     box-shadow: $box-shadow3;
     text-align: center;
     margin: 0 auto;
-    background-image: url('../assets/banner-img.jpeg');
-    background-position: 0 30%;
+    background-image: url('../assets/ad-img.png');
+    background-size: cover;
+    // background-position: center 30%;
 }
 
 #popup-card {

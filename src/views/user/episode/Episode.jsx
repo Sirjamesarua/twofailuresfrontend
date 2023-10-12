@@ -85,6 +85,9 @@ export default function Episode() {
     return (
         <>
             <section className="container read-box mt-2 animated fadeInDown">
+                <p className='text-center color-blue text-cursive'>
+                    Shop Two Failures Merchandise 👇
+                </p>
                 <Banner />
                 <div className="episode-title mt-2">
                     {episode.title}
