@@ -39,14 +39,18 @@ export default function LoginPop() {
                         close
                     </button>
                 </Link>
-                <h2 className="m-0 fw-bold">Log In</h2>
+                {/* <h2 className="m-0 fw-bold">Log In</h2> */}
 
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="input-control">
                         <label htmlFor="email">
                             <small>
                                 Please enter a valid email address to continue <br />
-                                An OTP will be sent to your email address
+                                An OTP will be sent to verify your email address
+                            </small>
+                            <br />
+                            <small className="color-blue">
+                                <b>You only have to do this once</b>
                             </small>
                         </label>
 
