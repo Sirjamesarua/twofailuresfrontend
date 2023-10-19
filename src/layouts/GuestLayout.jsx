@@ -24,7 +24,7 @@ export default function GuestLayout() {
 
     const contact = {
         title: "Contact Us",
-        content: "08182843535"
+        content: "For inquiry email info@twofailures.com"
     };
 
     // Updater function in PopupCard component
@@ -74,8 +74,8 @@ export default function GuestLayout() {
                 <Outlet />
             </main>
 
-            <footer>
-                <div className="text-center mt-3">
+            <footer className="container">
+                <div>
                     <h4>Follow Us On</h4>
                     <p>
                         <a href="https://www.instagram.com/2failures/" target="_blank">
@@ -87,6 +87,13 @@ export default function GuestLayout() {
                         <a href="https://twitter.com/2Failures" target="_blank">
                             <i className="bi bi-twitter"></i> X
                         </a>
+                    </p>
+                </div>
+                <div>
+                    <p className="m-0">
+                        <small>
+                            &copy; 2023, Two Failures • <a href="https://store.twofailures.com/policies/privacy-policy" target="_blank">privacy policy</a> • <Link to="/cookie-policy">cookie policy</Link>
+                        </small>
                     </p>
                 </div>
             </footer>

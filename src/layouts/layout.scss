@@ -49,14 +49,15 @@ header {
 }
 
 footer {
+    margin-top: 3rem !important;
+    background: #F4F5F6;
+    padding: 2rem 0;
+
+
     h4 {
-        padding: 0.2rem 0.4rem;
-        border-radius: 5px;
+        margin: 0;
         font-family: $button-font;
-        color: #fff;
-        background: #6842FF;
-        border: 2px solid #ffffff4d;
-        display: inline-block;
+        color: #000;
     }
 }
 
