@@ -6,6 +6,8 @@ import AdminLayout from "./layouts/AdminLayout";
 // User Imports -------------------------------------------------------------------
 import Home from "./views/user/home/Home";
 import Episode, { loader as EpisodeLoader } from "./views/user/episode/Episode";
+import { PrivacyPolicyPage } from "./views/user/policies/PrivacyPolicyPage";
+import { CookiePolicyPage } from "./views/user/policies/CookiePolicyPage";
 
 // Admin Imports -------------------------------------------------------------------
 import AdminDashboard from "./views/admin/AdminDashboard";
@@ -39,6 +41,14 @@ const router = createBrowserRouter([
             {
                 path: "admin/login",
                 element: <AdminLogin />
+            },
+            {
+                path: 'privacy-policy',
+                element: <PrivacyPolicyPage />,
+            },
+            {
+                path: 'cookie-policy',
+                element: <CookiePolicyPage />,
             },
         ]
     },

@@ -8,6 +8,11 @@
     margin: 0 auto;
 }
 
+.w-34 {
+    max-width: 34rem !important;
+    margin: 0 auto;
+}
+
 .read-box {
     max-width: 700px;
     margin: 0 auto;
@@ -85,6 +90,10 @@
 
 .fs-4 {
     font-size: 2.5rem;
+}
+
+.fw-semibold {
+    font-weight: 600 !important;
 }
 
 .fw-bold {
