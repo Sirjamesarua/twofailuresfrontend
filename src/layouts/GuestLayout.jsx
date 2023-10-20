@@ -92,7 +92,7 @@ export default function GuestLayout() {
                 <div>
                     <p className="m-0">
                         <small>
-                            &copy; 2023, Two Failures • <a href="https://store.twofailures.com/policies/privacy-policy" target="_blank">privacy policy</a> • <Link to="/cookie-policy">cookie policy</Link>
+                            &copy; 2023, Two Failures • <Link to="/privacy-policy">privacy policy</Link> • <Link to="/cookie-policy">cookie policy</Link>
                         </small>
                     </p>
                 </div>
