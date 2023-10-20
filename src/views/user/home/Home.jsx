@@ -4,6 +4,7 @@ import EpisodeCard from '../../../components/EpisodeCard';
 import './home.scss';
 import axiosClient from '../../../axios-client';
 import bannerImage from "../../../assets/banner-img.png";
+import ScrollToTop from '../../../components/ScrollToTop';
 
 export default function Home() {
     const [eps, setEps] = useState([]);
@@ -33,6 +34,7 @@ export default function Home() {
 
     return (
         <>
+            <ScrollToTop />
             <section className="container animated fadeInDown">
                 <div id="atf">
                     <div id="banner-img">

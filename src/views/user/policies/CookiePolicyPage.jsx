@@ -1,8 +1,10 @@
 import React from 'react'
+import ScrollToTop from '../../../components/ScrollToTop'
 
 export const CookiePolicyPage = () => {
     return (
         <div className='container w-34'>
+            <ScrollToTop />
             <h3 className='fw-bold fs-3'>
                 Cookie Policy
             </h3>
