@@ -38,7 +38,17 @@ export default function Otp() {
                     <h2>Verify Your Email</h2>
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <div className="input-control">
-                            <label htmlFor="otp">Please enter the OTP sent to your email address</label><br />
+                            <label htmlFor="otp">
+                                <small>
+                                    Please enter the OTP sent to your email address <br />
+                                </small>
+
+                                <small className="color-blue">
+                                    Can't find email? Check your <b>spam/junk</b> folder
+                                </small>
+                            </label>
+                            <br />
+                            <br />
                             <input type="number" id="otp" {...register("otp", { required: true })} />
                         </div>
 

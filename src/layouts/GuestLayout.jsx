@@ -97,6 +97,7 @@ export default function GuestLayout() {
                     </p>
                 </div>
             </footer>
+
             {/* Active if user is not logged in */}
             {location.hash === "#login" && (<LoginPop />)}
             {location.hash === "#verify-email" && (<Otp />)}
