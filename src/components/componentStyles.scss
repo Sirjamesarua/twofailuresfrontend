@@ -188,19 +188,20 @@
     background-image: url('../assets/ad-img.png');
     background-size: cover;
     outline: 3px solid #2b2b2b86;
-    // background-position: center center;
 }
 
 .popup-ad {
-    width: 500px;
-    height: 90px;
-    border-radius: 5px;
+    width: auto;
+    height: auto;
     box-shadow: $box-shadow3;
     text-align: center;
     margin: 0 auto;
-    background-image: url('../assets/ad-img.png');
-    background-size: cover;
-    // background-position: center 30%;
+
+    img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+    }
 }
 
 #popup-card {
