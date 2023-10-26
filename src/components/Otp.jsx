@@ -12,17 +12,12 @@ export default function Otp() {
 
     const onSubmit = async (data) => {
         data.email = user;
-
-        console.log(data);
-        // return
         await axiosClient.post('/verify-email', data)
-            .then((data) => {
-                console.log(data);
+            .then(() => {
                 navigate(redirect);
             })
             .catch((error) => {
                 alert("Something went wrong, \nTry Again!" + error.response);
-                console.log(error);
             })
     }
 
