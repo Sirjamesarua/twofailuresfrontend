@@ -9,25 +9,38 @@ export default function LoginPop() {
     const { putUser, redirect } = useStateContext()
     const navigate = useNavigate();
 
+    // const onSubmit = async (email) => {
+    //     await axiosClient.post('/login', email)
+    //         .then(({ data }) => {
+    //             console.log(data);
+    //             if (data.user.email_verified_at) {
+    //                 putUser(data.user.email)
+    //                 navigate(redirect)
+    //             }
+    //         })
+    //         .catch(({ response }) => {
+    //             const res = response.data.user;
+
+    //             if (res.email_verified_at === null) {
+    //                 putUser(res.email)
+    //                 navigate("/#verify-email")
+    //                 return;
+    //             }
+
+    //             alert("Something went wrong" + response)
+    //         });
+    // }
+    
     const onSubmit = async (email) => {
         await axiosClient.post('/login', email)
             .then(({ data }) => {
                 console.log(data);
-                if (data.user.email_verified_at) {
                     putUser(data.user.email)
                     navigate(redirect)
-                }
             })
             .catch(({ response }) => {
-                const res = response.data.user;
-
-                if (res.email_verified_at === null) {
-                    putUser(res.email)
-                    navigate("/#verify-email")
-                    return;
-                }
-
-                alert("Something went wrong" + response)
+                const res = response.data.message;
+                alert(res)
             });
     }
 
