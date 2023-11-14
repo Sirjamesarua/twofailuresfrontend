@@ -59,7 +59,6 @@ export default function LoginPop() {
                         <label htmlFor="email">
                             <small>
                                 Please enter a valid email address to continue <br />
-                                An OTP will be sent to verify your email address
                             </small>
                             <br />
                             <small className="color-blue">
