@@ -2,12 +2,17 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import axiosClient from "../axios-client.js";
 import Backdrop from "./Backdrop";
-import { useStateContext } from "../context/ContextProvider.jsx";
+import { useStateContext } from "../context/ContextProvider.jsx";   
+import HCaptcha from "@hcaptcha/react-hcaptcha";
+import { useState } from "react";
+
 
 export default function LoginPop() {
     const { register, handleSubmit, formState: { isSubmitting } } = useForm();
     const { putUser, redirect } = useStateContext()
     const navigate = useNavigate();
+    
+    const [isCaptchaVerified, setIsCaptchaVerified] = useState(false);
 
     // const onSubmit = async (email) => {
     //     await axiosClient.post('/login', email)
@@ -44,6 +49,13 @@ export default function LoginPop() {
             });
     }
 
+    const onVerify = (token) => {
+        // Handle the hCaptcha token (e.g., send it to your server for verification)
+        console.log('hCaptcha Token:', token);
+        
+        setIsCaptchaVerified(true);
+      };
+
     return (
         <Backdrop>
             <div className="form-container">
@@ -72,10 +84,15 @@ export default function LoginPop() {
                         <input type="email" id="email" placeholder="youremail@xxx.com"
                             {...register("email", { required: true })}
                         />
+                        <br />
+                        <br />
+
+                        <center><HCaptcha sitekey="3437899a-7980-4cda-bb90-c992971dcae1" onVerify={onVerify} /></center>
+
                     </div>
 
                     <div className="input-control">
-                        <button type="submit" disabled={isSubmitting}>
+                        <button type="submit" disabled={isSubmitting || !isCaptchaVerified}>
                             {isSubmitting ? (<span className="loading-text">processing</span>) : "login"}
                         </button>
                     </div>
