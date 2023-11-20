@@ -13,12 +13,19 @@
   <!-- BI Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
   
+  <!-- google rechaptcha -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <title>Two Failures</title>
 </head>
 
 <body>
   <div id="root"></div>
   <script type="module" src="/src/main.jsx"></script>
+    <script type="text/javascript">
+      var onloadCallback = function() {
+        alert("grecaptcha is ready!");
+      };
+    </script>
 </body>
 
 </html>

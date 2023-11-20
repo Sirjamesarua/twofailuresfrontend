@@ -87,7 +87,12 @@ export default function LoginPop() {
                         <br />
                         <br />
 
-                        <center><HCaptcha sitekey="3437899a-7980-4cda-bb90-c992971dcae1" onVerify={onVerify} /></center>
+                        {/* <center><HCaptcha sitekey="3437899a-7980-4cda-bb90-c992971dcae1" onVerify={onVerify} /></center> */}
+                        {/* <div className="g-recaptcha" data-sitekey="6LcERRUpAAAAAKQa_dF_d2Ef5_VNHePq83ngYDiQ"></div> */}
+
+           
+                        <div className="g-recaptcha" data-sitekey="6LcBvBUpAAAAALk3kyU9iELAVYIM0gJuGmV7urJ3"></div>
+
 
                     </div>
 
