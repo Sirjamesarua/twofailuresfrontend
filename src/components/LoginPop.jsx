@@ -5,6 +5,7 @@ import Backdrop from "./Backdrop";
 import { useStateContext } from "../context/ContextProvider.jsx";   
 import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { useState } from "react";
+import ReCAPTCHA from "react-google-recaptcha";
 
 
 export default function LoginPop() {
@@ -55,6 +56,10 @@ export default function LoginPop() {
         
         setIsCaptchaVerified(true);
       };
+      
+    const onChange = (value) => {
+        console.log("Captcha value:", value);
+    }
 
     return (
         <Backdrop>
@@ -88,11 +93,10 @@ export default function LoginPop() {
                         <br />
 
                         {/* <center><HCaptcha sitekey="3437899a-7980-4cda-bb90-c992971dcae1" onVerify={onVerify} /></center> */}
-                        {/* <div className="g-recaptcha" data-sitekey="6LcERRUpAAAAAKQa_dF_d2Ef5_VNHePq83ngYDiQ"></div> */}
-
-           
-                        <div className="g-recaptcha" data-sitekey="6LcBvBUpAAAAALk3kyU9iELAVYIM0gJuGmV7urJ3"></div>
-
+                        <ReCAPTCHA
+                            sitekey="6LcBvBUpAAAAALk3kyU9iELAVYIM0gJuGmV7urJ3"
+                            onChange={onChange}
+                        />
 
                     </div>
 
