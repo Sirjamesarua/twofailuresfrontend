@@ -82,6 +82,19 @@ export default function Episode() {
         parentElement.appendChild(cloneDiv);
     }
 
+    
+    var disqus_config = function () {
+        this.page.url = 'https://www.twofailures.com';  // Replace PAGE_URL with your page's canonical URL variable
+        this.page.identifier = '<?php echo get_permalink(); ?>'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+        
+        (function() { // DON'T EDIT BELOW THIS LINE
+        var d = document, s = d.createElement('script');
+        s.src = 'https://twofailures.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+        })();
+
     return (
         <>
             <section className="container read-box mt-2 animated fadeInDown">
@@ -102,6 +115,8 @@ export default function Episode() {
                 <div className="mt-2" onClick={() => setPopup(!popup)}>
                     <PopupAd />
                 </div>
+                
+                <div id="disqus_thread"></div>
 
             </section>
 
