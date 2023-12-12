@@ -6,11 +6,17 @@ import sideImg from "../assets/side-img.png"
 import React, { useState } from "react";
 import Loader from "../components/Loader";
 import Otp from "../components/Otp";
+import { useForm } from "react-hook-form";
+import axiosClient from "../axios-client";
+import ReCAPTCHA from "react-google-recaptcha";
+
 
 export default function GuestLayout() {
     const location = useLocation();
     const navigation = useNavigation();
     const [pop, setPop] = useState("");
+    const { register, handleSubmit, formState: { isSubmitting } } = useForm();
+    const [isCaptchaVerified, setIsCaptchaVerified] = useState(false);
 
     const about = {
         title: "About",
@@ -36,6 +42,23 @@ export default function GuestLayout() {
     const handlePop = (ev) => {
         let value = ev.target.parentNode.id; //checks the id of the element clicked
         setPop(value);
+    }
+
+    const onChange = (value) => {
+        console.log("Captcha value:", value);
+        setIsCaptchaVerified(true);
+    }
+
+    const onSubmit = async (data) => {
+        await axiosClient.post('/subscribe', data)
+            .then((data) => {
+                console.log(data);
+                alert('Email Submitted');
+            })
+            .catch((data) => {
+                console.log(data);
+                alert('Please use a valid email')
+            })
     }
 
     return (
@@ -74,8 +97,27 @@ export default function GuestLayout() {
                 <Outlet />
             </main>
 
-            <footer className="container">
-                <div>
+            <footer>
+                <div className="container w-34 text-center mb-2">
+                    <h3>Subscribe To Our Newsletter</h3>
+                    <form onSubmit={handleSubmit(onSubmit)} className="mt-1">
+                        <input type="email" className="p-2 mb-1 d-block w-100" placeholder="valid@email.com"
+                            {...register("email", { required: true })}
+                        />
+                        <ReCAPTCHA
+                            sitekey="6LcBvBUpAAAAALk3kyU9iELAVYIM0gJuGmV7urJ3"
+                            onChange={onChange}
+                        />
+                        <button className="p-2 mt-1 fw-semibold d-block w-100" type="submit"
+                            disabled={isSubmitting || !isCaptchaVerified}
+                        >
+                            {isSubmitting ? (<span className="loading-text">processing</span>) : "Subscribe"}
+
+                        </button>
+                    </form>
+                </div>
+                <hr />
+                <div className="container mt-2">
                     <h4>Follow Us On</h4>
                     <p>
                         <a href="https://www.instagram.com/2failures/" target="_blank">
@@ -88,8 +130,6 @@ export default function GuestLayout() {
                             <i className="bi bi-twitter"></i> X
                         </a>
                     </p>
-                </div>
-                <div>
                     <p className="m-0">
                         <small>
                             &copy; 2023, Two Failures • <Link to="/privacy-policy">privacy policy</Link> • <Link to="/cookie-policy">cookie policy</Link>
