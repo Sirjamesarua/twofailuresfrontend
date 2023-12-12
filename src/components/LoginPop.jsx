@@ -50,12 +50,12 @@ export default function LoginPop() {
             });
     }
 
-    const onVerify = (token) => {
-        // Handle the hCaptcha token (e.g., send it to your server for verification)
-        console.log('hCaptcha Token:', token);
+    // const onVerify = (token) => {
+    //     // Handle the hCaptcha token (e.g., send it to your server for verification)
+    //     console.log('hCaptcha Token:', token);
 
-        setIsCaptchaVerified(true);
-    };
+    //     setIsCaptchaVerified(true);
+    // };
 
     const onChange = (value) => {
         console.log("Captcha value:", value);
