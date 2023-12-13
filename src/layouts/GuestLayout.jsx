@@ -99,16 +99,18 @@ export default function GuestLayout() {
 
             <footer>
                 <div className="container w-34 text-center mb-2">
-                    <h3>Subscribe To Our Newsletter</h3>
+                    <h3 className="text-gold fw-bold font-cursive">Subscribe To Our Newsletter!</h3>
                     <form onSubmit={handleSubmit(onSubmit)} className="mt-1">
-                        <input type="email" className="p-2 mb-1 d-block w-100" placeholder="valid@email.com"
-                            {...register("email", { required: true })}
+                        <input type="email" className="p-3 fs-1 mb-1 d-block w-100" placeholder="Your Email Address"
+                            {...register("email", { required: true })} style={{ border: '2px solid #D1D6D8', borderRadius: '5px' }}
                         />
-                        <ReCAPTCHA
-                            sitekey="6LcBvBUpAAAAALk3kyU9iELAVYIM0gJuGmV7urJ3"
-                            onChange={onChange}
-                        />
-                        <button className="p-2 mt-1 fw-semibold d-block w-100" type="submit"
+                        <center>
+                            <ReCAPTCHA
+                                sitekey="6LcBvBUpAAAAALk3kyU9iELAVYIM0gJuGmV7urJ3"
+                                onChange={onChange}
+                            />
+                        </center>
+                        <button className="p-3 fs-1 mt-1 d-block w-100 btn-blue" type="submit"
                             disabled={isSubmitting || !isCaptchaVerified}
                         >
                             {isSubmitting ? (<span className="loading-text">processing</span>) : "Subscribe"}

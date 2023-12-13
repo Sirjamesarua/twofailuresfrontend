@@ -12,7 +12,7 @@ const StateContext = createContext({
     putAdminToken: () => { },
 
     // redirect after login
-    redirect: null,
+    redirect: null || '/',
     putURL: () => { }
 });
 
