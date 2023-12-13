@@ -43,6 +43,14 @@
     color: #6842FF;
 }
 
+.text-danger {
+    color: red !important;
+}
+
+.text-gold {
+    color: #C3510E !important;
+}
+
 .font-cursive {
     font-family: $button-font;
 }
@@ -152,6 +160,10 @@
 
 .p-2 {
     padding: 0.5rem 1rem;
+}
+
+.p-3 {
+    padding: 1rem 2rem !important;
 }
 
 // Flex Box

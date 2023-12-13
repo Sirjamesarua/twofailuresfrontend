@@ -6,6 +6,7 @@ const axiosClient = axios.create({
 
 axiosClient.interceptors.request.use((config) => {
     const token = localStorage.getItem('tfa_token') || localStorage.getItem('tfuser');
+    config.headers.Authorization = `Bearer ${token}`;
     config.headers.email = `${token}`;
     return config;
 });
@@ -16,6 +17,7 @@ axiosClient.interceptors.response.use((response) => {
     try {
         const { response } = error;
         if (response.status === 401) {
+            console.log(response);
             window.location.href = "/#login";
         }
     } catch (error) {

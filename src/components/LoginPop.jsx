@@ -3,14 +3,15 @@ import { Link, useNavigate } from "react-router-dom";
 import axiosClient from "../axios-client.js";
 import Backdrop from "./Backdrop";
 import { useStateContext } from "../context/ContextProvider.jsx";
-import HCaptcha from "@hcaptcha/react-hcaptcha";
+// import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 
 
 export default function LoginPop() {
     const { register, handleSubmit, formState: { isSubmitting } } = useForm();
-    const { putUser, redirect } = useStateContext()
+    const { putUser, redirect } = useStateContext();
+    const [formError, setFormError] = useState("");
     const navigate = useNavigate();
 
     const [isCaptchaVerified, setIsCaptchaVerified] = useState(false);
@@ -46,7 +47,7 @@ export default function LoginPop() {
             })
             .catch(({ response }) => {
                 const res = response.data.message;
-                alert(res)
+                setFormError(res);
             });
     }
 
@@ -70,7 +71,6 @@ export default function LoginPop() {
                         close
                     </button>
                 </Link>
-                {/* <h2 className="m-0 fw-bold">Log In</h2> */}
 
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <div className="input-control">
@@ -83,21 +83,29 @@ export default function LoginPop() {
                                 <b>You only have to do this once</b>
                             </small>
                         </label>
+                        <hr />
 
-                        <br />
-                        <br />
+                        {
+                            formError ?
+                                (<p className="m-0 text-danger">
+                                    <small>
+                                        {formError}
+                                    </small>
+                                </p>) : (<p></p>)
+                        }
 
                         <input type="email" id="email" placeholder="youremail@xxx.com"
                             {...register("email", { required: true })}
-                        />
-                        <br />
-                        <br />
+                        /> &nbsp;
 
+                        <br />
                         {/* <center><HCaptcha sitekey="3437899a-7980-4cda-bb90-c992971dcae1" onVerify={onVerify} /></center> */}
-                        <ReCAPTCHA
-                            sitekey="6LcBvBUpAAAAALk3kyU9iELAVYIM0gJuGmV7urJ3"
-                            onChange={onChange}
-                        />
+                        <center>
+                            <ReCAPTCHA
+                                sitekey="6LcBvBUpAAAAALk3kyU9iELAVYIM0gJuGmV7urJ3"
+                                onChange={onChange}
+                            />
+                        </center>
 
                     </div>
 
