@@ -22,6 +22,15 @@
     }
 }
 
+#episodes {
+    margin: 4rem auto 0;
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+    justify-content: center;
+
+}
+
 @media screen and (max-width: 650px) {
     #atf {
         h2 {
@@ -36,5 +45,9 @@
         img {
             width: 350px;
         }
+    }
+
+    #episodes {
+        display: block;
     }
 }
