@@ -99,7 +99,7 @@ export default function GuestLayout() {
 
             <footer>
                 <div className="container w-34 text-center mb-2">
-                    <h3 className="text-gold fw-bold font-cursive">Subscribe To Our Newsletter!</h3>
+                    <h3 className="text-gold fw-bold font-cursive">Subscribe To Get New Episodes!</h3>
                     <form onSubmit={handleSubmit(onSubmit)} className="mt-1">
                         <input type="email" className="p-3 fs-1 mb-1 d-block w-100" placeholder="Your Email Address"
                             {...register("email", { required: true })} style={{ border: '2px solid #D1D6D8', borderRadius: '5px' }}
