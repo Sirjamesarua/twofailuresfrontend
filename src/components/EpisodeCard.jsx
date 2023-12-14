@@ -15,7 +15,7 @@ export default function EpisodeCard({ ep }) {
     return (
         <Link to={link} className="animated fadeInDown" onClick={() => putURL(`/episodes/${ep.id}`)}>
             { /* ^^ Saves link to episode in Context */}
-            <div className="episode-card">
+            <div className="episode-card mb-2">
                 <div className="episode-img"
                     style={{
                         backgroundImage: `url(${ep.cover_image ? `${import.meta.env.VITE_API_BASE_URL}/storage/${ep.cover_image}` : cartoon})`,

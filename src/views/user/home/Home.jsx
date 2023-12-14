@@ -48,8 +48,8 @@ export default function Home() {
                         Shop Two Failures Merchandise 👇
                     </p>
                     <Banner />
-
-                    <div className="episodes mt-3 d-flex center flex-wrap">
+                    <hr className='mt-3' />
+                    <div id="episodes">
                         {eps.length > 0 ?
                             eps.map(ep => (<EpisodeCard key={ep.id} ep={ep} />)) :
                             message
