@@ -134,7 +134,7 @@ export default function GuestLayout() {
                     </p>
                     <p className="m-0">
                         <small>
-                            &copy; 2023, Two Failures • <Link to="/privacy-policy">privacy policy</Link> • <Link to="/cookie-policy">cookie policy</Link>
+                            &copy; 2023, Two Failures • <Link to="/privacy-policy">Privacy Policy</Link> • <Link to="/cookie-policy">Cookie Policy</Link>
                         </small>
                     </p>
                 </div>
