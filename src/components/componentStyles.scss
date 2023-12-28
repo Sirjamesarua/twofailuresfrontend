@@ -5,13 +5,14 @@
     background: #f3e1ff;
     outline: 2px solid $secondary-color;
     border-radius: 5px;
-    width: 350px;
+    width: 400px;
     box-shadow: 10px 10px 0 3px $secondary-color;
     transition: all .3s;
 
     .episode-img {
-        height: 200px;
-        width: auto;
+        display: inline-block;
+        width: 100% !important;
+        height: 350px !important;
         background: #fff;
     }
 

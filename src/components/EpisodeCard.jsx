@@ -16,15 +16,7 @@ export default function EpisodeCard({ ep }) {
         <Link to={link} className="animated fadeInDown" onClick={() => putURL(`/episodes/${ep.id}`)}>
             { /* ^^ Saves link to episode in Context */}
             <div className="episode-card mb-2">
-                <div className="episode-img"
-                    style={{
-                        backgroundImage: `url(${ep.cover_image ? `${import.meta.env.VITE_API_BASE_URL}/storage/${ep.cover_image}` : cartoon})`,
-                        backgroundSize: "cover", backgroundRepeat: "no-repeat",
-                        backgroundPosition: "center"
-                    }}
-                >
-                    {/* <img src="" alt="" srcset="" /> */}
-                </div>
+                <img src={`${ep.cover_image ? `${import.meta.env.VITE_API_BASE_URL}/storage/${ep.cover_image}` : cartoon}`} alt="..." className="episode-img" />
                 <div className="content">
                     <h3>{ep.title}</h3>
                     <p className="m-0">
@@ -38,3 +30,9 @@ export default function EpisodeCard({ ep }) {
         </Link >
     )
 };
+
+// style={{
+//     backgroundImage: `url(${ep.cover_image ? `${import.meta.env.VITE_API_BASE_URL}/storage/${ep.cover_image}` : cartoon})`,
+//     backgroundSize: "cover", backgroundRepeat: "no-repeat",
+//     backgroundPosition: "center"
+// }}
