@@ -22,7 +22,7 @@ export default function EpisodeCard({ ep }) {
                 <img src={`${ep.cover_image ? `${import.meta.env.VITE_API_BASE_URL}/storage/${ep.cover_image}` : cartoon}`} alt="..." className="episode-img" />
                 <div className="content">
                     <small>
-                        {ep.view} views
+                        <i className="bi bi-eye-fill" style={{ fontSize: "15px" }}></i> {ep.view} views
                     </small>
                     <h3>{ep.title}</h3>
                     <p className="m-0">
