@@ -15,7 +15,7 @@ export default function Home() {
         await axiosClient.get('/episodes')
             .then(({ data }) => {
                 setEps(data);
-                console.log(data);
+                // console.log(data);
             })
             .catch((err) => {
                 console.log(err);
