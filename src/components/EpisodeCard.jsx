@@ -4,7 +4,10 @@ import cartoon from "../assets/cartoon.webp";
 
 export default function EpisodeCard({ ep }) {
     const { user, putURL } = useStateContext();
-    // Determines if the user current user is logged in.
+
+    /** 
+     * Determines if the user current user is logged in.
+    */
     let link;
     if (user) {
         link = `/episodes/${ep.id}`;
@@ -18,6 +21,9 @@ export default function EpisodeCard({ ep }) {
             <div className="episode-card mb-2">
                 <img src={`${ep.cover_image ? `${import.meta.env.VITE_API_BASE_URL}/storage/${ep.cover_image}` : cartoon}`} alt="..." className="episode-img" />
                 <div className="content">
+                    <small>
+                        {ep.view} views
+                    </small>
                     <h3>{ep.title}</h3>
                     <p className="m-0">
                         {ep.description.length > 40 ?
