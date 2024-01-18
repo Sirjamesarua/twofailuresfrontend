@@ -3,13 +3,12 @@ import LoginPop from "../components/LoginPop"
 import PopupCard from "../components/PopupCard";
 import logo from "../assets/twofailures_logo.png";
 import sideImg from "../assets/side-img.png"
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Loader from "../components/Loader";
 import Otp from "../components/Otp";
 import { useForm } from "react-hook-form";
 import axiosClient from "../axios-client";
 import ReCAPTCHA from "react-google-recaptcha";
-
 
 export default function GuestLayout() {
     const location = useLocation();
@@ -60,6 +59,19 @@ export default function GuestLayout() {
                 alert('Please use a valid email')
             })
     }
+
+    const viewSource = async () => {
+        if (location.search === "?source=reddit") {
+            axiosClient.post("/view_count", { source: "reddit" })
+        }
+        if (location.search === "?source=fb") {
+            axiosClient.post("/view_count", { source: "facebook" })
+        }
+    }
+
+    useEffect(() => {
+        viewSource();
+    }, []);
 
     return (
         <>
@@ -134,7 +146,7 @@ export default function GuestLayout() {
                     </p>
                     <p className="m-0">
                         <small>
-                            &copy; 2023, Two Failures • <Link to="/privacy-policy">Privacy Policy</Link> • <Link to="/cookie-policy">Cookie Policy</Link>
+                            &copy; 2024, Two Failures • <Link to="/privacy-policy">Privacy Policy</Link> • <Link to="/cookie-policy">Cookie Policy</Link>
                         </small>
                     </p>
                 </div>
