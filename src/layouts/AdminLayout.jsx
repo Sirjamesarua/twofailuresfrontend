@@ -2,6 +2,12 @@ import { Link, NavLink, Navigate, Outlet, useNavigation } from "react-router-dom
 import { useStateContext } from "../context/ContextProvider";
 import axiosClient from "../axios-client";
 
+export async function loader() {
+    const { data } = await axiosClient.get("/admin/get_view_count");
+    const views = data;
+    return { views };
+}
+
 export default function AdminLayout() {
     const navigation = useNavigation();
     const { adminToken, setAdmin, putAdminToken } = useStateContext();
