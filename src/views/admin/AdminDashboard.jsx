@@ -1,8 +1,8 @@
-export async function loader() {
-  return null;
-}
+import { useLoaderData } from "react-router-dom";
 
 export default function AdminDashboard() {
+  const { views } = useLoaderData();
+
   return (
     <div className="admin-dashboard container" id="admin-dashobard">
       <section className="d-flex">
@@ -12,7 +12,9 @@ export default function AdminDashboard() {
           </div>
           <hr />
           <div>
-            233,231
+            {
+              views[0].click_count
+            }
           </div>
         </div>
 
@@ -22,7 +24,9 @@ export default function AdminDashboard() {
           </div>
           <hr />
           <div>
-            233,231
+            {
+              views[1].click_count
+            }
           </div>
         </div>
       </section >
