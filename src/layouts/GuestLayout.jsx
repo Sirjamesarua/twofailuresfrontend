@@ -60,7 +60,7 @@ export default function GuestLayout() {
                             <span className="d-lg-inline-block d-none"> &nbsp;About</span>
 
                         </button>
-                        <div className="modal fade" id="aboutUs" tabindex="-1" aria-labelledby="aboutUsLabel" aria-hidden="true">
+                        <div className="modal fade" id="aboutUs" tabIndex="-1" aria-labelledby="aboutUsLabel" aria-hidden="true">
                             <div className="modal-dialog modal-lg modal-dialog-centered">
                                 <div className="modal-content">
                                     <div className="modal-header">
@@ -87,7 +87,7 @@ export default function GuestLayout() {
                             <i className="bi bi-telephone-forward m-0"></i>
                             <span className="d-lg-inline-block d-none">&nbsp; Contact</span>
                         </button>
-                        <div className="modal fade" id="contactUs" tabindex="-1" aria-labelledby="contactUsLabel" aria-hidden="true">
+                        <div className="modal fade" id="contactUs" tabIndex="-1" aria-labelledby="contactUsLabel" aria-hidden="true">
                             <div className="modal-dialog modal-dialog-centered">
                                 <div className="modal-content">
                                     <div className="modal-header">

@@ -1,7 +1,7 @@
 import { Navigate, createBrowserRouter } from "react-router-dom";
 // Layout Imports -------------------------------------------------------------------
 import GuestLayout from "./layouts/GuestLayout";
-import AdminLayout from "./layouts/AdminLayout";
+import AdminLayout, { loader as AdminDashboardLoader } from "./layouts/AdminLayout";
 
 // User Imports -------------------------------------------------------------------
 import Home from "./views/user/home/Home";
@@ -67,6 +67,7 @@ const router = createBrowserRouter([
                 index: true,
                 path: "dashboard",
                 element: <AdminDashboard />,
+                loader: AdminDashboardLoader
             },
             {
                 path: "episodes",

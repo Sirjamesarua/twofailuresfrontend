@@ -53,7 +53,7 @@ export default function Home() {
 
                     <hr className='my-3' />
 
-                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                         {eps.length > 0 ?
                             eps.map(ep => (<EpisodeCard key={ep.id} ep={ep} />)) :
                             message

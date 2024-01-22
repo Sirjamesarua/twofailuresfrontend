@@ -2,6 +2,12 @@ import { Link, NavLink, Navigate, Outlet, useNavigation } from "react-router-dom
 import { useStateContext } from "../context/ContextProvider";
 import axiosClient from "../axios-client";
 
+export async function loader() {
+    const { data } = await axiosClient.get("/admin/get_view_count");
+    const views = data;
+    return { views };
+}
+
 export default function AdminLayout() {
     const navigation = useNavigation();
     const { adminToken, setAdmin, putAdminToken } = useStateContext();
@@ -45,16 +51,16 @@ export default function AdminLayout() {
                             <li className="nav-item">
                                 <NavLink className="nav-link" to={"adverts"}>Adverts</NavLink>
                             </li>
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <li className="nav-item dropdown">
+                                <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     Misc
                                 </a>
-                                <ul class="dropdown-menu">
-                                    {/* <li><a class="dropdown-item" href="#">Action</a></li>
-                                    <li><a class="dropdown-item" href="#">Another action</a></li> */}
+                                <ul className="dropdown-menu">
+                                    {/* <li><a className="dropdown-item" href="#">Action</a></li>
+                                    <li><a className="dropdown-item" href="#">Another action</a></li> */}
                                     <li>
                                         <Link to={"#logout"} onClick={logout} className="dropdown-item fw-bold text-danger fs-6">
-                                            <small>LOG OUT</small>
+                                            <small>Logout</small>
                                         </Link>
                                     </li>
                                 </ul>
