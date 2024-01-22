@@ -5,13 +5,14 @@ import './home.scss';
 import axiosClient from '../../../axios-client';
 import bannerImage from "../../../assets/banner-img.png";
 import ScrollToTop from '../../../components/ScrollToTop';
+import LoadingSkeleton from '../../../components/LoadingSkeleton';
 
 export default function Home() {
     const [eps, setEps] = useState([]);
-    const [message, setMessage] = useState(<span className='loading-text'>loading episodes</span>);
+    const [message, setMessage] = useState(<LoadingSkeleton />);
 
     const fetchEpisodes = async () => {
-        setMessage(<span className='loading-text'>loading episodes</span>);
+        setMessage(<LoadingSkeleton />);
         await axiosClient.get('/episodes')
             .then(({ data }) => {
                 setEps(data);
@@ -45,12 +46,14 @@ export default function Home() {
                             } title='Goto Two Failures Store'
                         />
                     </div>
-                    <p className='text-center text-cursive color-blue my-3'>
+                    <p className='text-center font-cursive color-blue my-3'>
                         Shop Two Failures Merchandise 👇
                     </p>
                     <Banner />
+
                     <hr className='my-3' />
-                    <div class="row row-cols-1 row-cols-md-3 g-4">
+
+                    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
                         {eps.length > 0 ?
                             eps.map(ep => (<EpisodeCard key={ep.id} ep={ep} />)) :
                             message

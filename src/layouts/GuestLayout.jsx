@@ -42,8 +42,8 @@ export default function GuestLayout() {
 
     return (
         <>
-            <nav class="navbar bg-body-tertiary shadow-sm">
-                <div class="container">
+            <nav className="navbar bg-body-tertiary shadow-sm">
+                <div className="container">
                     <div>
                         <h1>
                             <Link to={"/"}>
@@ -55,17 +55,19 @@ export default function GuestLayout() {
 
                     <div>
                         {/* About Us Button */}
-                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#aboutUs">
-                            <i className="bi bi-chat-quote"></i> {" "} About
+                        <button type="button" className="btn btn-blue btn-sm text-white py-0 rounded-4" data-bs-toggle="modal" data-bs-target="#aboutUs">
+                            <i className="bi bi-chat-quote m-0"></i>
+                            <span className="d-lg-inline-block d-none"> &nbsp;About</span>
+
                         </button>
-                        <div class="modal fade" id="aboutUs" tabindex="-1" aria-labelledby="aboutUsLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-lg modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="aboutUsLabel">About Us - Two Failures</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <div className="modal fade" id="aboutUs" tabindex="-1" aria-labelledby="aboutUsLabel" aria-hidden="true">
+                            <div className="modal-dialog modal-lg modal-dialog-centered">
+                                <div className="modal-content">
+                                    <div className="modal-header">
+                                        <h1 className="modal-title fs-5" id="aboutUsLabel">About Us - Two Failures</h1>
+                                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <div class="modal-body">
+                                    <div className="modal-body">
                                         <p className="m-0">
                                             Tag and Simi are two best friends who have one thing in common: they are failures.
                                             <br />
@@ -81,17 +83,18 @@ export default function GuestLayout() {
                         </div>
 
                         {/* Contact Us Button */}
-                        <button type="button" class="btn btn-primary btn-sm mx-2" data-bs-toggle="modal" data-bs-target="#contactUs">
-                            <i className="bi bi-telephone-forward"></i> {" "}Contact
+                        <button type="button" className="btn btn-blue text-white py-0 btn-sm mx-1 rounded-4" data-bs-toggle="modal" data-bs-target="#contactUs">
+                            <i className="bi bi-telephone-forward m-0"></i>
+                            <span className="d-lg-inline-block d-none">&nbsp; Contact</span>
                         </button>
-                        <div class="modal fade" id="contactUs" tabindex="-1" aria-labelledby="contactUsLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-dialog-centered">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="contactUsLabel">Contact Us</h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <div className="modal fade" id="contactUs" tabindex="-1" aria-labelledby="contactUsLabel" aria-hidden="true">
+                            <div className="modal-dialog modal-dialog-centered">
+                                <div className="modal-content">
+                                    <div className="modal-header">
+                                        <h1 className="modal-title fs-5" id="contactUsLabel">Contact Us</h1>
+                                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
-                                    <div class="modal-body">
+                                    <div className="modal-body">
                                         <p className="m-0">
                                             For inquiry email <span className="text-primary fw-bold">info@twofailures.com</span>
                                         </p>
@@ -101,8 +104,10 @@ export default function GuestLayout() {
                         </div>
 
                         {/* Store button */}
-                        <a href="https://store.twofailures.com" className="btn btn-dark btn-sm" target="_blank">
-                            <i className="bi bi-cart3"></i> {" "}Shop
+                        <a href="https://store.twofailures.com" className="btn btn-blue text-white py-0 btn-sm rounded-4" target="_blank">
+                            <i className="bi bi-cart3 m-0"></i>
+                            <span className="d-lg-inline-block d-none"> &nbsp;Shop</span>
+
                         </a>
                     </div>
                 </div>
@@ -116,9 +121,8 @@ export default function GuestLayout() {
                 <div className="container w-34 text-center">
                     <h3 className="text-gold fw-bold font-cursive fs-5">Subscribe To Receive New Episodes!</h3>
                     <form onSubmit={handleSubmit(onSubmit)} className="mt-1">
-                        <div class="input-group input-group-lg rounded-0 mb-2">
-                            <span class="input-group-text rounded-0" id="inputGroup-sizing-lg">Email</span>
-                            <input type="email" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"
+                        <div className="input-group rounded-0 mb-2">
+                            <input type="email" className="form-control py-3" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"
                                 {...register("email", { required: true })} style={{ border: '2px solid #D1D6D8', borderRadius: '5px' }} placeholder="valid@email.com"
                             />
                         </div>
@@ -130,10 +134,10 @@ export default function GuestLayout() {
                             />
                         </center>
 
-                        <button className="btn btn-dark w-100 rounded-1 py-2 fs-4 mt-2 font-cursive" type="submit"
+                        <button className="btn btn-blue text-white w-100 rounded-1 py-3 fs-6 mt-2 font-cursive" type="submit"
                             disabled={isSubmitting || !isCaptchaVerified}
                         >
-                            {isSubmitting ? (<span className="loading-text">processing</span>) : "Subscribe"}
+                            {isSubmitting ? (<span className="loading-text">processing</span>) : "SUBSCRIBE"}
 
                         </button>
                     </form>

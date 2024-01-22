@@ -121,63 +121,63 @@
     }
 }
 
-.details-card {
-    background: #F4F5F6;
-    border-radius: 5px;
-    box-shadow: $box-shadow2;
-    margin-bottom: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+// .details-card {
+//     background: #F4F5F6;
+//     border-radius: 5px;
+//     box-shadow: $box-shadow2;
+//     margin-bottom: 0.5rem;
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
 
-    .content {
-        padding: 0.3rem 0.6rem;
-    }
+//     .content {
+//         padding: 0.3rem 0.6rem;
+//     }
 
-    .delete {
-        width: max-content;
-        padding: 0.3rem 0.6rem;
-        border: none;
-        cursor: grab;
-        background: #bc3131;
-        color: #fff;
-        font-size: 12px;
-        font-weight: 600;
-    }
+//     .delete {
+//         width: max-content;
+//         padding: 0.3rem 0.6rem;
+//         border: none;
+//         cursor: grab;
+//         background: #bc3131;
+//         color: #fff;
+//         font-size: 12px;
+//         font-weight: 600;
+//     }
 
-    &:hover {
-        box-shadow: $box-shadow3
-    }
-}
+//     &:hover {
+//         box-shadow: $box-shadow3
+//     }
+// }
 
-.ad-list-card {
-    background: #F4F5F6;
-    border-radius: 5px;
-    box-shadow: $box-shadow2;
-    margin-bottom: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+// .ad-list-card {
+//     background: #F4F5F6;
+//     border-radius: 5px;
+//     box-shadow: $box-shadow2;
+//     margin-bottom: 0.5rem;
+//     display: flex;
+//     align-items: center;
+//     justify-content: space-between;
 
-    .content {
-        padding: 0.3rem 0.6rem;
-    }
+//     .content {
+//         padding: 0.3rem 0.6rem;
+//     }
 
-    .delete {
-        width: max-content;
-        padding: 0.3rem 0.6rem;
-        border: none;
-        cursor: grab;
-        background: #bc3131;
-        color: #fff;
-        font-size: 12px;
-        font-weight: 600;
-    }
+//     .delete {
+//         width: max-content;
+//         padding: 0.3rem 0.6rem;
+//         border: none;
+//         cursor: grab;
+//         background: #bc3131;
+//         color: #fff;
+//         font-size: 12px;
+//         font-weight: 600;
+//     }
 
-    &:hover {
-        box-shadow: $box-shadow3
-    }
-}
+//     &:hover {
+//         box-shadow: $box-shadow3
+//     }
+// }
 
 .banner {
     max-width: 375px;

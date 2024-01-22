@@ -65,3 +65,16 @@ button[disabled] {
 .bi-instagram {
     color: #8a3ab9;
 }
+
+@media screen and (max-width: 750px) {
+    #logo {
+        width: 100px;
+    }
+
+    #side-img {
+        width: 20px;
+        position: absolute;
+        transform: translateY(-5px),
+    }
+
+}

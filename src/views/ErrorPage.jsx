@@ -6,7 +6,7 @@ export default function ErrorPage() {
 
     return (
         <div>
-            <div className="container mt-2 text-center">
+            <div className="container mt-5 text-center">
                 <p>Error Occured</p>
                 <p>
                     {/* <i>{error.statusText || error.message}</i> */}

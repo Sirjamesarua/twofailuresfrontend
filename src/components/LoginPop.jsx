@@ -16,28 +16,6 @@ export default function LoginPop() {
 
     const [isCaptchaVerified, setIsCaptchaVerified] = useState(false);
 
-    // const onSubmit = async (email) => {
-    //     await axiosClient.post('/login', email)
-    //         .then(({ data }) => {
-    //             console.log(data);
-    //             if (data.user.email_verified_at) {
-    //                 putUser(data.user.email)
-    //                 navigate(redirect)
-    //             }
-    //         })
-    //         .catch(({ response }) => {
-    //             const res = response.data.user;
-
-    //             if (res.email_verified_at === null) {
-    //                 putUser(res.email)
-    //                 navigate("/#verify-email")
-    //                 return;
-    //             }
-
-    //             alert("Something went wrong" + response)
-    //         });
-    // }
-
     const onSubmit = async (email) => {
         await axiosClient.post('/login', email)
             .then(({ data }) => {
@@ -51,13 +29,6 @@ export default function LoginPop() {
             });
     }
 
-    // const onVerify = (token) => {
-    //     // Handle the hCaptcha token (e.g., send it to your server for verification)
-    //     console.log('hCaptcha Token:', token);
-
-    //     setIsCaptchaVerified(true);
-    // };
-
     const onChange = (value) => {
         console.log("Captcha value:", value);
         setIsCaptchaVerified(true);
@@ -67,7 +38,7 @@ export default function LoginPop() {
         <Backdrop>
             <div className="form-container p-2">
                 <Link to={"/"}>
-                    <button className='mb-1 btn-blue close-btn' type='button'>
+                    <button className='mb-1 btn-blue close-btn text-white rounded-1' type='button'>
                         close
                     </button>
                 </Link>
@@ -94,11 +65,11 @@ export default function LoginPop() {
                                 </p>) : (<p></p>)
                         }
 
-                        <div class="form-floating mb-3">
+                        <div className="form-floating mb-3">
                             <input type="email" id="email floatingInput" placeholder="youremail@xxx.com" className="form-control rounded-1"
                                 {...register("email", { required: true })}
                             />
-                            <label for="floatingInput" className="fw-bold fs-6 text-secondary">Email address</label>
+                            <label htmlFor="floatingInput" className="fw-bold fs-6 text-secondary">Email address</label>
                         </div>
 
                         {/* <center><HCaptcha sitekey="3437899a-7980-4cda-bb90-c992971dcae1" onVerify={onVerify} /></center> */}
@@ -110,7 +81,7 @@ export default function LoginPop() {
                         </center>
                     </div>
 
-                    <button type="submit" className="btn btn-dark w-100 rounded-1 py-3" disabled={isSubmitting || !isCaptchaVerified}>
+                    <button type="submit" className="btn btn-blue text-white w-100 rounded-1 py-3" disabled={isSubmitting || !isCaptchaVerified}>
                         {isSubmitting ? (<span className="loading-text">PROCESSING</span>) : "LOGIN"}
                     </button>
                 </form>

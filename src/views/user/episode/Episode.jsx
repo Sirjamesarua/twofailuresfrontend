@@ -98,7 +98,7 @@ export default function Episode() {
     return (
         <>
             <section className="container w-40 mt-2 animated fadeInDown">
-                <p className='text-center color-blue text-cursive'>
+                <p className='text-center color-blue font-cursive'>
                     Shop Two Failures Merchandise 👇
                 </p>
                 <Banner />
@@ -108,7 +108,7 @@ export default function Episode() {
 
                 <ShareContent />
 
-                <div className="episode-content mt-2">
+                <div className="episode-content read-box mt-2">
                     <div dangerouslySetInnerHTML={{ __html: episode.content }} />
                 </div>
 
@@ -116,7 +116,7 @@ export default function Episode() {
                     <PopupAd />
                 </div>
 
-                <div id="disqus_thread"></div>
+                <div id="disqus_thread" className='mb-5'></div>
 
             </section>
 
@@ -124,7 +124,7 @@ export default function Episode() {
             {popup &&
                 (<div className="advert-popup animated fadeInDown">
                     <div className="advert-instruction">
-                        <button onClick={() => { setPopup(!popup); setEntryCount(0) }} className='btn-blue'>close</button>
+                        <button onClick={() => { setPopup(!popup); setEntryCount(0) }} className='btn-blue text-white rounded-1'>close</button>
                         <br />
                         <br />
                         <h3>
