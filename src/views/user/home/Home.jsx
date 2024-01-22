@@ -36,7 +36,7 @@ export default function Home() {
     return (
         <>
             <ScrollToTop />
-            <section className="container animated fadeInDown">
+            <section className="container animated fadeInDown my-4">
                 <div id="atf">
                     <div id="banner-img">
                         <img src={bannerImage} alt="two_failures"
@@ -45,12 +45,12 @@ export default function Home() {
                             } title='Goto Two Failures Store'
                         />
                     </div>
-                    <p className='text-center text-cursive color-blue'>
+                    <p className='text-center text-cursive color-blue my-3'>
                         Shop Two Failures Merchandise 👇
                     </p>
                     <Banner />
-                    <hr className='mt-3' />
-                    <div id="episodes">
+                    <hr className='my-3' />
+                    <div class="row row-cols-1 row-cols-md-3 g-4">
                         {eps.length > 0 ?
                             eps.map(ep => (<EpisodeCard key={ep.id} ep={ep} />)) :
                             message

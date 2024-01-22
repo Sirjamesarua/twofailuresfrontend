@@ -65,7 +65,7 @@ export default function LoginPop() {
 
     return (
         <Backdrop>
-            <div className="form-container">
+            <div className="form-container p-2">
                 <Link to={"/"}>
                     <button className='mb-1 btn-blue close-btn' type='button'>
                         close
@@ -73,14 +73,14 @@ export default function LoginPop() {
                 </Link>
 
                 <form onSubmit={handleSubmit(onSubmit)}>
-                    <div className="input-control">
+                    <div className="input-control mb-3">
                         <label htmlFor="email">
                             <small>
                                 Please enter a valid email address to continue. <br />
                                 You will get notified of new episodes via Email. <br />
                             </small>
                             <small className="color-blue">
-                                <b>You only have to do this once</b>
+                                <b>▶ You only have to do this once.</b>
                             </small>
                         </label>
                         <hr />
@@ -94,11 +94,13 @@ export default function LoginPop() {
                                 </p>) : (<p></p>)
                         }
 
-                        <input type="email" id="email" placeholder="youremail@xxx.com"
-                            {...register("email", { required: true })}
-                        /> &nbsp;
+                        <div class="form-floating mb-3">
+                            <input type="email" id="email floatingInput" placeholder="youremail@xxx.com" className="form-control rounded-1"
+                                {...register("email", { required: true })}
+                            />
+                            <label for="floatingInput" className="fw-bold fs-6 text-secondary">Email address</label>
+                        </div>
 
-                        <br />
                         {/* <center><HCaptcha sitekey="3437899a-7980-4cda-bb90-c992971dcae1" onVerify={onVerify} /></center> */}
                         <center>
                             <ReCAPTCHA
@@ -106,15 +108,11 @@ export default function LoginPop() {
                                 onChange={onChange}
                             />
                         </center>
-
                     </div>
 
-                    <div className="input-control">
-                        <button type="submit" disabled={isSubmitting || !isCaptchaVerified}>
-                            {isSubmitting ? (<span className="loading-text">processing</span>) : "login"}
-                        </button>
-                    </div>
-
+                    <button type="submit" className="btn btn-dark w-100 rounded-1 py-3" disabled={isSubmitting || !isCaptchaVerified}>
+                        {isSubmitting ? (<span className="loading-text">PROCESSING</span>) : "LOGIN"}
+                    </button>
                 </form>
             </div>
         </Backdrop>

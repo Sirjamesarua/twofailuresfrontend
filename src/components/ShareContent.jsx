@@ -13,7 +13,7 @@ export default function ShareContent() {
 
     return (
         <div className='share-episode mt-1'>
-            <h3>Share this episode</h3>
+            <h3 className='fs-5 fw-bold m-0 '>Share this episode</h3>
             <div>
                 <i className="bi bi-whatsapp"
                     onClick={() => window.open(whatsappLink + encodeURIComponent(inviteText))}
