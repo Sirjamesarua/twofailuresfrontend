@@ -22,7 +22,7 @@ export default function EpisodeCard({ ep }) {
                     <img src={`${ep.cover_image ? `${import.meta.env.VITE_API_BASE_URL}/storage/${ep.cover_image}` : cartoon}`}
                         alt="..." className="card-img-top" style={{ display: "inline-block", width: "100%", height: "350px" }}
                     />
-                    <div className="card-footer ">
+                    <div className="card-footer bg-blue">
                         <div>
                             <small>
                                 <i className="bi bi-eye-fill" style={{ fontSize: "15px" }}></i> {ep.view} views
@@ -35,7 +35,6 @@ export default function EpisodeCard({ ep }) {
                                 }
                             </p>
                         </div>
-                        {/* <small className="text-body-secondary">Last updated 3 mins ago</small> */}
                     </div>
                 </div>
             </div>

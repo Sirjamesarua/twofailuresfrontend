@@ -6,6 +6,7 @@ import Banner from "../../../components/Banner";
 import PopupAd from '../../../components/PopupAd';
 import { useState } from 'react';
 import ShareContent from '../../../components/ShareContent';
+import ScrollToTop from '../../../components/ScrollToTop';
 
 export async function loader({ params }) {
     try {
@@ -97,6 +98,7 @@ export default function Episode() {
 
     return (
         <>
+            <ScrollToTop />
             <section className="container w-40 mt-2 animated fadeInDown">
                 <p className='text-center color-blue font-cursive'>
                     Shop Two Failures Merchandise 👇

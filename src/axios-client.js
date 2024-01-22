@@ -11,13 +11,12 @@ axiosClient.interceptors.request.use((config) => {
     return config;
 });
 
-axiosClient.interceptors.response.use((response) => {
-    return response;
-}, (error) => {
+axiosClient.interceptors.response.use((response) => { return response }, (error) => {
     try {
         const { response } = error;
         if (response.status === 401) {
-            console.log(response);
+            // console.log(response);
+            localStorage.clear();
             window.location.href = "/#login";
         }
     } catch (error) {

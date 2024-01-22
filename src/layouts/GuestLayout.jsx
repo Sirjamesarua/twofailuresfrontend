@@ -138,7 +138,6 @@ export default function GuestLayout() {
                             disabled={isSubmitting || !isCaptchaVerified}
                         >
                             {isSubmitting ? (<span className="loading-text">processing</span>) : "SUBSCRIBE"}
-
                         </button>
                     </form>
                 </div>
@@ -161,7 +160,7 @@ export default function GuestLayout() {
                     </p>
                     <p className="m-0">
                         <small>
-                            &copy; 2023, Two Failures • <Link to="/privacy-policy">Privacy Policy</Link> • <Link to="/cookie-policy">Cookie Policy</Link>
+                            &copy; 2023, Two Failures • <Link to="/privacy-policy" className="text-decoration-none text-dark">Privacy Policy</Link> • <Link to="/cookie-policy" className="text-decoration-none text-dark">Cookie Policy</Link>
                         </small>
                     </p>
                 </div>
@@ -169,13 +168,6 @@ export default function GuestLayout() {
 
             {/* Active if user is not logged in */}
             {location.hash === "#login" && (<LoginPop />)}
-            {location.hash === "#verify-email" && (<Otp />)}
-
-            {/* For page pop ups */}
-            {/* {pop === "about" ? (<PopupCard content={about} newUpdatePop={updatePop} />) :
-                pop === "contact" ? (<PopupCard content={contact} newUpdatePop={updatePop} />) :
-                    ""
-            } */}
 
             {/* for loader */}
             {navigation.state === "loading" ?

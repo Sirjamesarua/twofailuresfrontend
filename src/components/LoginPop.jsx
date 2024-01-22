@@ -30,7 +30,7 @@ export default function LoginPop() {
     }
 
     const onChange = (value) => {
-        console.log("Captcha value:", value);
+        // console.log("Captcha value:", value);
         setIsCaptchaVerified(true);
     }
 
