@@ -21,6 +21,8 @@ import CreateAd from "./views/admin/adverts/CreateAd";
 import EditAd, { loader as EditAdLoader } from "./views/admin/adverts/EditAd"
 import AdminLogin from "./views/admin/auth/AdminLogin";
 import ErrorPage from "./views/ErrorPage";
+import AmbHome from "./views/ambassador/AmbHome";
+import AmbDashboard from "./views/ambassador/AmbDashboard";
 
 const router = createBrowserRouter([
     // User Routes
@@ -50,6 +52,15 @@ const router = createBrowserRouter([
                 path: 'cookie-policy',
                 element: <CookiePolicyPage />,
             },
+            // Ambaassador routes
+            {
+                path: 'ambassador/program',
+                element: <AmbHome />
+            },
+            {
+                path: 'ambassador/dashboard',
+                element: <AmbDashboard />
+            }
         ]
     },
 

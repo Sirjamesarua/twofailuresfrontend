@@ -6,6 +6,7 @@ import axiosClient from '../../../axios-client';
 import bannerImage from "../../../assets/banner-img.png";
 import ScrollToTop from '../../../components/ScrollToTop';
 import LoadingSkeleton from '../../../components/LoadingSkeleton';
+import { Link } from 'react-router-dom';
 
 export default function Home() {
     const [eps, setEps] = useState([]);
@@ -49,8 +50,14 @@ export default function Home() {
                     <p className='text-center font-cursive color-blue my-3'>
                         Shop Two Failures Merchandise 👇
                     </p>
+
                     <Banner />
 
+                    <p className='text-center mt-2 fw-bold'>
+                        <Link to={"/ambassador/program"} className='color-blue fs-5 text-decoration-none'>
+                            👉🏼 Become a twofailures ambassador
+                        </Link>
+                    </p>
                     <hr className='my-3' />
 
                     <div className="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
