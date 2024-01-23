@@ -1,20 +1,29 @@
-import React from 'react'
+import React, { useState } from 'react'
 import ScrollToTop from '../../components/ScrollToTop';
 import image from "../../assets/ambassador-merch.webp"
 import { useForm } from 'react-hook-form';
 import axiosClient from '../../axios-client';
+import { useStateContext } from '../../context/ContextProvider';
+import { Navigate } from 'react-router-dom';
 
 export default function AmbHome() {
     const { register, handleSubmit, formState: { isSubmitting } } = useForm();
+    const { putAmb, putAmbToken } = useStateContext();
+    const [err, setErr] = useState("");
 
     const onSubmit = async (data) => {
-        console.log(data);
-        return;
-        await axiosClient.post('', data)
+        // console.log(data);
+        // return;
+        setErr("");
+        await axiosClient.post('/ambassador/register', data)
             .then(({ data }) => {
                 console.log(data);
-            }).catch((error) => {
-                throw error;
+                putAmbToken(data.access_token);
+                putAmb(data.ambassador);
+                window.location.href = "/ambassador/dashboard";
+            }).catch(({ response }) => {
+                setErr(response.data.message)
+                console.log(response);
             })
     }
 
@@ -57,7 +66,10 @@ export default function AmbHome() {
                                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div className="modal-body">
-                                        <form onSubmit={handleSubmit(onSubmit)} method="post">
+                                        <form onSubmit={handleSubmit(onSubmit)}>
+                                            <p className='text-start text-danger mb-1'>
+                                                {err}
+                                            </p>
                                             <div className="mb-3">
                                                 <input type="text" className="form-control py-2 rounded-1" id="formGroupExampleInput" placeholder="Full Name" required
                                                     {...register("fullname")}

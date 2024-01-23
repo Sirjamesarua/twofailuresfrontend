@@ -8,7 +8,7 @@ const StateContext = createContext({
     // for ambassador
     ambassador: null,
     ambToken: null,
-    setAmbassador: () => { },
+    putAmb: () => { },
     putAmbToken: () => { },
 
     // for admin
@@ -25,7 +25,7 @@ const StateContext = createContext({
 export const ContextProvider = ({ children }) => {
     const [user, setUser] = useState(localStorage.getItem('tfuser'));
 
-    const [ambassador, setAmbassador] = useState("");
+    const [ambassador, setAmbassador] = useState(localStorage.getItem('tf_amb'));
     const [ambToken, setAmbToken] = useState(localStorage.getItem('tf_amb_t'));
 
     const [admin, setAdmin] = useState("");
@@ -39,6 +39,15 @@ export const ContextProvider = ({ children }) => {
             localStorage.setItem('tfuser', email);
         } else {
             localStorage.removeItem('tfuser');
+        }
+    }
+
+    const putAmb = (amb) => {
+        setAmbassador(amb);
+        if (amb) {
+            localStorage.setItem('tf_amb', JSON.stringify(amb))
+        } else {
+            localStorage.removeItem('tf_amb');
         }
     }
 
@@ -68,9 +77,9 @@ export const ContextProvider = ({ children }) => {
     return (
         <StateContext.Provider value={{
             user, putUser, //user
-            ambassador, ambToken, setAmbassador, putAmbToken, //user
-            admin, adminToken, setAdmin, putAdminToken, //admin
-            redirect, putURL //redirect after login
+            ambassador, ambToken, putAmb, putAmbToken, // Ambassador
+            admin, adminToken, setAdmin, putAdminToken, // Admin
+            redirect, putURL // Redirect after login
         }}>
             {children}
         </StateContext.Provider>

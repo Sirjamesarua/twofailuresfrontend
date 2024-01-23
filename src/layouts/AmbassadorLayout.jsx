@@ -1,6 +1,8 @@
 import { Link, NavLink, Navigate, Outlet, useNavigation } from "react-router-dom";
 import { useStateContext } from "../context/ContextProvider";
 import axiosClient from "../axios-client";
+import logo from "../assets/twofailures_logo.png";
+
 
 export async function loader() {
     // const { data } = await axiosClient.get('/');
@@ -9,25 +11,34 @@ export async function loader() {
 
 export default function AmbassadorLayout() {
     const navigation = useNavigation();
-    const { ambToken, setAmbassador, putAmbToken } = useStateContext();
+    const { ambToken, putAmb, putAmbToken } = useStateContext();
+
+    // const fetchAmb = async () => {
+    //     try {
+    //         await axiosClient.post('/ambassador/logout')
+    //             .then(() => {
+    //                 putAmbToken("");
+    //                 setAmbassador("");
+    //                 window.location.href = "/ambassador/program";
+    //             });
+    //     } catch (error) {
+    //         throw error;
+    //     }
+    // }
 
     const logout = async (e) => {
         e.preventDefault();
         try {
-            await axiosClient.post('/ambassador/logout')
-                .then(() => {
-                    putAmbToken("");
-                    setAmbassador("");
-                    window.location.href = "/ambassador/program";
-                });
+            putAmbToken("");
+            putAmb("");
+            window.location.href = "/ambassador/program";
         } catch (error) {
             throw error;
         }
     }
 
-
     if (!ambToken) {
-        // return <Navigate to={"/ambassador/program"} />
+        return <Navigate to={"/ambassador/program"} />
     }
 
     return (
@@ -35,7 +46,9 @@ export default function AmbassadorLayout() {
             <div className="admin-layout">
                 <nav className="navbar navbar-expand-lg bg-body-tertiary border-bottom">
                     <div className="container">
-                        <Link className="navbar-brand fw-bold" to="/">TwoFailures</Link>
+                        <Link to={"/"} className="me-5">
+                            <img src={logo} alt="tf_logo" id="logo" />
+                        </Link>
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
                         </button>

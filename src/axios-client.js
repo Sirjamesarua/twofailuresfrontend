@@ -5,7 +5,7 @@ const axiosClient = axios.create({
 });
 
 axiosClient.interceptors.request.use((config) => {
-    const token = localStorage.getItem('tfa_token') || localStorage.getItem('tfuser');
+    const token = localStorage.getItem('tfa_token') || localStorage.getItem('tfuser') || localStorage.getItem('tf_amb_t');
     config.headers.Authorization = `Bearer ${token}`;
     config.headers.email = `${token}`;
     return config;

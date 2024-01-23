@@ -55,7 +55,7 @@ export default function GuestLayout() {
 
                     <div>
                         {/* About Us Button */}
-                        <button type="button" className="btn btn-blue btn-sm text-white py-0 rounded-4" data-bs-toggle="modal" data-bs-target="#aboutUs">
+                        <button type="button" className="btn btn-blue btn-sm text-white py-0 rounded-3" data-bs-toggle="modal" data-bs-target="#aboutUs">
                             <i className="bi bi-chat-quote m-0"></i>
                             <span className="d-lg-inline-block d-none"> &nbsp;About</span>
 
@@ -83,7 +83,7 @@ export default function GuestLayout() {
                         </div>
 
                         {/* Contact Us Button */}
-                        <button type="button" className="btn btn-blue text-white py-0 btn-sm mx-1 rounded-4" data-bs-toggle="modal" data-bs-target="#contactUs">
+                        <button type="button" className="btn btn-blue text-white py-0 btn-sm mx-1 rounded-3" data-bs-toggle="modal" data-bs-target="#contactUs">
                             <i className="bi bi-telephone-forward m-0"></i>
                             <span className="d-lg-inline-block d-none">&nbsp; Contact</span>
                         </button>
@@ -104,7 +104,7 @@ export default function GuestLayout() {
                         </div>
 
                         {/* Store button */}
-                        <a href="https://store.twofailures.com" className="btn btn-blue text-white py-0 btn-sm rounded-4" target="_blank">
+                        <a href="https://store.twofailures.com" className="btn btn-blue text-white py-0 btn-sm rounded-3" target="_blank">
                             <i className="bi bi-cart3 m-0"></i>
                             <span className="d-lg-inline-block d-none"> &nbsp;Shop</span>
 
