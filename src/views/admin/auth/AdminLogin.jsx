@@ -26,7 +26,6 @@ export default function AdminLogin() {
   }
 
 
-
   if (adminToken) {
     return <Navigate to={"/admin/dashboard"} />
   }

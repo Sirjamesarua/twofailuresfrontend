@@ -17,14 +17,13 @@ export default function AdminLayout() {
         try {
             await axiosClient.post('admin/logout')
                 .then(() => {
-                    localStorage.removeItem('tfa_token');
+                    // localStorage.removeItem('tfa_token');
                     putAdminToken("");
                     setAdmin("");
                     window.location.href = "/admin/login";
                 });
         } catch (error) {
-            console.log(error);
-            alert("Something went wrong!");
+            throw error;
         }
     }
 
@@ -71,30 +70,6 @@ export default function AdminLayout() {
             </nav>
 
             <section className="">
-                {/* <aside className="side-nav">
-                    Used NavLink instead of Link to get active links for styling
-                    <NavLink to={"dashboard"}
-                        className={({ isActive, isPending }) =>
-                            isActive ? "active" : isPending ? "pending" : ""
-                        }>
-                        <i className="bi bi-app-indicator"></i> <span>Dashboard</span>
-                    </NavLink>
-
-                    <NavLink to={"episodes"}
-                        className={({ isActive, isPending }) =>
-                            isActive ? "active" : isPending ? "pending" : ""
-                        }>
-                        <i className="bi bi-camera-reels"></i> <span>Episodes</span>
-                    </NavLink>
-
-                    <NavLink to={"adverts"}>
-                        <i className="bi bi-cash"></i> <span>Adverts</span>
-                    </NavLink>
-                    <Link to={"#logout"} onClick={logout}>
-                        <i className="bi bi-x-octagon"></i> <span>Log Out</span>
-                    </Link>
-                </aside> */}
-
                 <main className={navigation.state === "loading" ? "loading mt-2" : "mt-2"}>
                     <Outlet />
                 </main>

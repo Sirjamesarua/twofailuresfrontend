@@ -1,8 +1,23 @@
 import React from 'react'
 import ScrollToTop from '../../components/ScrollToTop';
 import image from "../../assets/ambassador-merch.webp"
+import { useForm } from 'react-hook-form';
+import axiosClient from '../../axios-client';
 
 export default function AmbHome() {
+    const { register, handleSubmit, formState: { isSubmitting } } = useForm();
+
+    const onSubmit = async (data) => {
+        console.log(data);
+        return;
+        await axiosClient.post('', data)
+            .then(({ data }) => {
+                console.log(data);
+            }).catch((error) => {
+                throw error;
+            })
+    }
+
     return (
         <div>
             <ScrollToTop />
@@ -42,15 +57,19 @@ export default function AmbHome() {
                                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div className="modal-body">
-                                        <form action="" method="post">
-                                            <div class="mb-3">
-                                                <input type="text" class="form-control py-2 rounded-1" id="formGroupExampleInput" placeholder="Full Name" />
+                                        <form onSubmit={handleSubmit(onSubmit)} method="post">
+                                            <div className="mb-3">
+                                                <input type="text" className="form-control py-2 rounded-1" id="formGroupExampleInput" placeholder="Full Name" required
+                                                    {...register("fullname")}
+                                                />
                                             </div>
-                                            <div class="mb-3">
-                                                <input type="email" class="form-control py-2 rounded-1" id="formGroupExampleInput2" placeholder="Email Address" />
+                                            <div className="mb-3">
+                                                <input type="email" className="form-control py-2 rounded-1" id="formGroupExampleInput2" placeholder="Email Address" required
+                                                    {...register("email")}
+                                                />
                                             </div>
                                             <button className="btn btn-dark w-100 rounded-1">
-                                                SIGN UP
+                                                {isSubmitting ? (<span className="loading-text">PROCESSING</span>) : "SIGN UP"}
                                             </button>
                                         </form>
                                     </div>

@@ -2,6 +2,7 @@ import { Navigate, createBrowserRouter } from "react-router-dom";
 // Layout Imports -------------------------------------------------------------------
 import GuestLayout from "./layouts/GuestLayout";
 import AdminLayout, { loader as AdminDashboardLoader } from "./layouts/AdminLayout";
+import AmbassadorLayout, { loader as AmbDashboardLoader } from "./layouts/AmbassadorLayout";
 
 // User Imports -------------------------------------------------------------------
 import Home from "./views/user/home/Home";
@@ -21,8 +22,11 @@ import CreateAd from "./views/admin/adverts/CreateAd";
 import EditAd, { loader as EditAdLoader } from "./views/admin/adverts/EditAd"
 import AdminLogin from "./views/admin/auth/AdminLogin";
 import ErrorPage from "./views/ErrorPage";
+
+// Ambassador Imports -------------------------------------------------------------------
 import AmbHome from "./views/ambassador/AmbHome";
 import AmbDashboard from "./views/ambassador/AmbDashboard";
+import AmbLogin from "./views/ambassador/AmbLogin";
 
 const router = createBrowserRouter([
     // User Routes
@@ -41,10 +45,6 @@ const router = createBrowserRouter([
                 loader: EpisodeLoader
             },
             {
-                path: "admin/login",
-                element: <AdminLogin />
-            },
-            {
                 path: 'privacy-policy',
                 element: <PrivacyPolicyPage />,
             },
@@ -52,14 +52,34 @@ const router = createBrowserRouter([
                 path: 'cookie-policy',
                 element: <CookiePolicyPage />,
             },
+
+            // Admin routes
+            {
+                path: "admin/login",
+                element: <AdminLogin />
+            },
+
             // Ambaassador routes
             {
                 path: 'ambassador/program',
                 element: <AmbHome />
             },
             {
-                path: 'ambassador/dashboard',
-                element: <AmbDashboard />
+                path: 'ambassador/login',
+                element: <AmbLogin />
+            }
+        ]
+    },
+
+    {
+        path: '/ambassador/dashboard',
+        element: <AmbassadorLayout />,
+        errorElement: <ErrorPage />,
+        children: [
+            {
+                index: true,
+                element: <AmbDashboard />,
+
             }
         ]
     },
