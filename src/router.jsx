@@ -79,7 +79,7 @@ const router = createBrowserRouter([
             {
                 index: true,
                 element: <AmbDashboard />,
-
+                loader: AmbDashboardLoader
             }
         ]
     },

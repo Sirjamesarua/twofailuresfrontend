@@ -1,6 +1,10 @@
 import React from 'react'
+import { useLoaderData } from 'react-router-dom';
 
 export default function AmbDashboard() {
+    const { ambassador } = useLoaderData();
+    console.log(ambassador);
+
     return (
         <div>
             <div className="container">
@@ -9,7 +13,7 @@ export default function AmbDashboard() {
                         Dashboard
                     </h4>
                     <p>
-                        Welcome Etinosa
+                        Welcome {ambassador.fullname}
                     </p>
                     <div className="my-3">
                     </div>
@@ -21,10 +25,10 @@ export default function AmbDashboard() {
                             <div className="card shadow-sm">
                                 <div className="card-body">
                                     <h5 className="card-title fw-bold text-secondary m-0 fs-6">
-                                        Article Repository
+                                        Referral Code
                                     </h5>
                                     <p className="card-text mb-1">
-                                        <b className="fs-4">3 article(s)</b> published
+                                        <b className="fs-4">{ambassador.referral_code}</b>
                                     </p>
                                     <a href="#"
                                         className="btn btn-secondary rounded-1 fw-semibold px-4">
@@ -37,10 +41,10 @@ export default function AmbDashboard() {
                             <div className="card shadow-sm">
                                 <div className="card-body">
                                     <h5 className="card-title fw-bold text-secondary m-0 fs-6">
-                                        Manage Slices
+                                        Your Email
                                     </h5>
                                     <p className="card-text mb-1">
-                                        <b className="fs-4">3 slice(s)</b> published
+                                        <b className="fs-4">{ambassador.email}</b>
                                     </p>
                                     <a href="#" className="btn btn-secondary rounded-1 fw-semibold px-4">
                                         Go to slices
@@ -94,6 +98,7 @@ export default function AmbDashboard() {
                                 </div>
                             </div>
                         </div>
+
                         <div className="col-sm-6">
                             <div className="card shadow-sm bg-dark">
                                 <div className="card-body">
@@ -120,6 +125,19 @@ export default function AmbDashboard() {
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </section>
+
+                <section>
+                    <div className='border rounded-2 shadow-sm p-3'>
+                        <h5 className='fw-bold'>Leaderboard</h5>
+                        <ul class="list-group">
+                            <li class="list-group-item">An item</li>
+                            <li class="list-group-item">A second item</li>
+                            <li class="list-group-item">A third item</li>
+                            <li class="list-group-item">A fourth item</li>
+                            <li class="list-group-item">And a fifth one</li>
+                        </ul>
                     </div>
                 </section>
             </div>

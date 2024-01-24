@@ -5,26 +5,14 @@ import logo from "../assets/twofailures_logo.png";
 
 
 export async function loader() {
-    // const { data } = await axiosClient.get('/');
-    return null;
+    const loc_data = localStorage.getItem('tf_amb');
+    const ambassador = JSON.parse(loc_data);
+    return { ambassador };
 }
 
 export default function AmbassadorLayout() {
     const navigation = useNavigation();
     const { ambToken, putAmb, putAmbToken } = useStateContext();
-
-    // const fetchAmb = async () => {
-    //     try {
-    //         await axiosClient.post('/ambassador/logout')
-    //             .then(() => {
-    //                 putAmbToken("");
-    //                 setAmbassador("");
-    //                 window.location.href = "/ambassador/program";
-    //             });
-    //     } catch (error) {
-    //         throw error;
-    //     }
-    // }
 
     const logout = async (e) => {
         e.preventDefault();
