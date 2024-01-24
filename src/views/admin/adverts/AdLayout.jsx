@@ -10,11 +10,11 @@ export async function loader() {
 export default function AdLayout() {
     return (
         <div className="container">
-            <div className="section-header mb-1">
-                <h3>Manage Adverts</h3>
+            <div className="section-header mt-5">
+                <h3 className="fw-bold">Manage Adverts</h3>
                 <div>
-                    <Link to={"create"}>
-                        <button className="p-1">Create Ad</button>
+                    <Link to={"create"} className="btn btn-dark rounded-1">
+                        Create Advert
                     </Link>
                 </div>
             </div>

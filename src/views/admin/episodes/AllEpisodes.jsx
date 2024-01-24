@@ -8,7 +8,7 @@ export default function AllEpisodes() {
 
     return (
         <div className="all-episodes">
-            <h4> All Episodes of TWO FAILURES</h4>
+            <h4>All Episodes</h4>
             <div className="episodes-map mt-1">
                 {episodes.map((ep) => (
                     <DetailsCard key={ep.id} detail={ep} />

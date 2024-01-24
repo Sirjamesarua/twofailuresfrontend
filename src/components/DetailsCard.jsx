@@ -16,10 +16,10 @@ export default function DetailsCard({ detail }) {
     };
 
     return (
-        <div className="details-card">
-            <Link to={`${detail.id}/show`}>
+        <div className="shadow-sm border mb-2 p-2 rounded-1 bg-body-tertiary">
+            <div className="text-decoration-none">
                 <div className="content">
-                    <h4>{detail.title}</h4>
+                    <h4 className="m-0">{detail.title}</h4>
                     <div>
                         <i>
                             {detail.description.length > 45 ?
@@ -29,10 +29,14 @@ export default function DetailsCard({ detail }) {
                         </i>
                     </div>
                 </div>
-            </Link>
-            <button className="delete" onClick={onDelete}>
+            </div>
+            <hr />
+            <button className="delete btn btn-danger btn-sm rounded-1 px-3 me-2" onClick={onDelete}>
                 Delete
             </button>
+            <Link className="delete btn btn-dark btn-sm rounded-1 px-3" to={`${detail.id}/show`}>
+                Edit
+            </Link>
         </div>
     )
 }

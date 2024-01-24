@@ -3,9 +3,8 @@ import merchImg from '../assets/free_merch_banner.png'
 
 export default function PopupAd() {
     return (
-        <div className='popup-ad animated fadeInDown fadeInBg'>
-            {/* Image put here by background image style */}
-            <img src={merchImg} alt="two failures merch" />
+        <div className='popup-ad border shadow'>
+            <img src={merchImg} alt="two failures merch" className='img-fluid' />
         </div>
     )
 }

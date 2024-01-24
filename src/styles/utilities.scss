@@ -1,21 +1,13 @@
 @use './index.scss' as *;
 
-// Containers
-.container {
-    padding-left: 2rem;
-    padding-right: 2rem;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
 .w-34 {
     max-width: 34rem !important;
     margin: 0 auto;
 }
 
-.w-100 {
-    width: 100% !important;
-    box-sizing: border-box !important;
+.w-40 {
+    max-width: 40rem !important;
+    margin: 0 auto;
 }
 
 .read-box {
@@ -40,11 +32,7 @@
 }
 
 .color-blue {
-    color: #6842FF;
-}
-
-.text-danger {
-    color: red !important;
+    color: #6842FF !important;
 }
 
 .text-gold {
@@ -52,20 +40,15 @@
 }
 
 .font-cursive {
-    font-family: $button-font;
+    font-family: $button-font !important;
 }
 
 .btn-blue {
-    font-size: .8rem;
-    font-family: $button-font;
-    text-transform: uppercase;
-    background: #6842FF;
-    border-radius: 5px;
-    border: 2px solid #ffffff4d;
-    padding: .2rem .4rem;
+    font-family: $button-font !important;
+    background: #6842FF !important;
+    border: 2px solid #ffffff4d !important;
     cursor: pointer;
-    color: #fff;
-    transition: all .2s ease;
+    transition: all .2s ease !important;
     display: inline-block;
 
     &:hover {
@@ -77,115 +60,13 @@
         font-size: 1.3em;
         margin-right: .3rem;
         color: #fff;
-        // color: #F97180;
         position: relative;
         top: 1px;
     }
 }
 
-// Fonts
-
-.fs-small {
-    font-size: 0.5rem;
-}
-
-.fs-1 {
-    font-size: 1rem;
-}
-
-.fs-2 {
-    font-size: 1.5rem;
-}
-
-.fs-3 {
-    font-size: 2rem;
-}
-
-.fs-4 {
-    font-size: 2.5rem;
-}
-
-.fw-semibold {
-    font-weight: 600 !important;
-}
-
-.fw-bold {
-    font-weight: 900 !important;
-}
-
-.text-cursive {
-    font-family: $button-font;
-}
-
-.text-center {
-    text-align: center;
-}
-
-.text-secondary {
-    color: #8c8c8c;
-}
-
-// Margins
-.m-0 {
-    margin: 0;
-}
-
-.mt-1 {
-    margin-top: 1rem;
-}
-
-.mt-2 {
-    margin-top: 2rem;
-}
-
-.mt-3 {
-    margin-top: 3rem;
-}
-
-.mb-1 {
-    margin-bottom: 1rem;
-}
-
-.mb-2 {
-    margin-bottom: 2rem;
-}
-
-.mb-3 {
-    margin-bottom: 3rem;
-}
-
-.p-1 {
-    padding: 0.3rem 0.6rem;
-}
-
-.p-2 {
-    padding: 0.5rem 1rem;
-}
-
-.p-3 {
-    padding: 1rem 2rem !important;
-}
-
-// Flex Box
-.d-flex {
-    display: flex;
-    align-items: center;
-}
-
-.d-block {
-    display: block !important;
-}
-
-.space-btw {
-    justify-content: space-between;
-}
-
-.center {
-    justify-content: center;
-}
-
-.flex-wrap {
-    flex-wrap: wrap;
+.bg-blue {
+    background: #F3E1FF !important;
 }
 
 // Animation classes
@@ -256,14 +137,5 @@
 
     100% {
         opacity: 0.5;
-    }
-}
-
-@media screen and (max-width: 850px) {
-
-    // Containers
-    .container {
-        padding-left: 1rem;
-        padding-right: 1rem;
     }
 }

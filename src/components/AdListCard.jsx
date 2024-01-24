@@ -16,10 +16,10 @@ export default function AdListCard({ ad }) {
         return;
     };
     return (
-        <div className="ad-list-card">
-            <Link to={`${ad.id}/show`}>
+        <div className="shadow-sm border mb-2 p-2 rounded-1 bg-body-tertiary">
+            <div to={`${ad.id}/show`}>
                 <div className="content">
-                    <h4>{ad.name}</h4>
+                    <h4 className='m-0'>{ad.name}</h4>
                     <div>
                         <i>
                             {ad.link.length > 45 ?
@@ -29,10 +29,15 @@ export default function AdListCard({ ad }) {
                         </i>
                     </div>
                 </div>
-            </Link>
-            <button className="delete" onClick={onDelete}>
-                delete
+            </div>
+
+            <hr />
+            <button className="delete btn btn-danger btn-sm rounded-1 px-3 me-2" onClick={onDelete}>
+                Delete
             </button>
+            <Link className="delete btn btn-dark btn-sm rounded-1 px-3" to={`${ad.id}/show`}>
+                Edit
+            </Link>
         </div>
     )
 }

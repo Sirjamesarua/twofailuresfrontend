@@ -6,6 +6,7 @@ import Banner from "../../../components/Banner";
 import PopupAd from '../../../components/PopupAd';
 import { useState } from 'react';
 import ShareContent from '../../../components/ShareContent';
+import ScrollToTop from '../../../components/ScrollToTop';
 
 export async function loader({ params }) {
     try {
@@ -82,41 +83,42 @@ export default function Episode() {
         parentElement.appendChild(cloneDiv);
     }
 
-    
+
     var disqus_config = function () {
         this.page.url = 'https://www.twofailures.com';  // Replace PAGE_URL with your page's canonical URL variable
         this.page.identifier = '<?php echo get_permalink(); ?>'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
     };
-        
-        (function() { // DON'T EDIT BELOW THIS LINE
+
+    (function () { // DON'T EDIT BELOW THIS LINE
         var d = document, s = d.createElement('script');
         s.src = 'https://twofailures.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
-        })();
+    })();
 
     return (
         <>
-            <section className="container read-box mt-2 animated fadeInDown">
-                <p className='text-center color-blue text-cursive'>
+            <ScrollToTop />
+            <section className="container w-40 mt-2 animated fadeInDown">
+                <p className='text-center color-blue font-cursive'>
                     Shop Two Failures Merchandise 👇
                 </p>
                 <Banner />
-                <div className="episode-title mt-2">
+                <div className="episode-title mt-4">
                     {episode.title}
                 </div>
 
                 <ShareContent />
 
-                <div className="episode-content mt-2">
+                <div className="episode-content read-box mt-2">
                     <div dangerouslySetInnerHTML={{ __html: episode.content }} />
                 </div>
 
-                <div className="mt-2" onClick={() => setPopup(!popup)}>
+                <div className="mt-2 mb-5" onClick={() => setPopup(!popup)}>
                     <PopupAd />
                 </div>
-                
-                <div id="disqus_thread"></div>
+
+                <div id="disqus_thread" className='mb-5'></div>
 
             </section>
 
@@ -124,7 +126,7 @@ export default function Episode() {
             {popup &&
                 (<div className="advert-popup animated fadeInDown">
                     <div className="advert-instruction">
-                        <button onClick={() => { setPopup(!popup); setEntryCount(0) }} className='btn-blue'>close</button>
+                        <button onClick={() => { setPopup(!popup); setEntryCount(0) }} className='btn-blue text-white rounded-1'>close</button>
                         <br />
                         <br />
                         <h3>

@@ -10,11 +10,11 @@ export async function loader() {
 export default function EpLayout() {
     return (
         <div className="container">
-            <div className="section-header mb-1">
+            <div className="section-header mt-5">
                 <h3>Manage Episodes</h3>
                 <div>
-                    <Link to={"create"}>
-                        <button className="p-1">Create Episode</button>
+                    <Link to={"create"} className="btn btn-dark rounded-1">
+                        Create Episode
                     </Link>
                 </div>
             </div>

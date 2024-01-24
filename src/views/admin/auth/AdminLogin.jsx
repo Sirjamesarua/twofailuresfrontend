@@ -25,13 +25,12 @@ export default function AdminLogin() {
   }
 
 
-
   if (adminToken) {
     return <Navigate to={"/admin/dashboard"} />
   }
 
   return (
-    <div className="container">
+    <div className="container mb-5">
       <form onSubmit={handleSubmit(onSubmit)} id="adminLoginForm">
         <h2 className="text-center mb-1">Admin Login</h2>
         <div className="input-control">
