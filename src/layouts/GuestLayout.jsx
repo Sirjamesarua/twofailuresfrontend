@@ -2,12 +2,11 @@ import { Link, Outlet, useLocation, useNavigation } from "react-router-dom";
 import LoginPop from "../components/LoginPop"
 import logo from "../assets/twofailures_logo.png";
 import sideImg from "../assets/side-img.png"
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Loader from "../components/Loader";
 import { useForm } from "react-hook-form";
 import axiosClient from "../axios-client";
 import ReCAPTCHA from "react-google-recaptcha";
-
 
 export default function GuestLayout() {
     const location = useLocation();
@@ -33,6 +32,19 @@ export default function GuestLayout() {
                 alert('Please use a valid email')
             })
     }
+
+    const viewSource = async () => {
+        if (location.search === "?source=reddit") {
+            axiosClient.post("/view_count", { source: "reddit" })
+        }
+        if (location.search === "?source=fb") {
+            axiosClient.post("/view_count", { source: "facebook" })
+        }
+    }
+
+    useEffect(() => {
+        viewSource();
+    }, []);
 
     return (
         <>

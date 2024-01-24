@@ -92,7 +92,7 @@ const router = createBrowserRouter([
         children: [
             {
                 path: '/admin',
-                element: <Navigate to={'/admin/dashboard'} />
+                element: <Navigate to={'/admin/dashboard'} />,
             },
             {
                 index: true,
