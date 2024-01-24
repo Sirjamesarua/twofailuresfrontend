@@ -5,9 +5,19 @@ import logo from "../assets/twofailures_logo.png";
 
 
 export async function loader() {
+    // Fetch user details
     const loc_data = localStorage.getItem('tf_amb');
     const ambassador = JSON.parse(loc_data);
-    return { ambassador };
+
+    // Fetch leader board details
+    const boardData = await axiosClient.get('/ambassador/scoreboard');
+    const leaderboard = boardData.data;
+
+    // Get referral count
+    const refData = await axiosClient.get(`/ambassador/referrals?email=${ambassador.email}`);
+    const referrals = refData.data;
+
+    return { ambassador, leaderboard, referrals };
 }
 
 export default function AmbassadorLayout() {

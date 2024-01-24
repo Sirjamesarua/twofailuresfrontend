@@ -51,18 +51,30 @@ export const ContextProvider = ({ children }) => {
         }
     }
 
+    /**
+     * 
+     * @param {*} token 
+     * removes other tokens and sets token for the new user.
+     */
     const putAmbToken = (token) => {
         setAmbToken(token);
         if (token) {
+            localStorage.removeItem('tfuser'); // Remove user token
+            localStorage.removeItem('tfa_token'); // Remove admin token
             localStorage.setItem('tf_amb_t', token);
         } else {
             localStorage.removeItem('tf_amb_t');
         }
     }
 
+    /**
+    * 
+    * @param {*} token 
+    */
     const putAdminToken = (token) => {
         setAdminToken(token);
         if (token) {
+            localStorage.clear(); // clear all other data
             localStorage.setItem('tfa_token', token);
         } else {
             localStorage.removeItem('tfa_token');

@@ -2,9 +2,9 @@ import React from 'react'
 import { useLoaderData } from 'react-router-dom';
 
 export default function AmbDashboard() {
-    const { ambassador } = useLoaderData();
-    console.log(ambassador);
+    const { ambassador, leaderboard, referrals } = useLoaderData();
 
+    console.log(referrals);
     return (
         <div>
             <div className="container">
@@ -56,10 +56,10 @@ export default function AmbDashboard() {
                             <div className="card shadow-sm">
                                 <div className="card-body">
                                     <h5 className="card-title fw-bold text-secondary m-0 fs-6">
-                                        OweaHub Teams
+                                        Total Referrals
                                     </h5>
                                     <p className="card-text mb-1">
-                                        <b className="fs-4">5 teams</b> active
+                                        <b className="fs-4">{referrals.length}</b> referrals
                                     </p>
                                     <a href="#" className="btn btn-secondary rounded-1 fw-semibold px-4">
                                         See Teams
@@ -131,13 +131,23 @@ export default function AmbDashboard() {
                 <section>
                     <div className='border rounded-2 shadow-sm p-3'>
                         <h5 className='fw-bold'>Leaderboard</h5>
-                        <ul class="list-group">
-                            <li class="list-group-item">An item</li>
-                            <li class="list-group-item">A second item</li>
-                            <li class="list-group-item">A third item</li>
-                            <li class="list-group-item">A fourth item</li>
-                            <li class="list-group-item">And a fifth one</li>
+                        <ul className="list-group">
+                            {leaderboard.length > 0 ? (
+                                leaderboard.map((item, index) => (
+                                    <li className="list-group-item" key={index}>
+                                        {`${index + 1} | ${item.fullname} `}
+                                        <small className="bg-danger text-white px-2 rounded-3">
+                                            {item.referree_count} referral(s)
+                                        </small>
+                                    </li>
+                                ))
+                            ) : (
+                                <li className="list-group-item" key="noData">
+                                    Nothing to show
+                                </li>
+                            )}
                         </ul>
+
                     </div>
                 </section>
             </div>

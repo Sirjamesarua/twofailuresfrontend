@@ -1,11 +1,9 @@
 import { Link, Outlet, useLocation, useNavigation } from "react-router-dom";
 import LoginPop from "../components/LoginPop"
-import PopupCard from "../components/PopupCard";
 import logo from "../assets/twofailures_logo.png";
 import sideImg from "../assets/side-img.png"
 import React, { useState } from "react";
 import Loader from "../components/Loader";
-import Otp from "../components/Otp";
 import { useForm } from "react-hook-form";
 import axiosClient from "../axios-client";
 import ReCAPTCHA from "react-google-recaptcha";
@@ -14,14 +12,10 @@ import ReCAPTCHA from "react-google-recaptcha";
 export default function GuestLayout() {
     const location = useLocation();
     const navigation = useNavigation();
-    const [pop, setPop] = useState("");
     const { register, handleSubmit, formState: { isSubmitting } } = useForm();
     const [isCaptchaVerified, setIsCaptchaVerified] = useState(false);
 
-    // Updater function in PopupCard component
-    const updatePop = (newPop) => {
-        setPop(newPop);
-    }
+    // console.log(location);
 
     const onChange = (value) => {
         console.log("Captcha value:", value);
@@ -166,8 +160,7 @@ export default function GuestLayout() {
                 </div>
             </footer>
 
-            {/* Active if user is not logged in */}
-            {location.hash === "#login" && (<LoginPop />)}
+            <LoginPop />
 
             {/* for loader */}
             {navigation.state === "loading" ?

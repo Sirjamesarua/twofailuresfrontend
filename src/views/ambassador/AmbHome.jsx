@@ -62,7 +62,7 @@ export default function AmbHome() {
                             <div className="modal-dialog modal-dialog-centered">
                                 <div className="modal-content">
                                     <div className="modal-header">
-                                        <h2 className="modal-title fs-5 fw-bold" id="exampleModalLabel">SIGN UP</h2>
+                                        <h2 className="modal-title fs-5 fw-bold" id="exampleModalLabel">Become an Ambassador</h2>
                                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div className="modal-body">
