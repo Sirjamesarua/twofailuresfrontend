@@ -176,7 +176,7 @@ export default function GuestLayout() {
 
             {/* for loader */}
             {navigation.state === "loading" ?
-                (<Loader text="episode" />) : ""
+                (<Loader text=". . ." />) : ""
             }
         </>
     )

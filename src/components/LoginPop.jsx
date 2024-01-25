@@ -4,7 +4,6 @@ import { useStateContext } from "../context/ContextProvider.jsx";
 // import HCaptcha from "@hcaptcha/react-hcaptcha";
 import { useState } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
-import { useLocation } from "react-router-dom";
 
 
 export default function LoginPop() {
@@ -20,6 +19,7 @@ export default function LoginPop() {
             const refValue = urlParams.get('ref')
             data.referral_code = refValue
         }
+
         await axiosClient.post('/login', data)
             .then(({ data }) => {
                 putUser(data.user.email);
