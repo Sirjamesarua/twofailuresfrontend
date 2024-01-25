@@ -4,16 +4,16 @@ import image from "../../assets/ambassador-merch.webp"
 import { useForm } from 'react-hook-form';
 import axiosClient from '../../axios-client';
 import { useStateContext } from '../../context/ContextProvider';
-import { Navigate } from 'react-router-dom';
+import ReCAPTCHA from 'react-google-recaptcha';
 
 export default function AmbHome() {
     const { register, handleSubmit, formState: { isSubmitting } } = useForm();
     const { putAmb, putAmbToken } = useStateContext();
     const [err, setErr] = useState("");
+    const [isCaptchaVerified, setIsCaptchaVerified] = useState(false);
+
 
     const onSubmit = async (data) => {
-        // console.log(data);
-        // return;
         setErr("");
         await axiosClient.post('/ambassador/register', data)
             .then(({ data }) => {
@@ -25,6 +25,11 @@ export default function AmbHome() {
                 setErr(response.data.message)
                 console.log(response);
             })
+    }
+
+    const onChange = () => {
+        // console.log("Captcha value:", value);
+        setIsCaptchaVerified(true);
     }
 
     return (
@@ -71,16 +76,21 @@ export default function AmbHome() {
                                                 {err}
                                             </p>
                                             <div className="mb-3">
-                                                <input type="text" className="form-control py-2 rounded-1" id="formGroupExampleInput" placeholder="Full Name" required
+                                                <input type="text" className="form-control border-secondary py-3 rounded-1" id="formGroupExampleInput" placeholder="Full Name" required
                                                     {...register("fullname")}
                                                 />
                                             </div>
                                             <div className="mb-3">
-                                                <input type="email" className="form-control py-2 rounded-1" id="formGroupExampleInput2" placeholder="Email Address" required
+                                                <input type="email" className="form-control border-secondary py-3 rounded-1" id="formGroupExampleInput2" placeholder="Email Address" required
                                                     {...register("email")}
                                                 />
                                             </div>
-                                            <button className="btn btn-dark w-100 rounded-1">
+
+                                            <center>
+                                                <ReCAPTCHA sitekey="6LcBvBUpAAAAALk3kyU9iELAVYIM0gJuGmV7urJ3" onChange={onChange} />
+                                            </center>
+
+                                            <button className="btn btn-blue text-white py-3 mt-3 w-100 rounded-1" disabled={isSubmitting || !isCaptchaVerified}>
                                                 {isSubmitting ? (<span className="loading-text">PROCESSING</span>) : "SIGN UP"}
                                             </button>
                                         </form>

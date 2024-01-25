@@ -29,7 +29,7 @@ export default function AmbassadorLayout() {
         try {
             putAmbToken("");
             putAmb("");
-            window.location.href = "/ambassador/program";
+            location.href = "/ambassador/program";
         } catch (error) {
             throw error;
         }
@@ -42,42 +42,33 @@ export default function AmbassadorLayout() {
     return (
         <div>
             <div className="admin-layout">
-                <nav className="navbar navbar-expand-lg bg-body-tertiary border-bottom">
+                <nav className="navbar navbar-expand-lg bg-body-tertiary border-bottom shadow-sm py-3">
                     <div className="container">
                         <Link to={"/"} className="me-5">
                             <img src={logo} alt="tf_logo" id="logo" />
                         </Link>
-                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
                         </button>
-                        <div className="collapse navbar-collapse" id="navbarNav">
-                            <ul className="navbar-nav">
-                                <li className="nav-item">
-                                    <NavLink className="nav-link" to={"dashboard"}>Dashboard</NavLink>
+                        <div className="collapse navbar-collapse" id="navbarText">
+                            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                                {/* <li className="nav-item">
+                                    <a className="nav-link active" aria-current="page" href="#">Home</a>
                                 </li>
                                 <li className="nav-item">
-                                    <NavLink className="nav-link" to={"episodes"}>Episodes</NavLink>
+                                    <a className="nav-link" href="#">Features</a>
                                 </li>
                                 <li className="nav-item">
-                                    <NavLink className="nav-link" to={"adverts"}>Adverts</NavLink>
-                                </li>
-                                <li className="nav-item dropdown">
-                                    <a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        Misc
-                                    </a>
-                                    <ul className="dropdown-menu">
-                                        <li>
-                                            <Link to={"#logout"} onClick={logout} className="dropdown-item fw-bold text-danger fs-6">
-                                                <small>Logout</small>
-                                            </Link>
-                                        </li>
-                                    </ul>
-                                </li>
+                                    <a className="nav-link" href="#">Pricing</a>
+                                </li> */}
                             </ul>
+
+                            <Link to={"#logout"} onClick={logout} className="navbar-text fw-bold fs-5 text-decoration-none border px-2 py-0 alert alert-danger rounded-1 m-0">
+                                <small className="font-monospace">LOGOUT</small>
+                            </Link>
                         </div>
                     </div>
                 </nav>
-
                 <section className="">
                     <main className={navigation.state === "loading" ? "loading mt-2" : "mt-2"}>
                         <Outlet />

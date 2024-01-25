@@ -1,10 +1,23 @@
-import React from 'react'
+import React, { useRef, useState } from 'react'
 import { useLoaderData } from 'react-router-dom';
 
 export default function AmbDashboard() {
     const { ambassador, leaderboard, referrals } = useLoaderData();
+    const refLink = useRef(null);
+    const [click, setClick] = useState(false);
 
-    console.log(referrals);
+    const copyLink = () => {
+        let copyText = document.getElementById("myInput");
+        let btnTxt = document.getElementById("cp");
+        // Select the text field
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); // For mobile devices
+        // Copy the text inside the text field
+        navigator.clipboard.writeText(copyText.value);
+        setClick(true);
+        btnTxt.innerText = "Copied";
+    }
+
     return (
         <div>
             <div className="container">
@@ -22,38 +35,28 @@ export default function AmbDashboard() {
                 <section className="mb-5">
                     <div className="row">
                         <div className="col-sm-4 mb-3 mb-sm-0">
-                            <div className="card shadow-sm">
+                            <div className="card shadow-sm h-100 bg-body-tertiary">
                                 <div className="card-body">
                                     <h5 className="card-title fw-bold text-secondary m-0 fs-6">
-                                        Referral Code
+                                        Referral Link
                                     </h5>
-                                    <p className="card-text mb-1">
+                                    <p className="card-text mb-1" ref={refLink}>
+                                        <small className='m-0'>www.twofailures.com/?ref=</small><br />
                                         <b className="fs-4">{ambassador.referral_code}</b>
                                     </p>
-                                    <a href="#"
-                                        className="btn btn-secondary rounded-1 fw-semibold px-4">
-                                        Go to articles
-                                    </a>
+
+                                    <input type="text" className='d-none' value={`www.twofailures.com/?ref=${ambassador.referral_code}`} id="myInput"></input>
+
+                                    <button onClick={copyLink} disabled={click}
+                                        className="btn btn-secondary btn-sm  rounded-1 fw-semibold px-4">
+                                        <span id="cp"> Copy to clipboard</span> <i className="bi bi-clipboard-fill"></i>
+                                    </button>
                                 </div>
                             </div>
                         </div>
-                        <div className="col-sm-4 mb-3 mb-sm-0">
-                            <div className="card shadow-sm">
-                                <div className="card-body">
-                                    <h5 className="card-title fw-bold text-secondary m-0 fs-6">
-                                        Your Email
-                                    </h5>
-                                    <p className="card-text mb-1">
-                                        <b className="fs-4">{ambassador.email}</b>
-                                    </p>
-                                    <a href="#" className="btn btn-secondary rounded-1 fw-semibold px-4">
-                                        Go to slices
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="col-sm-4 mb-3 mb-sm-0">
-                            <div className="card shadow-sm">
+
+                        <div className="col-sm-8 mb-3 mb-sm-0">
+                            <div className="card shadow-sm h-100 bg-body-tertiary">
                                 <div className="card-body">
                                     <h5 className="card-title fw-bold text-secondary m-0 fs-6">
                                         Total Referrals
@@ -61,67 +64,6 @@ export default function AmbDashboard() {
                                     <p className="card-text mb-1">
                                         <b className="fs-4">{referrals.length}</b> referrals
                                     </p>
-                                    <a href="#" className="btn btn-secondary rounded-1 fw-semibold px-4">
-                                        See Teams
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </section>
-
-                <section className="mb-5">
-                    <div className="row">
-                        <div className="col-sm-6 mb-3 mb-sm-0">
-                            <div className="card shadow-sm bg-theme">
-                                <div className="card-body">
-                                    <div className="d-flex justify-content-around">
-                                        <div className="px-4">
-                                            <h5 className="card-title fs-6 color-blue m-0">Verified Users</h5>
-                                            <p className="card-text m-0 text-dark">
-                                                <span className="fs-1 fw-bold">0</span>users
-                                            </p>
-                                        </div>
-                                        <div className="px-4 border-start">
-                                            <h5 className="card-title fs-6 color-blue m-0">Unverified Users</h5>
-                                            <p className="card-text m-0 text-dark">
-                                                <span className="fs-1 fw-bold">0</span>users
-                                            </p>
-                                        </div>
-                                        <div className="px-4 border-start">
-                                            <h5 className="card-title fs-6 color-blue m-0">All Users</h5>
-                                            <p className="card-text m-0 text-dark">
-                                                <span className="fs-1 fw-bold">0</span>users
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="col-sm-6">
-                            <div className="card shadow-sm bg-dark">
-                                <div className="card-body">
-                                    <div className="d-flex justify-content-around">
-                                        <div className="px-4">
-                                            <h5 className="card-title fs-6 color-blue m-0">Verified Mentors</h5>
-                                            <p className="card-text m-0 text-white">
-                                                <span className="fs-1 fw-bold">0</span>mentors
-                                            </p>
-                                        </div>
-                                        <div className="px-4 border-start">
-                                            <h5 className="card-title fs-6 color-blue m-0">Unverified Mentors</h5>
-                                            <p className="card-text m-0 text-white">
-                                                <span className="fs-1 fw-bold">0</span>mentors
-                                            </p>
-                                        </div>
-                                        <div className="px-4 border-start">
-                                            <h5 className="card-title fs-6 color-blue m-0">All Mentors</h5>
-                                            <p className="card-text m-0 text-white">
-                                                <span className="fs-1 fw-bold">0</span>metnors
-                                            </p>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                         </div>
