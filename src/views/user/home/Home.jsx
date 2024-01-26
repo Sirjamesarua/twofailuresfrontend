@@ -54,10 +54,10 @@ export default function Home() {
                     <Banner />
 
                     <p className='text-center mt-2 fw-bold'>
-                        <Link to={"/ambassador/program"} className='btn btn-blue text-white btn-sm m-1 rounded-1'>
-                            Become a twofailures ambassador
+                        <Link to={"/ambassador/program"} className='btn btn-danger border border-secondary border-2 fw-bold text-white btn-sm m-1 rounded-1'>
+                            Become a Two Failures Ambassador
                         </Link>
-                        <Link to={"/ambassador/login"} className='btn btn-blue text-white btn-sm m-1 rounded-1'>
+                        <Link to={"/ambassador/login"} className='btn btn-danger border border-secondary border-2 fw-bold text-white btn-sm m-1 rounded-1'>
                             Ambassador Login
                         </Link>
                     </p>
