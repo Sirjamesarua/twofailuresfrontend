@@ -22,7 +22,7 @@ export default function AmbDashboard() {
         <div>
             <div className="container">
                 <div className="my-4">
-                    <h4 className="text-secondary fs-2 fw-bold">
+                    <h4 className="text-danger fs-2 fw-bold">
                         Dashboard
                     </h4>
                     <p>
@@ -37,7 +37,7 @@ export default function AmbDashboard() {
                         <div className="col-sm-4 mb-3 mb-sm-0">
                             <div className="card shadow-sm h-100 bg-body-tertiary">
                                 <div className="card-body">
-                                    <h5 className="card-title fw-bold text-secondary m-0 fs-6">
+                                    <h5 className="card-title fw-bold text-danger m-0 fs-6">
                                         Referral Link
                                     </h5>
                                     <p className="card-text mb-1" ref={refLink}>
@@ -48,7 +48,7 @@ export default function AmbDashboard() {
                                     <input type="text" className='d-none' value={`www.twofailures.com/?ref=${ambassador.referral_code}`} id="myInput"></input>
 
                                     <button onClick={copyLink} disabled={click}
-                                        className="btn btn-secondary btn-sm  rounded-1 fw-semibold px-4">
+                                        className="btn btn-danger btn-sm  rounded-1 fw-semibold px-4">
                                         <span id="cp"> Copy to clipboard</span> <i className="bi bi-clipboard-fill"></i>
                                     </button>
                                 </div>
@@ -58,7 +58,7 @@ export default function AmbDashboard() {
                         <div className="col-sm-8 mb-3 mb-sm-0">
                             <div className="card shadow-sm h-100 bg-body-tertiary">
                                 <div className="card-body">
-                                    <h5 className="card-title fw-bold text-secondary m-0 fs-6">
+                                    <h5 className="card-title fw-bold text-danger m-0 fs-6">
                                         Total Referrals
                                     </h5>
                                     <p className="card-text mb-1">
@@ -72,7 +72,7 @@ export default function AmbDashboard() {
 
                 <section>
                     <div className='border rounded-2 shadow-sm p-3'>
-                        <h5 className='fw-bold'>Leaderboard</h5>
+                        <h5 className='fw-bold text-danger'>Leaderboard</h5>
                         <ul className="list-group">
                             {leaderboard.length > 0 ? (
                                 leaderboard.map((item, index) => (
