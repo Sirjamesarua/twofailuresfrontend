@@ -50,7 +50,7 @@ export default function AmbLogin() {
                         </div>
 
                         <div className="col-12 mt-2">
-                            <button type="submit" className="err-btn rounded-1 shadow-sm text-uppercase py-3 fs-6 w-100">
+                            <button type="submit" className="btn btn-danger rounded-1 shadow-sm text-uppercase py-3 fs-6 w-100">
                                 {isSubmitting ? (<span className="loading-text">processing</span>) : "login"}
                             </button>
                         </div>
