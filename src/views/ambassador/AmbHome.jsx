@@ -59,10 +59,10 @@ export default function AmbHome() {
                             </div>
                         </div>
 
-                        <button type="button" className="btn btn-danger fw-bold d-block rounded-1 text-white mx-auto px-4 py-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <button type="button" className="btn btn-danger fw-bold d-block rounded-1 text-white mx-auto px-5 py-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             Become an Ambassador
                         </button>
-                        <small>Exculsive to US and Canadian residents</small>
+                        <small style={{ fontSize: "11px" }}>Exculsive to US and Canadian residents</small>
 
                         <div className="modal fade" id="exampleModal" tabIndex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div className="modal-dialog modal-dialog-centered">
@@ -115,24 +115,25 @@ export default function AmbHome() {
                                 <img src={image} alt="..." className='image-fluid img-thumbnail w-100 shadow' />
                             </div>
                             <div className="col-md-4 mb-4">
-                                <h3 className='fw-bold fs-5 mb-2'>Create Account</h3>
+                                <h3 className='fw-bold fs-5 mb-2 text-danger'>Create Account</h3>
                                 <p>
                                     Sign up to become a Two Failures Ambassador
                                 </p>
-                                <h3 className='fw-bold fs-5 mb-2'>Share Referral Link
-                                    .</h3>
+                                <h3 className='fw-bold fs-5 mb-2 text-danger'>
+                                    Share Referral Link
+                                </h3>
                                 <p>
                                     Win free merch Everytime you refer atleast a hundred people
                                 </p>
-                                <h3 className='fw-bold fs-5 mb-2'>Get Your Free Merch
+                                <h3 className='fw-bold fs-5 mb-2 text-danger'>Get Your Free Merch
                                 </h3>
                                 <p>
                                     We'll contact you to send you your free Merch.
                                 </p>
-                                <button type="button" className="btn btn-danger fw-bold rounded-1 text-white px-5 py-2" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <button type="button" className="btn btn-danger fw-bold rounded-1 text-white px-5 py-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                     Join Now
                                 </button><br />
-                                <small>Exculsive to US and Canadian residents</small>
+                                <small style={{ fontSize: "11px" }}>Exculsive to US and Canadian residents</small>
                             </div>
                         </div>
                     </div>
