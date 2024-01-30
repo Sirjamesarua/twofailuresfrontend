@@ -1,14 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useLoaderData } from 'react-router-dom';
-// import bootstrap from 'bootstrap';
 
 export default function AmbDashboard() {
     const { ambassador, leaderboard, referrals } = useLoaderData();
     const refLink = useRef(null);
     const [click, setClick] = useState(false);
-    const [has, setHas] = useState(true);
-
-    console.log(ambassador);
+    const [has, setHas] = useState(false);
 
     const copyLink = () => {
         let copyText = document.getElementById("myInput");
@@ -22,15 +19,16 @@ export default function AmbDashboard() {
         btnTxt.innerText = "Copied";
     }
 
-    const rewardFlash = () => {
-        console.log("yes");
+    const has100 = () => {
+        let item = localStorage.getItem('tf_amb100ref');
+        if (ambassador.reward > item) {
+            setHas(true);
+        }
     }
 
-    const has100 = () => {
-        if (referrals.length == 0) {
-            rewardFlash();
-        }
-        return null
+    const resetReward = () => {
+        localStorage.setItem("tf_amb100ref", ambassador.reward);
+        setHas(false);
     }
 
     useEffect(() => {
@@ -96,10 +94,10 @@ export default function AmbDashboard() {
                                             Referrals Rewards
                                         </h5>
                                         <p className="card-text mb-1">
-                                            <b className="fs-4">{referrals.length}/100</b> referrals
+                                            <b className="fs-4">{ambassador.count}/100</b> referrals
                                         </p>
                                         <div className="progress" role="progressbar" aria-label="Animated striped example" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">
-                                            <div className="progress-bar progress-bar-striped progress-bar-animated bg-danger" style={{ width: "5%" }}></div>
+                                            <div className="progress-bar progress-bar-striped progress-bar-animated bg-danger" style={{ width: ambassador.count + "%" }}></div>
                                         </div>
                                         <small>
                                             When you refer 100, you get a reward.
@@ -122,7 +120,7 @@ export default function AmbDashboard() {
                                         <p className='text-warning fw-semibold'>
                                             You've successfully referred 100 <br />
                                         </p>
-                                        <button className="btn btn btn-light btn-sm rounded-1" onClick={() => setHas(x => !x)}>
+                                        <button className="btn btn btn-light btn-sm rounded-1" onClick={resetReward}>
                                             Reset Challenge
                                         </button>
                                     </div>
