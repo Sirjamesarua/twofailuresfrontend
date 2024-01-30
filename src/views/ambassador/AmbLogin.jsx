@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
-import { Link, Navigate, useLocation } from 'react-router-dom'
+import { Link, Navigate } from 'react-router-dom'
 import { useStateContext } from '../../context/ContextProvider';
 import axiosClient from '../../axios-client';
 import ScrollToTop from '../../components/ScrollToTop';
@@ -14,15 +14,13 @@ export default function AmbLogin() {
         setErr("")
         await axiosClient.post('/ambassador/login', data)
             .then(({ data }) => {
-                console.log(data);
+
                 putAmbToken(data.access_token);
                 putAmb(data.ambassador);
                 window.location.href = "/ambassador/dashboard";
             }).catch((error) => {
                 const msg = error.response?.data?.message ?? "Something went wrong!"
                 setErr(msg)
-                console.log(msg);
-                // throw error;
             })
     }
 

@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 
 export default function AdminDashboard() {
   const { views } = useLoaderData();
+  console.log(views);
 
   return (
     <div className="admin-dashboard container">
@@ -14,7 +15,7 @@ export default function AdminDashboard() {
           <div className="card-body">
             <h5 className="card-title">Facebook visits</h5>
             <h6 className="card-subtitle mb-2 text-body-secondary">
-              {views[0].click_count}
+              {views[0]?.click_count ?? "0"}
             </h6>
           </div>
         </div>
@@ -23,7 +24,7 @@ export default function AdminDashboard() {
           <div className="card-body">
             <h5 className="card-title">Reddit visits</h5>
             <h6 className="card-subtitle mb-2 text-body-secondary">
-              {views[1].click_count}
+              {views[1]?.click_count ?? "0"}
             </h6>
           </div>
         </div>

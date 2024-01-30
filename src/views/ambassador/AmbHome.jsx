@@ -12,7 +12,6 @@ export default function AmbHome() {
     const [err, setErr] = useState("");
     const [isCaptchaVerified, setIsCaptchaVerified] = useState(false);
 
-
     const onSubmit = async (data) => {
         setErr("");
         await axiosClient.post('/ambassador/register', data)
@@ -94,6 +93,10 @@ export default function AmbHome() {
                                             <button className="btn btn-danger text-white py-3 mt-3 w-100 rounded-1" disabled={isSubmitting || !isCaptchaVerified}>
                                                 {isSubmitting ? (<span className="loading-text">PROCESSING</span>) : "SIGN UP"}
                                             </button>
+
+                                            <p className='mt-3 mb-1'>
+                                                <small>Already an ambassador? <a href={"/ambassador/login"}>Sign in</a></small>
+                                            </p>
                                         </form>
                                     </div>
                                 </div>

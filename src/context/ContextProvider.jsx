@@ -37,15 +37,32 @@ export const ContextProvider = ({ children }) => {
         if (email) {
             setUser(email);
             localStorage.setItem('tfuser', email);
+            localStorage.removeItem('tf_amb'); // removes data if ambassador is logged in
         } else {
             localStorage.removeItem('tfuser');
         }
     }
 
     const putAmb = (amb) => {
+        // Check if the record for the 100 referrals has been reached; returns true if its there
+        const checkLocalStorage = (key) => {
+            const item = localStorage.getItem(key);
+            if (item !== null && item !== undefined) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
         setAmbassador(amb);
         if (amb) {
-            localStorage.setItem('tf_amb', JSON.stringify(amb))
+            localStorage.setItem('tf_amb', JSON.stringify(amb));
+            if (checkLocalStorage('tf_amb100ref')) {
+                console.log("");
+            } else {
+                localStorage.setItem('tf_amb100ref', amb.reward);
+            }
+
         } else {
             localStorage.removeItem('tf_amb');
         }
@@ -74,7 +91,7 @@ export const ContextProvider = ({ children }) => {
     const putAdminToken = (token) => {
         setAdminToken(token);
         if (token) {
-            localStorage.clear(); // clear all other data
+            localStorage.removeItem('tf_amb'); // clear all other data
             localStorage.setItem('tfa_token', token);
         } else {
             localStorage.removeItem('tfa_token');
