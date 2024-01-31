@@ -2,6 +2,8 @@ import { Link, NavLink, Navigate, Outlet, useNavigation } from "react-router-dom
 import { useStateContext } from "../context/ContextProvider";
 import axiosClient from "../axios-client";
 import logo from "../assets/twofailures_logo.png";
+import sideImg from "../assets/side-img.png"
+
 
 
 export async function loader() {
@@ -42,10 +44,11 @@ export default function AmbassadorLayout() {
     return (
         <div>
             <div className="admin-layout">
-                <nav className="navbar navbar-expand-lg bg-body-tertiary border-bottom shadow-sm py-3">
+                <nav className="navbar navbar-expand-lg bg-body-tertiary border-bottom shadow-sm py-0">
                     <div className="container">
                         <Link to={"/"} className="me-5">
                             <img src={logo} alt="tf_logo" id="logo" />
+                            <img src={sideImg} alt="them" id="side-img" style={{ position: "relative", top: "5px" }} />
                         </Link>
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
