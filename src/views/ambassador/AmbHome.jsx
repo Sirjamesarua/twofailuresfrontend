@@ -45,7 +45,7 @@ export default function AmbHome() {
                             <div className="row">
                                 <div className="col-md-4 mb-4">
                                     <h3 className='fw-bold text-danger fs-1'>01.</h3>
-                                    You get free merch when you refer your friends <br />to read Two Failures
+                                    You get free Merch when you refer your friends <br />to read Two Failures
                                 </div>
                                 <div className="col-md-4 mb-4">
                                     <h3 className='fw-bold text-danger fs-1'>02.</h3>

@@ -68,7 +68,7 @@ export default function AmbDashboard() {
                                         className="btn btn-danger btn-sm rounded-1 px-4 mt-4">
                                         <span id="cp"> Copy link </span> <i className="bi bi-clipboard-fill"></i>
                                     </button>
-                                    <p className='mt-2' style={{ fontSize: "13px" }}>copy referral link and send to your friends</p>
+                                    <p className='mt-2' style={{ fontSize: "13px" }}>Copy referral link and send to your friends</p>
                                 </div>
                             </div>
                         </div>
