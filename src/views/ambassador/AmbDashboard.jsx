@@ -57,17 +57,18 @@ export default function AmbDashboard() {
                                     <h5 className="card-title fw-bold text-danger m-0 fs-6">
                                         Referral Link
                                     </h5>
-                                    <p className="card-text mb-1" ref={refLink}>
-                                        <small className='m-0'>www.twofailures.com/?ref=</small><br />
-                                        <b className="fs-4">{ambassador.referral_code}</b>
+                                    <p className="card-text mb-1 text-primary text-opacity-75 text-decoration-underline fs-5" ref={refLink}>
+                                        <small className='m-0'>www.twofailures.com/?ref=</small>
+                                        {ambassador.referral_code}
                                     </p>
 
                                     <input type="text" className='d-none' value={`www.twofailures.com/?ref=${ambassador.referral_code}`} id="myInput"></input>
 
                                     <button onClick={copyLink} disabled={click}
-                                        className="btn btn-danger btn-sm  rounded-1 fw-semibold px-4">
-                                        <span id="cp"> Copy to clipboard</span> <i className="bi bi-clipboard-fill"></i>
+                                        className="btn btn-danger btn-sm rounded-1 px-4 mt-4">
+                                        <span id="cp"> Copy link </span> <i className="bi bi-clipboard-fill"></i>
                                     </button>
+                                    <p className='mt-2' style={{ fontSize: "13px" }}>copy referral link and send to your friends</p>
                                 </div>
                             </div>
                         </div>
@@ -120,8 +121,8 @@ export default function AmbDashboard() {
                                         <p className='text-warning fw-semibold'>
                                             You've successfully referred 100 <br />
                                         </p>
-                                        <button className="btn btn btn-light btn-sm rounded-1" onClick={resetReward}>
-                                            Reset Challenge
+                                        <button className="btn btn btn-light rounded-1" onClick={resetReward}>
+                                            Reset
                                         </button>
                                     </div>
                                 </div>

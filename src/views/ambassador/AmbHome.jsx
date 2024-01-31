@@ -126,7 +126,7 @@ export default function AmbHome() {
                                     Share Referral Link
                                 </h3>
                                 <p>
-                                    Win free merch Everytime you refer atleast a hundred people
+                                    Win free Merch every time you refer at least a hundred people
                                 </p>
                                 <h3 className='fw-bold fs-5 mb-2 text-danger'>Get Your Free Merch
                                 </h3>
