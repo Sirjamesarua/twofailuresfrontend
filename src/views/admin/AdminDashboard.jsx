@@ -2,7 +2,7 @@ import { useLoaderData } from "react-router-dom";
 
 export default function AdminDashboard() {
   const { views } = useLoaderData();
-  console.log(views);
+  // console.log(views);
 
   return (
     <div className="admin-dashboard container">

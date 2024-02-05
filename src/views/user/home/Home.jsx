@@ -13,7 +13,9 @@ export default function Home() {
     const [message, setMessage] = useState(<LoadingSkeleton />);
 
     const fetchEpisodes = async () => {
+
         setMessage(<LoadingSkeleton />);
+
         await axiosClient.get('/episodes')
             .then(({ data }) => {
                 setEps(data);

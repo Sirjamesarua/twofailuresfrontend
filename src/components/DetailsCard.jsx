@@ -15,6 +15,22 @@ export default function DetailsCard({ detail }) {
         return;
     };
 
+    /**
+     * Format episode description.
+     * Sends back a default text if no description
+     * 
+     * @param {string} data 
+     * @returns string 
+     */
+    const description = (data) => {
+        let description;
+        if (data && data.length > 2) {
+            description = data.length > 40 ? data.substring(0, 40) : data;
+            return description;
+        }
+        return "No description";
+    };
+
     return (
         <div className="shadow-sm border mb-2 p-2 rounded-1 bg-body-tertiary">
             <div className="text-decoration-none">
@@ -22,10 +38,11 @@ export default function DetailsCard({ detail }) {
                     <h4 className="m-0">{detail.title}</h4>
                     <div>
                         <i>
-                            {detail.description.length > 45 ?
+                            {description(detail.description)}
+                            {/* {detail.description?.length > 45 ?
                                 `${detail.description.substring(0, 40)}...` :
                                 detail.description
-                            }
+                            } */}
                         </i>
                     </div>
                 </div>
