@@ -14,9 +14,9 @@ export async function loader({ params }) {
 }
 
 export default function EditEpisode() {
-    const episode = useLoaderData(); 
+    const episode = useLoaderData();
     const navigate = useNavigate();
-    
+
     const quillRef = useRef();
 
     const { handleSubmit, formState: { isSubmitting } } = useForm();
@@ -25,18 +25,17 @@ export default function EditEpisode() {
         title: episode.title,
         description: episode.description,
     });
+
     const [content, setContent] = useState(episode.content);
-
-
 
     useEffect(() => {
         if (quillRef.current != null) {
             const quillInstance = quillRef.current.getEditor(); // Obtain Quill instance
             const toolbar = quillInstance.getModule('toolbar');
             toolbar.addHandler('image', customImageHandler);
-          }
-        
-        console.log(content);
+        }
+
+        // console.log(content);
         const token = localStorage.getItem('tfa_token');
     }, [content]);
 
@@ -66,18 +65,18 @@ export default function EditEpisode() {
             };
 
             axios.post(url, formData, config)
-            .then((response) => {
-                if (response.status === 200) {
-                const url  = response.data.url;
-                const url2 = `${import.meta.env.VITE_API_BASE_URL}/storage`+url
-                console.log(url2);
-                const range = quillRef.current.getEditor().getSelection(true);
-                quillRef.current.getEditor().insertEmbed(range.index, 'image', url2);
-                }
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+                .then((response) => {
+                    if (response.status === 200) {
+                        const url = response.data.url;
+                        const url2 = `${import.meta.env.VITE_API_BASE_URL}/storage` + url
+                        console.log(url2);
+                        const range = quillRef.current.getEditor().getSelection(true);
+                        quillRef.current.getEditor().insertEmbed(range.index, 'image', url2);
+                    }
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
 
 
             reader.readAsDataURL(file);
@@ -85,12 +84,10 @@ export default function EditEpisode() {
 
     };
 
-
     const onSubmit = async () => {
-        epi.content = content;
-        console.log(epi);
-
+        epi.content = content; // add in the textarea content into the object
         const response = await axiosClient.post(`${import.meta.env.VITE_API_BASE_URL}/api/admin/episodes/${episode.id}`, epi);
+
         if (response.status === 200) {
             console.log(response);
             navigate('/admin/episodes');
@@ -98,7 +95,6 @@ export default function EditEpisode() {
             console.log('error creating episode');
             alert("Something went wrong!");
         }
-
     }
 
     const toolbarOptions = [
@@ -130,7 +126,7 @@ export default function EditEpisode() {
                 </div>
 
                 <div className="input-control">
-                    <label htmlFor="content">Content</label><br />
+                    <label htmlFor="content">Content</label>
                 </div>
 
                 <ReactQuill theme="snow" value={content} ref={quillRef} onChange={setContent}

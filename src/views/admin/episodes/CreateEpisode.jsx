@@ -99,7 +99,7 @@ export default function CreateEpisode() {
     ];
 
     return (
-        <div>
+        <div className="animated fadeInDown">
             <h4 className="mb-1">Create Episode</h4>
             <form onSubmit={handleSubmit(onSubmit)} id="createEpForm">
                 <div className="input-control">

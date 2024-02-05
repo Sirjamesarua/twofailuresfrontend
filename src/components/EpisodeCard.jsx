@@ -15,6 +15,22 @@ export default function EpisodeCard({ ep }) {
         link = `#login`;
     }
 
+    /**
+     * Format episode description.
+     * Sends back a default text if no description
+     * 
+     * @param {string} data 
+     * @returns string 
+     */
+    const description = (data) => {
+        let description;
+        if (data && data.length > 2) {
+            description = data.length > 40 ? data.substring(0, 40) : data;
+            return description;
+        }
+        return "Tap to read...";
+    };
+
     return (
         <>
             {user && (
@@ -31,10 +47,12 @@ export default function EpisodeCard({ ep }) {
                                     </small>
                                     <h5 className="card-title m-0 fw-bold">{ep.title}</h5>
                                     <p className="card-text">
-                                        {ep.description.length > 40 ?
+                                        {description(ep.description)}
+
+                                        {/* {ep.description.length > 40 ?
                                             `${ep.description.substring(0, 40)}...` :
                                             ep.description
-                                        }
+                                        } */}
                                     </p>
                                 </div>
                             </div>
@@ -57,10 +75,7 @@ export default function EpisodeCard({ ep }) {
                                     </small>
                                     <h5 className="card-title m-0 fw-bold">{ep.title}</h5>
                                     <p className="card-text">
-                                        {ep.description.length > 40 ?
-                                            `${ep.description.substring(0, 40)}...` :
-                                            ep.description
-                                        }
+                                        {description(ep.description)}
                                     </p>
                                 </div>
                             </div>
@@ -71,9 +86,3 @@ export default function EpisodeCard({ ep }) {
         </>
     )
 };
-
-// style={{
-//     backgroundImage: `url(${ep.cover_image ? `${import.meta.env.VITE_API_BASE_URL}/storage/${ep.cover_image}` : cartoon})`,
-//     backgroundSize: "cover", backgroundRepeat: "no-repeat",
-//     backgroundPosition: "center"
-// }}
