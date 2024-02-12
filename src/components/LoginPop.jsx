@@ -14,6 +14,7 @@ export default function LoginPop() {
     const [isCaptchaVerified, setIsCaptchaVerified] = useState(false);
 
     const onSubmit = async (data) => {
+        setFormError("");
         if (location.search) {
             const urlParams = new URLSearchParams(location.search)
             const refValue = urlParams.get('ref')
@@ -28,7 +29,9 @@ export default function LoginPop() {
             })
             .catch((err) => {
                 console.log(err);
-                const res = err.response?.data?.message ?? 'Something went wrong!';
+                isSubmitting = !isSubmitting;
+                const res = 'Something went wrong!';
+                // const res = err.response?.data?.message ?? 'Something went wrong!';
                 setFormError(res);
             });
     }
@@ -45,7 +48,7 @@ export default function LoginPop() {
                 <div className="modal-dialog modal-dialog-centered">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h1 className="modal-title fs-5" id="loginModal">Join TwoFailures</h1>
+                            <h1 className="modal-title fs-5" id="loginModal">Join Two Failures</h1>
                             <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div className="modal-body">
