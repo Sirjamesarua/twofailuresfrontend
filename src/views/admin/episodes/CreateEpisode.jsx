@@ -5,6 +5,7 @@ import 'react-quill/dist/quill.snow.css';
 import React, { useRef, useEffect } from 'react';
 import axios from "axios";
 import axiosClient from "../../../axios-client";
+import axiosClient2 from "../../../axios-client-2";
 import { Link, useNavigate } from 'react-router-dom';
 
 export default function CreateEpisode() {
@@ -22,7 +23,7 @@ export default function CreateEpisode() {
         }
 
         console.log(content);
-        const token = localStorage.getItem('tfa_token');
+        // const token = localStorage.getItem('tfa_token');
     }, [content]);
 
     const customImageHandler = () => {
@@ -42,7 +43,6 @@ export default function CreateEpisode() {
             formData.append('image', file);
             formData.append('episode_id', 101010);
             console.log(file);
-
 
             // reader.onload = () => { //displaying local
             //     const range = quillRef.current.getEditor().getSelection(true);
@@ -69,8 +69,6 @@ export default function CreateEpisode() {
                 .catch((error) => {
                     console.log(error);
                 });
-
-
             reader.readAsDataURL(file);
         };
 
@@ -79,8 +77,11 @@ export default function CreateEpisode() {
 
     const onSubmit = async (data) => {
         data["content"] = content;
+        data.cover_image = data.image[0];
 
-        const response = await axiosClient.post(`${import.meta.env.VITE_API_BASE_URL}/api/admin/episodes/create`, data);
+        console.log(data);
+        const response = await axiosClient2.post(`/admin/episodes/create`, data);
+
         if (response.status === 200) {
             console.log(response);
             navigate('/admin/episodes');
@@ -101,7 +102,7 @@ export default function CreateEpisode() {
     return (
         <div className="animated fadeInDown">
             <h4 className="mb-1">Create Episode</h4>
-            <form onSubmit={handleSubmit(onSubmit)} id="createEpForm">
+            <form onSubmit={handleSubmit(onSubmit)} id="createEpForm" autoComplete="off" encType="multipart/form-data">
                 <div className="input-control">
                     <label htmlFor="title">Title</label><br />
                     <input type="text" id="title"
@@ -117,6 +118,13 @@ export default function CreateEpisode() {
                 </div>
 
                 <div className="input-control">
+                    <label htmlFor="image">Cover image</label><br />
+                    <input type="file" id="image" accept="image/*"
+                        {...register("image", { required: true })}
+                    />
+                </div>
+
+                <div className="input-control">
                     <label htmlFor="content">Content</label><br />
                 </div>
                 {/* MY CODE */}
@@ -124,7 +132,7 @@ export default function CreateEpisode() {
                     style={{ width: "100%", background: "white", borderRadius: "0.5rem" }}
                 />
 
-                <div className="input-control mt-1">
+                <div className="input-control mt-4">
                     <button type="submit" disabled={isSubmitting}>
                         {isSubmitting ? (<span className="loading-text">creating</span>) : (<span>create</span>)}
                     </button>
