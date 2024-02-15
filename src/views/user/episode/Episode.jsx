@@ -114,12 +114,12 @@ export default function Episode() {
                     <div dangerouslySetInnerHTML={{ __html: episode.content }} />
                 </div>
 
+                {/* <div className="mt-2 mb-5" type="button" data-bs-toggle="modal" data-bs-target="#merchModal"> */}
                 <div className="mt-2 mb-5" onClick={() => setPopup(!popup)}>
                     <PopupAd />
                 </div>
 
                 <div id="disqus_thread" className='mb-5'></div>
-
             </section>
 
             {/* Popup card that handles the form */}

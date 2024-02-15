@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import ReactQuill from "react-quill";
 import 'react-quill/dist/quill.snow.css';
 import axiosClient from "../../../axios-client";
+import axiosClient2 from "../../../axios-client-2";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import React, { useRef, useEffect } from 'react';
 import axios from "axios";
@@ -23,6 +24,7 @@ export default function EditEpisode() {
 
     const [epi, setEpi] = useState({
         title: episode.title,
+        cover_image: null,
         description: episode.description,
     });
 
@@ -84,9 +86,14 @@ export default function EditEpisode() {
 
     };
 
+    const handleImageChange = (ev) => {
+        const file = ev.target.files[0];
+        setEpi({ ...epi, cover_image: file })
+    }
+
     const onSubmit = async () => {
         epi.content = content; // add in the textarea content into the object
-        const response = await axiosClient.post(`${import.meta.env.VITE_API_BASE_URL}/api/admin/episodes/${episode.id}`, epi);
+        const response = await axiosClient2.post(`/admin/episodes/${episode.id}`, epi);
 
         if (response.status === 200) {
             console.log(response);
@@ -144,6 +151,14 @@ export default function EditEpisode() {
                         cols="30" rows="10" style={{ height: "100px" }}
                     ></textarea>
                 </div>
+
+                <div className="input-control">
+                    <label htmlFor="image">Change Image</label><br />
+                    <input type="file" id="image"
+                        onChange={handleImageChange}
+                    />
+                </div>
+
 
                 <div className="input-control">
                     <label htmlFor="content">Content</label>
