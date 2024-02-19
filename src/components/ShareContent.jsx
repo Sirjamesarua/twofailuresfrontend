@@ -9,7 +9,7 @@ export default function ShareContent() {
     const telegramLink = 'https://t.me/share/url?url=';
 
     const episodeLink = `${import.meta.env.VITE_APP_URL}${location.pathname}`;
-    const inviteText = `Hello there,\nI think you'd find this episode from Two-Failures interesting: ${episodeLink} \nHappy Reading!`
+    const inviteText = `Hello there,\nI think you'd find this episode from Two Failures interesting: ${episodeLink} \nHappy Reading!`
 
     return (
         <div className='share-episode mt-1'>
@@ -24,6 +24,10 @@ export default function ShareContent() {
                 ></i>
 
                 <i className="bi bi-telegram"
+                    onClick={() => window.open(telegramLink + encodeURIComponent(`${inviteText}`))}
+                ></i>
+
+                <i className="bi bi-twitter"
                     onClick={() => window.open(telegramLink + encodeURIComponent(`${inviteText}`))}
                 ></i>
             </div>
