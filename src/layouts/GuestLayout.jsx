@@ -2,12 +2,11 @@ import { Link, Outlet, useLocation, useNavigation } from "react-router-dom";
 import LoginPop from "../components/LoginPop"
 import logo from "../assets/twofailures_logo.png";
 import sideImg from "../assets/side-img.png"
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Loader from "../components/Loader";
 import { useForm } from "react-hook-form";
 import axiosClient from "../axios-client";
 import ReCAPTCHA from "react-google-recaptcha";
-
 
 export default function GuestLayout() {
     const location = useLocation();
@@ -34,6 +33,19 @@ export default function GuestLayout() {
             })
     }
 
+    const viewSource = async () => {
+        if (location.search === "?source=reddit") {
+            axiosClient.post("/view_count", { source: "reddit" })
+        }
+        if (location.search === "?source=fb") {
+            axiosClient.post("/view_count", { source: "facebook" })
+        }
+    }
+
+    useEffect(() => {
+        viewSource();
+    }, []);
+
     return (
         <>
             <nav className="navbar bg-body-tertiary shadow-sm">
@@ -58,7 +70,7 @@ export default function GuestLayout() {
                             <div className="modal-dialog modal-lg modal-dialog-centered">
                                 <div className="modal-content">
                                     <div className="modal-header">
-                                        <h1 className="modal-title fs-5" id="aboutUsLabel">About Us - Two Failures</h1>
+                                        <h1 className="modal-title fs-5 text-danger" id="aboutUsLabel">About Two Failures</h1>
                                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div className="modal-body">
@@ -85,7 +97,7 @@ export default function GuestLayout() {
                             <div className="modal-dialog modal-dialog-centered">
                                 <div className="modal-content">
                                     <div className="modal-header">
-                                        <h1 className="modal-title fs-5" id="contactUsLabel">Contact Us</h1>
+                                        <h1 className="modal-title fs-5 text-danger" id="contactUsLabel">Contact Us</h1>
                                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div className="modal-body">

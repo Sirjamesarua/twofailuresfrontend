@@ -4,6 +4,7 @@ import "./adminEpStyles.scss";
 
 export default function AllEpisodes() {
     const { episodes } = useLoaderData();
+    console.log(episodes);
 
     return (
         <div className="all-episodes">

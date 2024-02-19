@@ -3,7 +3,6 @@ import axiosClient from "../../../axios-client";
 import { useStateContext } from "../../../context/ContextProvider";
 import { Navigate } from "react-router-dom";
 import "./adminLoginStyles.scss";
-import { useState } from "react";
 
 export default function AdminLogin() {
   const { register, handleSubmit, formState: { isSubmitting } } = useForm();
