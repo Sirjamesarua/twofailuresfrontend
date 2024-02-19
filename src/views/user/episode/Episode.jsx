@@ -115,7 +115,13 @@ export default function Episode() {
                 </div>
 
                 {/* <div className="mt-2 mb-5" type="button" data-bs-toggle="modal" data-bs-target="#merchModal"> */}
-                <div className="mt-2 mb-5" onClick={() => setPopup(!popup)}>
+                <div className='my-2'>
+                    <a href="https://store.twofailures.com" className='btn btn-danger border fw-semibold border-secondary w-100 mb-3' target='_blank'>
+                        Shop Two Failures Merch
+                    </a>
+                </div>
+
+                <div className="mb-5" onClick={() => setPopup(!popup)}>
                     <PopupAd />
                 </div>
 
@@ -129,12 +135,12 @@ export default function Episode() {
                         <button onClick={() => { setPopup(!popup); setEntryCount(0) }} className='btn-blue text-white rounded-1'>close</button>
                         <br />
                         <br />
-                        <h3>
+                        <h3 className='text-danger fw-bold'>
                             Win FREE Two Failures Merch
                         </h3>
                         <p className='m-0'>
                             <small>
-                                Become one of our followers and have a chance to win Two failures merch every month.
+                                Become one of our followers and have a chance to win <span className="text-danger">Two Failures Merch</span> every month.
                                 Winners would be contacted via email:
                             </small>
                         </p>
