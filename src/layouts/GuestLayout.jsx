@@ -66,7 +66,7 @@ export default function GuestLayout() {
                                             Tag and Simi are two best friends who have one thing in common: they are failures.
                                             <br />
                                             <br />
-                                            They work as maintenance workers in the female dorm of a prestigious university, where they hope to find some romance and adventure, but their plans always backfire, and they end up in awkward and embarrassing situations.
+                                            They work in the female dorm of a prestigious university, where they hope to find some romance and adventure, but their plans always backfire, and they end up in awkward and embarrassing situations.
                                             <br />
                                             <br />
                                             Follow their hilarious misadventures as they try to deal with their daily struggles with humor and optimism.
