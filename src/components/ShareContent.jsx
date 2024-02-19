@@ -7,6 +7,8 @@ export default function ShareContent() {
     const whatsappLink = "https://api.whatsapp.com/send?text=";
     const fbLink = "https://www.facebook.com/sharer/sharer.php?u=";
     const telegramLink = 'https://t.me/share/url?url=';
+    const twitterLink = "https://twitter.com/intent/tweet?url=";
+
 
     const episodeLink = `${import.meta.env.VITE_APP_URL}${location.pathname}`;
     const inviteText = `Hello there,\nI think you'd find this episode from Two Failures interesting: ${episodeLink} \nHappy Reading!`
@@ -19,16 +21,16 @@ export default function ShareContent() {
                     onClick={() => window.open(whatsappLink + encodeURIComponent(inviteText))}
                 ></i>
 
-                <i className="bi bi-facebook"
+                <i className="bi bi-facebook mx-2"
                     onClick={() => window.open(fbLink + encodeURIComponent(`${episodeLink}`))}
                 ></i>
 
-                <i className="bi bi-telegram"
+                <i className="bi bi-telegram mx-2"
                     onClick={() => window.open(telegramLink + encodeURIComponent(`${inviteText}`))}
                 ></i>
 
-                <i className="bi bi-twitter"
-                    onClick={() => window.open(telegramLink + encodeURIComponent(`${inviteText}`))}
+                <i className="bi bi-twitter mx-2"
+                    onClick={() => window.open(twitterLink + encodeURIComponent(`${inviteText}`))}
                 ></i>
             </div>
         </div>
