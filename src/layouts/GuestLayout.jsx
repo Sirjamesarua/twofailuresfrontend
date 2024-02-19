@@ -70,7 +70,7 @@ export default function GuestLayout() {
                             <div className="modal-dialog modal-lg modal-dialog-centered">
                                 <div className="modal-content">
                                     <div className="modal-header">
-                                        <h1 className="modal-title fs-5" id="aboutUsLabel">About Us - Two Failures</h1>
+                                        <h1 className="modal-title fs-5 text-danger" id="aboutUsLabel">About Two Failures</h1>
                                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div className="modal-body">
@@ -97,7 +97,7 @@ export default function GuestLayout() {
                             <div className="modal-dialog modal-dialog-centered">
                                 <div className="modal-content">
                                     <div className="modal-header">
-                                        <h1 className="modal-title fs-5" id="contactUsLabel">Contact Us</h1>
+                                        <h1 className="modal-title fs-5 text-danger" id="contactUsLabel">Contact Us</h1>
                                         <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div className="modal-body">
